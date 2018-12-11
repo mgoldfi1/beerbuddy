@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "learn",
+    "password": "password",
+    "database": "beerbuddy",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  }
+}
