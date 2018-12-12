@@ -1,7 +1,9 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
+const models = require('../server/models')
+const Beer = require('../server/models/beer')
+const Brewery = require('../server/models/brewery')
 // Set up the express app
 const app = express();
 
