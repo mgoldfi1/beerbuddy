@@ -27,6 +27,7 @@ function scrapeBeers() {
                     ibu: parseFloat(beer.ibu),
                     desc: beer.description,
                     label: beer.labels.large,
+                    style: beer.style.name,
                     BreweryId: brewery.id
                 })
 
