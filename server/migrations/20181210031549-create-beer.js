@@ -24,7 +24,7 @@ module.exports = {
       label: {
         type: Sequelize.STRING
       },
-      breweryId: {
+      BreweryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

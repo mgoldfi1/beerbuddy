@@ -1,12 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const models = require('../server/models')
-const Beer = require('../server/models/beer')
-const Brewery = require('../server/models/brewery')
+const models = require('./server/models')
+const Beer = require('./server/models/beer')
+const Brewery = require('./server/models/brewery')
 // Set up the express app
 const app = express();
-
 // Log requests to the console.
 app.use(logger('dev'));
 
@@ -15,8 +14,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
-}));
+app.get('*', (req, res) => {
+  models.Beer.find({where: {id: 3},
+  include: [{
+    model: models.Brewery,
+    as: 'brewery'
+    }  ]})
+  .then(beer => res.send(beer))
+}
+  
+)
+
+;
 
 module.exports = app;

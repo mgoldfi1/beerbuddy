@@ -5,12 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     abv: DataTypes.FLOAT,
     ibu: DataTypes.FLOAT,
     desc: DataTypes.TEXT,
-    label: DataTypes.STRING,
-    breweryId: DataTypes.INTEGER,
+    label: DataTypes.STRING
   }, {});
   Beer.associate = (models) => {
     // associations can be defined here
-    Beer.belongsTo(models.Brewery)
+    Beer.belongsTo(models.Brewery, {as: 'brewery',foreignKey: 'BreweryId'})
   };
   return Beer;
 };
