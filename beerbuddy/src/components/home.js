@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
-
+import BeerContainer from './beerContainer'
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = { activeTab: 1}
+        this.state = { activeTab: 0, beer: ''}
     }
     
     tabSwitch = () => {
@@ -13,16 +13,18 @@ export default class Home extends Component {
            case 2:
            return (<div>Top</div>)
            case 0:
-           return (<div>beers</div>)
+           return (<div className="cardContainer"><BeerContainer/></div>)
            case 1: 
            return (<div>breweries</div>)
        }
-        
     }
+
+   
     render() {
         
         return (
             <div className="demo-tabs">
+            <div>{this.state.beer.name}</div>
             <Tabs activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
                 <Tab>Beers</Tab>
                 <Tab>Breweries</Tab>
@@ -30,6 +32,7 @@ export default class Home extends Component {
             </Tabs>
             <section>
                 {this.tabSwitch()}
+            
             </section>
         </div>    
         )

@@ -15,14 +15,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 app.get('*', (req, res) => {
-  models.Beer.find({where: {id: 3},
+  models.Beer.findAll({
   include: [{
     model: models.Brewery,
     as: 'brewery'
     }  ]})
-  .then(beer => res.send(beer))
+  .then(beer => res.send({beer}))
 }
-  
 )
 
 ;
