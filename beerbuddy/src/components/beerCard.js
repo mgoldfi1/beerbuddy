@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
+
 export default  class BeerCard extends Component {
     render() {
         return (
@@ -20,8 +22,8 @@ export default  class BeerCard extends Component {
                     title="beer"
                     />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {this.props.name}
+                    <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
+                        <strong>{this.props.name}</strong>
                     </Typography>
                     <Typography component="p">
                        {this.props.abv}% ABV<br/>

@@ -4,4 +4,9 @@
 
 .cards {
   height: 100%;
+  max-width: 300px;
+}
+
+.beerName {
+  font-size: 5%;
 }
