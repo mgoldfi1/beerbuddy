@@ -19,7 +19,7 @@ export default  class BeerCard extends Component {
                     alt="beerpic"
                     height="140"
                     image={this.props.label}
-                    title="beer"
+                    title={this.props.name}
                     />
                     <CardContent>
                     <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
