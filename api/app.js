@@ -26,6 +26,10 @@ app.get('/api/beer/:page', (req, res) => {
 }
 )
 
+app.get('/api/breweries',  (req, res) => {
+  models.Brewery.findAll({})
+  .then(breweries => res.send({breweries}))
+})
 ;
 
 module.exports = app;

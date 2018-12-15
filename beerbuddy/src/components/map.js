@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import BreweryList from './breweryList'
 
 
 const apiKey = require('./apikey')
@@ -25,7 +26,8 @@ const styles = theme => ({
         this.state = {
             lat: 0,
             lng: 0,
-            location: ''
+            location: '',
+            isOpen: false
         }
     }
 
@@ -46,6 +48,7 @@ const styles = theme => ({
     renderMap = () => {
         return ( 
             <div>
+            <div className="map">
             <TextField
                 id="outlined-email-input"
                 label="Zipcode or Address"
@@ -67,7 +70,19 @@ const styles = theme => ({
              lat: this.state.lat,
              lng: this.state.lng
             }}
-          /></div> )
+                >
+                <Marker position={{lat: '40.6710729', lng:'-73.9988001'}} name="hello">
+                <InfoWindow onCloseClick={this.handleToggle}>
+                        <div>
+                            First Brewery
+                        </div>
+                    </InfoWindow>
+                </Marker>
+            </Map>
+          </div>
+          <div className="list"><BreweryList/></div> 
+          </div>
+          )
     }
     render() {
         return (
