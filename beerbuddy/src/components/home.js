@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
 import BeerContainer from './beerContainer'
+import MapContainer from './map'
 
 export default class Home extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export default class Home extends Component {
            case 0:
            return (<div className="cardContainer"><BeerContainer/></div>)
            case 1: 
-           return (<div>breweries</div>)
+           return (<div><MapContainer/></div>)
        }
     }
 
