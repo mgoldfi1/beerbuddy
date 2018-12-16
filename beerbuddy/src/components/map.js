@@ -48,6 +48,8 @@ const styles = theme => ({
        console.log(marker);
        console.log(props);
         this.setState({
+             lat: marker.position.lat,
+             lng: marker.position.lng,
              selectedPlace: props,
              activeMarker: marker,
              showingInfoWindow: true
@@ -115,7 +117,7 @@ const styles = theme => ({
             google={this.props.google}
             zoom={this.state.zoom}
             style={mapStyles}
-             initialCenter={{
+             center={{
              lat: this.state.lat,
              lng: this.state.lng
             }}
