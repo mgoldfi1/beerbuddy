@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import StarRatings from 'react-star-ratings';
 
 
 
@@ -31,6 +32,16 @@ export default  class BeerCard extends Component {
                         Brewed By: {this.props.brewery}
                     </Typography>
                     </CardContent>
+                    <div>
+                    <StarRatings
+                        rating={0}
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="25px"
+                        starSpacing="1px"
+                        starRatedColor="rgb(255, 204, 0)"
+                        />
+                        </div>
                     </CardActionArea>
                 </Card>
         )

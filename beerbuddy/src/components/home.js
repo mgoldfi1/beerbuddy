@@ -18,7 +18,7 @@ export default class Home extends Component {
            case 0:
            return (<div className="cardContainer"><BeerContainer/></div>)
            case 1: 
-           return (<div><MapContainer/></div>)
+           return (<div className="mapContainer"><MapContainer/></div>)
        }
     }
 

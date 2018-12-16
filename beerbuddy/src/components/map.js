@@ -5,11 +5,12 @@ import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import BreweryList from './breweryList'
+import { Grid, Cell } from 'react-mdl'
 
 
 const apiKey = require('./apikey')
 const mapStyles = {
-  width: '50%',
+  width: '100%',
   height: '50%'
 };
 const styles = theme => ({
@@ -62,6 +63,9 @@ const styles = theme => ({
             <Button variant="contained" onClick={this.handleSearch}style={{marginTop: 5}}color="primary">
                 Find Breweries
             </Button>
+            <Grid>
+            <Cell col={12}>
+            <div className="container">
             <Map
             google={this.props.google}
             zoom={14}
@@ -79,6 +83,9 @@ const styles = theme => ({
                     </InfoWindow>
                 </Marker>
             </Map>
+            </div>
+            </Cell>
+            </Grid>
           </div>
           <div className="list"><BreweryList/></div> 
           </div>

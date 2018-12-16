@@ -13,4 +13,26 @@
 
 .map {
   height: 60vh;
+  z-index: 1
 }
+
+.list {
+  z-index: 1000;
+}
+
+.breweryCell {
+  font-size: 16px;
+  color: blue;
+}
+
+.breweryCell:hover {
+  color: red;
+}
+
+.star-ratings {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+

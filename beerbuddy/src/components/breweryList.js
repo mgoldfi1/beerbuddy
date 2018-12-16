@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Grid, Cell } from 'react-mdl'
 
 
 export default class BreweryList extends Component {
@@ -27,17 +28,18 @@ export default class BreweryList extends Component {
         {console.log(this.state.breweries)}
         return (
             <div>
-                <List>
+                <strong>Click on a brewery below to visit its page:</strong>
+                <Grid className="list">
                 {this.state.breweries.map(
                     brewery => {
                         return (
-                        <ListItem button>
-                        <ListItemText primary={brewery.name}/>
-                        </ListItem>
+                        <Cell col={2}>
+                        <div className="breweryCell"><a href="#">{brewery.name}</a></div>
+                        </Cell>
                         )
                     } 
                 )}
-                </List>
+                </Grid>
             </div>
         )
     }
