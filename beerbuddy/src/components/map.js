@@ -68,7 +68,7 @@ const styles = theme => ({
     componentWillMount() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-              this.setState({lat: position.coords.latitude, lng: position.coords.longitude }) })
+              this.setState({lat: position.coords.latitude, lng: position.coords.longitude, zoom: 14 }) })
             }
             fetch('/api/breweries')
             .then(res => res.json())
