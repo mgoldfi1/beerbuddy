@@ -35,4 +35,17 @@
   margin-bottom: 5px;
 }
 
+.loginBox {
+  text-align: center;
 
+}
+
+.button {
+  margin: 25px;
+}
+
+.box {
+  font-weight: bold;
+  margin: 10px;
+  font-size: 15px;
+}

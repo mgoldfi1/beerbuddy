@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Drawer, Navigation, Content, Header } from 'react-mdl'
-
+import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
 
@@ -10,10 +10,10 @@ export default class Navbar extends Component {
     <Layout fixedHeader>
         <Header title={<span><span style={{ color: '#ddd' }}>Beer</span><strong>Buddy</strong></span>}>
             <Navigation>
-                <a href="#">Home</a>
+                <Link to="/home">Home</Link>
                 <a href="#">Beers</a>
                 <a href="#">Breweries</a>
-                <a href="#">LOG IN</a>
+                <Link to="/login">LOG IN</Link>
             </Navigation>
         </Header>
         <Drawer title="Title">
