@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "matt",
+    "username": "learn",
     "password": "password",
     "database": "beerbuddy",
     "host": "127.0.0.1",
