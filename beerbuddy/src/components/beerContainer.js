@@ -14,14 +14,19 @@ constructor(props) {
     super(props);
     this.state = {
         beers: [],
+<<<<<<< HEAD
         value: "abv",
         more: true
+=======
+        value: 'name',
+        more: true 
+>>>>>>> no-demons
     }
 }
 
 loadFunc = (page) => {
   if (page < 6) {
-  fetch(`/api/beer/` + page)
+  fetch(`/api/beer/` + this.state.value + `/` + page)
     .then(res => res.json())
     .then(json => this.setState({beers: [...this.state.beers, ...json.beer]}))
   } else {
@@ -64,7 +69,13 @@ render() {
             labelPlacement="bottom"
             style={{margin: '1px'}}
             />
-
+            <FormControlLabel
+            value="name"
+            control={<Radio color="primary" />}
+            label="Name"
+            labelPlacement="bottom"
+            style={{margin: '1px'}}
+            />
             <FormControlLabel
             value="rating"
             control={<Radio color="primary" />}
