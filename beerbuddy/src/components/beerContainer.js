@@ -14,13 +14,8 @@ constructor(props) {
     super(props);
     this.state = {
         beers: [],
-<<<<<<< HEAD
         value: "abv",
         more: true
-=======
-        value: 'name',
-        more: true 
->>>>>>> no-demons
     }
 }
 
