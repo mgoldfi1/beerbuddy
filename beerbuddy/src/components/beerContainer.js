@@ -30,17 +30,13 @@ loadFunc = (page) => {
 }
 
 handleChange = event => {
-<<<<<<< HEAD
     // let value = event.target.value
     // fetch(`/api/beers?value=${value}`)
     // .then()
     // .then(json => {
     //   this.setState({value: value, beers: json})
     // })
-    this.setState({ value: event.target.value });
-=======
     this.setState({beers: [], value: event.target.value });
->>>>>>> no-demons
   };
 
 // componentWillMount() {
