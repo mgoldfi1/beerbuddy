@@ -15,7 +15,7 @@ constructor(props) {
     this.state = {
         beers: [],
         value: "abv",
-        more: true 
+        more: true
     }
 }
 
@@ -30,6 +30,12 @@ loadFunc = (page) => {
 }
 
 handleChange = event => {
+    // let value = event.target.value
+    // fetch(`/api/beers?value=${value}`)
+    // .then()
+    // .then(json => {
+    //   this.setState({value: value, beers: json})
+    // })
     this.setState({ value: event.target.value });
   };
 
@@ -84,8 +90,8 @@ render() {
           />
         </RadioGroup>
       </FormControl>
-           
-      
+
+
         <InfiniteScroll
             pageStart={-1}
             loadMore={this.loadFunc.bind(this)}
@@ -96,10 +102,10 @@ render() {
                {this.state.beers.map(
             beer => <Cell col={2}>
             <BeerCard name={beer.name} abv={beer.abv} style={beer.style} label={beer.label} brewery={beer.brewery.name}/></Cell>
-        )} 
+        )}
             </Grid>
         </InfiniteScroll>
-        
+
         </div>
     )
 }
