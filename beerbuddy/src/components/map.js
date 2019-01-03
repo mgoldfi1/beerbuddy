@@ -45,8 +45,6 @@ const styles = theme => ({
     }
 
     onMarkerClick = (props, marker, e) => {
-       console.log(marker);
-       console.log(props);
         this.setState({
              lat: marker.position.lat,
              lng: marker.position.lng,
