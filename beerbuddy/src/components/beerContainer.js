@@ -30,7 +30,7 @@ loadFunc = (page) => {
 }
 
 handleChange = event => {
-    this.setState({ value: event.target.value });
+    this.setState({beers: [], value: event.target.value });
   };
 
 // componentWillMount() {

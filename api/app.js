@@ -23,7 +23,7 @@ app.get('/api/beer/:filter/:page', (req, res) => {
     as: 'brewery'
     }],
   order: [
-    'name', 'DESC'
+    req.params.filter
   ]
 })
   .then(beer => res.send({beer}))
