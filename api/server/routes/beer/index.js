@@ -20,7 +20,11 @@ module.exports = () => {
     });
 
       router.get('/:id', async(req, res, next) => {
-        const beer = await models.Beer.findById(req.params.id)
+        const beer = await models.Beer.find({where: {id: req.params.id}, include: [{
+          model: models.Brewery,
+          as: 'brewery'
+          }]
+        })
         res.send(beer)
       });
 
