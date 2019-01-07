@@ -4,37 +4,33 @@ const bodyParser = require('body-parser');
 const models = require('../models')
 const Beer = require('../models/beer')
 const Brewery = require('../models/brewery')
-// Set up the express app
 const app = express();
-// Log requests to the console.
+
 app.use(logger('dev'));
 
-// Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('/api/beer/:filter/:page', (req, res) => {
-  models.Beer.findAll({
-  limit: 10,
-  offset: req.params.page*10,
-  include: [{
-    model: models.Brewery,
-    as: 'brewery'
-    }],
-  order: [
-    req.params.filter
-  ]
-})
-  .then(beer => res.send({beer}))
-}
-)
+const routes = require('./routes');
+app.use(express.static('public'));
+// app.get('/favicon.ico', (req, res, next) => {
+//     return res.sendStatus(204);
+// });
 
-app.get('/api/breweries',  (req, res) => {
-  models.Brewery.findAll({})
-  .then(breweries => res.send({breweries}))
-})
-;
+app.use('/api', routes());
+
+// app.use((req, res, next) => {
+//     return next(createError(404, 'File not found'));
+// });
+
+// app.use((err, req, res, next) => {
+//     res.locals.message = err.message;
+//     const status = err.status || 500;
+//     res.locals.status = status;
+//     res.locals.error = req.app.get('env') === 'development' ? err : {};
+//     res.status(status);
+//     return res.render('error');
+// });
 
 app.listen(3001);
 
