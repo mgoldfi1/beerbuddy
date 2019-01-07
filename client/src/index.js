@@ -8,13 +8,13 @@ import 'react-mdl/extra/material.js';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './components/home'
 import LoginForm from './components/login/loginform'
-import Beer from './components/beers/beer'
+import FetchBeer from './components/beers/fetchBeer'
 
 ReactDOM.render(
 <BrowserRouter>
 <React.Fragment>
 <Route exact path="/" component={App} />
-<Route path="/beer/:id" component={Beer} />
+<Route path="/beer/:id" component={FetchBeer} />
 <Route exact path="/login" component={LoginForm} />
 </React.Fragment>
 </BrowserRouter>
