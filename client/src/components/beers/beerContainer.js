@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import BeerCard from './beerCard'
 import { Grid, Cell } from 'react-mdl'
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
+import BeerSorter from './beerSorter/beerSorter'
 
 export default class BeerContainer extends Component {
 
@@ -30,7 +26,7 @@ loadFunc = (page) => {
   }
 }
 
-handleChange = event => {
+handleChange = (event) => {
     // let value = event.target.value
     // fetch(`/api/beers?value=${value}`)
     // .then()
@@ -49,55 +45,7 @@ handleChange = event => {
 render() {
     return (
         <div>
-         <FormControl component="fieldset">
-            <FormLabel  component="legend"><strong>Sort By:</strong></FormLabel>
-            <RadioGroup
-            aria-label="position"
-            name="position"
-            value={this.state.value}
-            onChange={this.handleChange}
-            row
-            >
-           <FormControlLabel
-            value="abv"
-            control={<Radio color="primary" />}
-            label="ABV"
-            labelPlacement="bottom"
-            style={{margin: '1px'}}
-            />
-            <FormControlLabel
-            value="name"
-            control={<Radio color="primary" />}
-            label="Name"
-            labelPlacement="bottom"
-            style={{margin: '1px'}}
-            />
-            <FormControlLabel
-            value="rating"
-            control={<Radio color="primary" />}
-            label="Rating"
-            labelPlacement="bottom"
-            style={{margin: '1px'}}
-            />
-
-          <FormControlLabel
-            value="style"
-            control={<Radio color="primary" />}
-            label="Style"
-            labelPlacement="bottom"
-            style={{margin: '1px'}}
-          />
-
-            <FormControlLabel
-            value="brewery"
-            control={<Radio color="primary" />}
-            label="Brewery"
-            labelPlacement="bottom"
-            style={{margin: '1px'}}
-          />
-        </RadioGroup>
-      </FormControl>
-
+        <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
 
         <InfiniteScroll
             pageStart={-1}
