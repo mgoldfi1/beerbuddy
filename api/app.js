@@ -36,7 +36,11 @@ app.get('/api/breweries',  (req, res) => {
 })
 
 app.get('/api/beer/:id', async (req, res) => {
-  const beer = await models.Beer.findById(req.params.id)
+  const beer = await models.Beer.find({where: {id: req.params.id}, include: [{
+    model: models.Brewery,
+    as: 'brewery'
+    }]
+  })
   res.send(beer)
 } )
 ;
