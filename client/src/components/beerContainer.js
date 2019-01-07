@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import InfiniteScroll from 'react-infinite-scroller';
+import { Link } from 'react-router-dom'
 
 export default class BeerContainer extends Component {
 
@@ -107,7 +108,7 @@ render() {
             <Grid>
                {this.state.beers.map(
             beer => <Cell col={2}>
-            <BeerCard name={beer.name} abv={beer.abv} style={beer.style} label={beer.label} brewery={beer.brewery.name}/></Cell>
+            <Link to={'/beer' + '/' + beer.id} ><BeerCard name={beer.name} abv={beer.abv} style={beer.style} label={beer.label} brewery={beer.brewery.name}/></Link></Cell>
         )}
             </Grid>
         </InfiniteScroll>

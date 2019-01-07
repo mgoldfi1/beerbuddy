@@ -31,7 +31,6 @@ function scrapeBeers() {
                     BreweryId: brewery.id
                 })
 
-
             } )
 
 

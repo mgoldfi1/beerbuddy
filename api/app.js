@@ -34,6 +34,11 @@ app.get('/api/breweries',  (req, res) => {
   models.Brewery.findAll({})
   .then(breweries => res.send({breweries}))
 })
+
+app.get('/api/beer/:id', async (req, res) => {
+  const beer = await models.Beer.findById(req.params.id)
+  res.send(beer)
+} )
 ;
 
 module.exports = app;

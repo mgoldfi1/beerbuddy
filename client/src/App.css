@@ -20,14 +20,7 @@
   z-index: 1000;
 }
 
-.breweryCell {
-  font-size: 16px;
-  color: blue;
-}
 
-.breweryCell:hover {
-  color: red;
-}
 
 .star-ratings {
   width: 100%;
