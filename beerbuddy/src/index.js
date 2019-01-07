@@ -13,7 +13,7 @@ import LoginForm from './components/login/loginform'
 ReactDOM.render(
 <BrowserRouter>
 <React.Fragment>
-<Route exact path="/home" component={App} />
+<Route exact path="/" component={App} />
 <Route exact path="/login" component={LoginForm} />
 </React.Fragment>
 </BrowserRouter>

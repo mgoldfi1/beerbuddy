@@ -12,6 +12,7 @@ render()  {
     return (
         <React.Fragment>
         <Navbar/>
+        <div className="spacer"/>
         <div className="loginBox">
         <div>
         <TextField
@@ -33,16 +34,13 @@ render()  {
         </div>
         <div className="loginBox">
         <div className="button">
-        <Button variant="contained" color="primary">
-        <Icon><i class="fa fa-facebook-official" aria-hidden="true"></i></Icon>
- Log In
-       </Button>
+        <Button variant="contained" color="primary">Log In</Button>
          </div>
          </div>
          <div className="loginBox">
          <div className="box">You can also sign in with:</div>
          <span className="button">
-           <Button variant="contained" color="defaule">
+           <Button variant="contained" color="default">
             Facebook
        </Button>
        </span>

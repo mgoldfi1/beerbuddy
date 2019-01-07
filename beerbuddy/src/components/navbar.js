@@ -10,7 +10,7 @@ export default class Navbar extends Component {
     <Layout fixedHeader>
         <Header title={<span><span style={{ color: '#ddd' }}>Beer</span><strong>Buddy</strong></span>}>
             <Navigation>
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
                 <a href="#">Beers</a>
                 <a href="#">Breweries</a>
                 <Link to="/login">LOG IN</Link>
