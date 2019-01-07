@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
-import BeerContainer from './beerContainer'
+import BeerContainer from './beers/beerContainer'
 import MapContainer from './map'
 import BreweryList from './breweryList'
 
@@ -10,21 +10,21 @@ export default class Home extends Component {
         super(props);
         this.state = { activeTab: 0, beer: ''}
     }
-    
+
     tabSwitch = () => {
        switch (this.state.activeTab) {
            case 2:
            return (<div>Top</div>)
            case 0:
            return (<div className="cardContainer"><BeerContainer/></div>)
-           case 1: 
+           case 1:
            return (<div className="mapContainer"><MapContainer/></div>)
        }
     }
 
-   
+
     render() {
-        
+
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
@@ -35,10 +35,9 @@ export default class Home extends Component {
             </Tabs>
             <section>
                 {this.tabSwitch()}
-            
+
             </section>
-        </div>    
+        </div>
         )
     }
 }
-
