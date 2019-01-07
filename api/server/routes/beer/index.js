@@ -19,5 +19,10 @@ module.exports = () => {
       .then(beer => res.send({beer}))
     });
 
+      router.get('/:id', async(req, res, next) => {
+        const beer = await models.Beer.findById(req.params.id)
+        res.send(beer)
+      });
+
     return router;
 };
