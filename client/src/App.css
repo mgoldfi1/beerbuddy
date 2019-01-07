@@ -47,3 +47,18 @@
   height: 15vh;
   width: 100vw;
 }
+
+.beerBlurb {
+  height: 100vh;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid black;
+  position: relative;
+  right: 0px;
+}
+
+.beerPagePic {
+    height: 25%;
+    width: 50%;
+
+}
