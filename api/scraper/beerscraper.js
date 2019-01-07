@@ -3,9 +3,9 @@ const $ = require('cheerio');
 const url = 'https://www.beeradvocate.com/beer/styles/32/?sort=revsD&start='
 const defaultUrl = 'https://www.beeradvocate.com'
 const axios = require('axios')
-const models = require('../server/models')
-const Beer = require('../server/models/beer')
-const Brewery = require('../server/models/brewery')
+const models = require('../models')
+const Beer = require('../models/beer')
+const Brewery = require('../models/brewery')
 
 function scrapeBeers() {
     axios.get('https://api.brewerydb.com/v2/beers/?key=6874f07b7858b637eaefd5cc5f5f1de6&hasLabels=Y&withBreweries=Y')
@@ -33,12 +33,11 @@ function scrapeBeers() {
 
 
             } )
-               
-            
+
+
         }
     }
 )
 }
 
 scrapeBeers()
-

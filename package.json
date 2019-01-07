@@ -2,7 +2,7 @@
   "name": "beerbuddy",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd beerbuddy && yarn start",
+    "client": "cd client && yarn start",
     "server": "nodemon ./api/bin/www.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },

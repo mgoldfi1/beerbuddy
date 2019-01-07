@@ -15,13 +15,13 @@ constructor(props) {
     this.state = {
         beers: [],
         value: "abv",
-        more: true 
+        more: true
     }
 }
 
 loadFunc = (page) => {
   if (page < 6) {
-  fetch(`/api/beer/` + page)
+  fetch(`/api/beer/` + this.state.value + `/` + page)
     .then(res => res.json())
     .then(json => this.setState({beers: [...this.state.beers, ...json.beer]}))
   } else {
@@ -30,7 +30,13 @@ loadFunc = (page) => {
 }
 
 handleChange = event => {
-    this.setState({ value: event.target.value });
+    // let value = event.target.value
+    // fetch(`/api/beers?value=${value}`)
+    // .then()
+    // .then(json => {
+    //   this.setState({value: value, beers: json})
+    // })
+    this.setState({beers: [], value: event.target.value });
   };
 
 // componentWillMount() {
@@ -58,7 +64,13 @@ render() {
             labelPlacement="bottom"
             style={{margin: '1px'}}
             />
-
+            <FormControlLabel
+            value="name"
+            control={<Radio color="primary" />}
+            label="Name"
+            labelPlacement="bottom"
+            style={{margin: '1px'}}
+            />
             <FormControlLabel
             value="rating"
             control={<Radio color="primary" />}
@@ -84,8 +96,8 @@ render() {
           />
         </RadioGroup>
       </FormControl>
-           
-      
+
+
         <InfiniteScroll
             pageStart={-1}
             loadMore={this.loadFunc.bind(this)}
@@ -96,10 +108,10 @@ render() {
                {this.state.beers.map(
             beer => <Cell col={2}>
             <BeerCard name={beer.name} abv={beer.abv} style={beer.style} label={beer.label} brewery={beer.brewery.name}/></Cell>
-        )} 
+        )}
             </Grid>
         </InfiniteScroll>
-        
+
         </div>
     )
 }
