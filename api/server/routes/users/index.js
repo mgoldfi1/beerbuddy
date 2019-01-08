@@ -5,8 +5,13 @@ const bcrypt = require('bcrypt')
 
 
 module.exports = () => {
-    router.post('/registration', (req, res, next) => {
-      console.log(req.body)
+    router.post('/registration', async (req, res, next) => {
+        try {
+            if (req.body.password !== req.body.passwordConfirmation) {
+                throw new Error ("Passwords do not match.")
+            }
+        }
+        catch(e){next(e)}
     })
 
 

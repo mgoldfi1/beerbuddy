@@ -13,7 +13,6 @@ constructor(props) {
     
     this.state = {
         email: '',
-        username: '',
         password: '',
         passwordConfirmation: ''
     }
@@ -49,14 +48,6 @@ render()  {
           variant="outlined"
         />
         <div>
-        <TextField
-          onChange={(event) => this.setState({username: event.target.value})}
-          required
-          id="outlined-required"
-          label="Username"
-          margin="normal"
-          variant="outlined"
-        />
         </div>
          <TextField
           onChange={(event) => this.setState({password: event.target.value})}

@@ -19,7 +19,7 @@ render()  {
         <TextField
           required
           id="outlined-required"
-          label="Username"
+          label="Email"
           margin="normal"
           variant="outlined"
         />
