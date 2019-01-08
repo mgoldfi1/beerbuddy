@@ -24,7 +24,6 @@ export default class Home extends Component {
 
 
     render() {
-      console.log('hello')
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
