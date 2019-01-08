@@ -8,6 +8,31 @@ import Icon from '@material-ui/core/Icon';
 
 export default class RegistrationForm extends Component {
 
+constructor(props) {
+    super(props);
+    
+    this.state = {
+        email: '',
+        username: '',
+        password: '',
+        passwordConfirmation: ''
+    }
+}
+
+
+registration = () => {
+    console.log(this.state)
+    fetch('/api/users/registration',
+    {method: 'post',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(this.state)
+    }
+    )
+}
+
+
 render()  {
     return (
         <React.Fragment>
@@ -15,6 +40,7 @@ render()  {
         <div className="spacer"/>
         <div className="loginBox">
         <TextField
+          onChange={(event) => this.setState({email: event.target.value})}
           required
           id="outlined-required"
           label="Email"
@@ -24,6 +50,7 @@ render()  {
         />
         <div>
         <TextField
+          onChange={(event) => this.setState({username: event.target.value})}
           required
           id="outlined-required"
           label="Username"
@@ -32,6 +59,7 @@ render()  {
         />
         </div>
          <TextField
+          onChange={(event) => this.setState({password: event.target.value})}
           required
           id="outlined-required"
           label="Password"
@@ -42,6 +70,7 @@ render()  {
         <div>
         <TextField
           required
+          onChange={(event) => this.setState({passwordConfirmation: event.target.value})}
           id="outlined-required"
           label="Confirm Password"
           type="password"
@@ -52,7 +81,7 @@ render()  {
         </div>
         <div className="loginBox">
         <div className="button">
-        <Button variant="contained" color="primary">Sign Up</Button>
+        <Button variant="contained" color="primary" onClick={this.registration}>Sign Up</Button>
          </div>
          </div>
         </React.Fragment>

@@ -1,12 +1,12 @@
 const express = require('express');
 const models = require('../../../models/')
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
 
 module.exports = () => {
-    router.get('/', (req, res, next) => {
-      
+    router.post('/registration', (req, res, next) => {
+      console.log(req.body)
     })
 
 
