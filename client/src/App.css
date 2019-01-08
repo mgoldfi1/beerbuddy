@@ -49,7 +49,7 @@
 }
 
 .beerBlurb {
-  height: 100vh;
+  height: 70vh;
   max-width: 500px;
   text-align: center;
   border: 1px solid black;
@@ -61,4 +61,12 @@
     height: 25%;
     width: 50%;
 
+}
+
+.beerPageInfo {
+  text-align: left;
+}
+
+.beerText {
+  margin-left: 8px;
 }

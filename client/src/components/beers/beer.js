@@ -21,10 +21,11 @@ const Beer = ({beer}) => {
         <Cell className="beerBlurb" col={6}>
         <img className="beerPagePic" src={beer.label}/>
         <div className="beerPageInfo">
-            <div><strong>ABV:</strong> {beer.name}</div>
-            <div><strong>IBU:</strong> {beer.ibu}</div>
-            <div><strong>Style:</strong> {beer.style}</div>
-            <div><strong>Brewery Name:</strong>{beer.brewery.name}</div>
+            <div className="beerText"><strong>ABV:</strong> {beer.name}</div>
+            <div className="beerText"><strong>IBU:</strong> {beer.ibu}</div>
+            <div className="beerText"><strong>Style:</strong> {beer.style}</div>
+            <div className="beerText"><strong>Brewery Name:</strong> {beer.brewery.name}</div>
+            <div className="beerText"><strong>Brewery Website:</strong> <a href={beer.brewery.website} target="_blank">{beer.brewery.website}</a></div>
         </div>
         </Cell>
         </Grid>
