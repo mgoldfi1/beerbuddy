@@ -42,6 +42,10 @@ handleChange = (event) => {
 //     .then(json => this.setState({beers: json.beer}))
 // }
 
+mapBeers = () => {
+  return this.state.beers.map(beer => <BeerCard beer={beer}/>)
+}
+
 render() {
     return (
         <div>
@@ -54,10 +58,7 @@ render() {
             loader={<div className="loader" key={0}>Loading ...</div>}
             >
             <Grid>
-               {this.state.beers.map(
-            beer => <Cell col={2}>
-            <Link to={'/beer' + '/' + beer.id} ><BeerCard name={beer.name} abv={beer.abv} style={beer.style} label={beer.label} brewery={beer.brewery.name}/></Link></Cell>
-        )}
+               {this.mapBeers()}
             </Grid>
         </InfiniteScroll>
 

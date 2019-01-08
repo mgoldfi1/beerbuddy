@@ -7,31 +7,36 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarRatings from 'react-star-ratings';
+import { Link } from 'react-router-dom'
+import { Cell } from 'react-mdl'
 import '../../css/beer.css'
 
 
 
-export default  class BeerCard extends Component {
+ const BeerCard = ({beer}) => {
 
-    render() {
-        return (
+   console.log(beer)
+
+      return (
+        <Cell col={2}>
+          <Link to={'/beer' + '/' + beer.id} >
             <Card className="cards">
                 <CardActionArea>
                     <CardMedia
                     component="img"
                     alt="beerpic"
                     height="140"
-                    image={this.props.label}
-                    title={this.props.name}
+                    image={beer.label}
+                    title={beer.name}
                     />
                     <CardContent>
                     <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
-                        <strong>{this.props.name}</strong>
+                        <strong>{beer.name}</strong>
                     </Typography>
                     <Typography component="p">
-                       {this.props.abv}% ABV<br/>
-                       {this.props.style}<br/>
-                        Brewed By: {this.props.brewery}
+                       {beer.abv}% ABV<br/>
+                       {beer.style}<br/>
+                        Brewed By: {beer.brewery.name}
                     </Typography>
                     </CardContent>
                     <div>
@@ -45,7 +50,11 @@ export default  class BeerCard extends Component {
                         />
                         </div>
                     </CardActionArea>
-                </Card>
-        )
-    }
+                  </Card>
+                </Link>
+              </Cell>
+      )
+
 }
+
+export default BeerCard
