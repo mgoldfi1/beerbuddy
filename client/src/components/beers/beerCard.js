@@ -17,7 +17,7 @@ import '../../css/beer.css'
 
       return (
         <Cell col={2}>
-          <Link to={'/beer' + '/' + beer.id} >
+          <Link className="beer-links" to={'/beer' + '/' + beer.id} >
             <Card className="cards">
                 <CardActionArea>
                     <CardMedia
@@ -27,7 +27,7 @@ import '../../css/beer.css'
                     image={beer.label}
                     title={beer.name}
                     />
-                    <CardContent>
+                    <CardContent className='beer-content'>
                     <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
                         <strong>{beer.name}</strong>
                     </Typography>

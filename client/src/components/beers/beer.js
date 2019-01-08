@@ -19,8 +19,8 @@ const Beer = ({beer}) => {
             </strong><br/>
             {beer.desc}
             </p>
-            <div><strong>Reviews for this beer: 0</strong></div> 
-            <div><strong>Ratings for this beer: 0</strong></div> 
+            <div><strong>Reviews for this beer: 0</strong></div>
+            <div><strong>Ratings for this beer: 0</strong></div>
             </Cell>
         <Cell className="beerBlurb" col={6}>
         <img className="beerPagePic" src={beer.label}/>
