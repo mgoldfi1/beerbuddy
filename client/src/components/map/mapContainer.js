@@ -4,19 +4,23 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import BreweryList from './breweryList'
+import BreweryList from '../breweryList'
 import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 
-const apiKey = require('./apikey')
+const apiKey = require('../apikey')
 
-const styles = theme => ({
-    textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-      width: 200,
-    }
-})
+// const mapStyles = {
+//   width: '100%',
+//   height: '50%'
+// };
+// const styles = theme => ({
+//     textField: {
+//       marginLeft: theme.spacing.unit,
+//       marginRight: theme.spacing.unit,
+//       width: 200,
+//     }
+// })
 
  class MapContainer extends Component {
     constructor(props) {
@@ -108,7 +112,7 @@ const styles = theme => ({
             <Cell col={12}>
             <div className="container">
             <Map
-            id="map"
+            className='brewery-map'
             onClick={this.onMapClicked}
             google={this.props.google}
             zoom={this.state.zoom}
