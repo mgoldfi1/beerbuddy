@@ -32,6 +32,11 @@ app.use('/api', routes());
 //     return res.render('error');
 // });
 
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!'); 
+})
+
 app.listen(3001);
 
 module.export = app;
