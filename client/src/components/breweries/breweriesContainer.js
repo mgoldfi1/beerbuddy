@@ -20,12 +20,16 @@ class BreweriesContainer extends Component {
     this.fetchBreweries()
   }
 
+  displayBreweries = () => {
+    return this.state.breweries.length > 0 ? <BreweriesList breweries={this.state.breweries}/> : null
+  }
+
     render() {
         return (
             <div>
               <strong>Click on a brewery below to visit its page:</strong>
               <Grid className="list">
-              <BreweriesList breweries={this.state.breweries}/>
+              {this.displayBreweries()}
               </Grid>
             </div>
         )
