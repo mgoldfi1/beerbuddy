@@ -10,17 +10,17 @@ import '../../css/map.css'
 
 const apiKey = require('../apikey')
 
-// const mapStyles = {
-//   width: '100%',
-//   height: '50%'
-// };
-// const styles = theme => ({
-//     textField: {
-//       marginLeft: theme.spacing.unit,
-//       marginRight: theme.spacing.unit,
-//       width: 200,
-//     }
-// })
+const mapStyles = {
+  width: '100%',
+  height: '50%'
+};
+const styles = theme => ({
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
+    }
+})
 
  class MapContainer extends Component {
    state = {
@@ -98,13 +98,13 @@ const apiKey = require('../apikey')
             </Button>
             <Grid>
             <Cell col={12}>
-            <div className="container">
             <Map
             className='brewery-map'
             onClick={this.onMapClicked}
             google={this.props.google}
             zoom={this.state.zoom}
-             center={{
+            style={mapStyles}
+            center={{
              lat: this.state.lat,
              lng: this.state.lng
             }}
@@ -119,7 +119,6 @@ const apiKey = require('../apikey')
                 </div>
         </InfoWindow>
             </Map>
-            </div>
             </Cell>
             </Grid>
           </div>
