@@ -6,13 +6,10 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import BreweryList from './breweryList'
 import { Grid, Cell } from 'react-mdl'
-
+import '../../css/map.css'
 
 const apiKey = require('./apikey')
-const mapStyles = {
-  width: '100%',
-  height: '50%'
-};
+
 const styles = theme => ({
     textField: {
       marginLeft: theme.spacing.unit,
@@ -91,7 +88,7 @@ const styles = theme => ({
     }
 
     renderMap = () => {
-        return ( 
+        return (
             <div>
             <div className="map">
             <TextField
@@ -111,10 +108,10 @@ const styles = theme => ({
             <Cell col={12}>
             <div className="container">
             <Map
+            id="map"
             onClick={this.onMapClicked}
             google={this.props.google}
             zoom={this.state.zoom}
-            style={mapStyles}
              center={{
              lat: this.state.lat,
              lng: this.state.lng
@@ -134,7 +131,7 @@ const styles = theme => ({
             </Cell>
             </Grid>
           </div>
-          <div className="list"><BreweryList breweries={this.state.breweries}/></div> 
+          <div className="list"><BreweryList breweries={this.state.breweries}/></div>
           </div>
           )
     }
