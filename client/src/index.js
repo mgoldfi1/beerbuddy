@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './components/home'
 import LoginForm from './components/login/loginform'
 import FetchBeer from './components/beers/fetchBeer'
+import RegistrationForm from './components/login/registrationform'
 
 ReactDOM.render(
 <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.render(
 <Route exact path="/" component={App} />
 <Route path="/beer/:id" component={FetchBeer} />
 <Route exact path="/login" component={LoginForm} />
+<Route exact path="/registration" component={RegistrationForm} />
 </React.Fragment>
 </BrowserRouter>
 , document.getElementById('root'));

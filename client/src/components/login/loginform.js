@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
 import Icon from '@material-ui/core/Icon';
+import { Link } from 'react-router-dom'
 
 
 export default class LoginForm extends Component {
@@ -51,6 +52,7 @@ render()  {
        </Button>
        </span>
         </div>
+        <div style={{textAlign: "center", marginTop: "20px"}}><Link to="/registration"><a href="#">Don't Have An Account?</a></Link></div>
         </React.Fragment>
     )
 }
