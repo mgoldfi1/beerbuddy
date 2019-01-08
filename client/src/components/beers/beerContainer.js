@@ -18,7 +18,7 @@ constructor(props) {
 
 loadFunc = (page) => {
   if (page < 6) {
-  fetch(`/api/beer/` + this.state.value + `/` + page)
+  fetch(`/api/beer/${this.state.value}/${page}`)
     .then(res => res.json())
     .then(json => this.setState({beers: [...this.state.beers, ...json.beer]}))
   } else {
