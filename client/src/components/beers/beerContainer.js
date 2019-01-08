@@ -46,7 +46,6 @@ class BeerContainer extends Component {
   }
 
   render() {
-    console.log(this.state.beers)
       return (
         <div>
           <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
