@@ -5,7 +5,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Grid, Cell } from 'react-mdl'
 
 
-class BreweryList extends Component {
+class BreweriesList extends Component {
+
+  // .then(json => this.setState({breweries: json.breweries.sort(
+  //     function(a, b) {
+  //         var nameA = a.name.toUpperCase();
+  //         var nameB = b.name.toUpperCase();
+  //         return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+  //     }
 
     render() {
         return (
@@ -19,7 +26,7 @@ class BreweryList extends Component {
                       <div className="breweryCell"><a href="#">{brewery.name}</a></div>
                       </Cell>
                       )
-                  } 
+                  }
               )}
               </Grid>
             </div>
@@ -27,4 +34,4 @@ class BreweryList extends Component {
     }
 }
 
-export default BreweryList
+export default BreweriesList
