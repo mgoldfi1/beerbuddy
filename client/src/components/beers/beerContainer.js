@@ -16,11 +16,12 @@ class BeerContainer extends Component {
 
 
   loadFunc = (page) => {
-    fetch(`/api/beer/${this.state.value}/${page}`)
+    fetch(`/api/beer/${this.state.value}/${this.state.page}`)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
-        this.setState({beers: [...this.state.beers, ...json.beers]})
+        if (json.beers.length > 0) {
+          this.setState(currentState => ({beers: [...currentState.beers, ...json.beers], page: currentState.page + 1}) )
+        }
     })
   }
 
@@ -45,7 +46,7 @@ class BeerContainer extends Component {
   }
 
   render() {
-    console.log(this.state.value)
+    console.log(this.state.beers)
       return (
         <div>
           <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
