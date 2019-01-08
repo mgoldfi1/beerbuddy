@@ -49,7 +49,7 @@ render() {
 
         <InfiniteScroll
             pageStart={-1}
-            loadMore={this.loadFunc.bind(this)}
+            loadMore={this.loadFunc}
             hasMore={this.state.more}
             loader={<div className="loader" key={0}>Loading ...</div>}
             >
