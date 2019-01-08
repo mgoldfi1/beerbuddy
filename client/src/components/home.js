@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
 import BeerContainer from './beers/beerContainer'
 import MapContainer from './map/mapContainer'
-import BreweryList from './breweryList'
-
 
 export default class Home extends Component {
     constructor(props) {

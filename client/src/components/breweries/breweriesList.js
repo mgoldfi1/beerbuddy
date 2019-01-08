@@ -6,19 +6,22 @@ const BreweriesList = ({breweries}) => {
 
   // .then(json => this.setState({breweries: json.breweries.sort(
   //     function(a, b) {
-  //         var nameA = a.name.toUpperCase();
-  //         var nameB = b.name.toUpperCase();
-  //         return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+          // var nameA = a.name.toUpperCase();
+          // var nameB = b.name.toUpperCase();
+          // return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
   //     }
 
   const mapAndSortBreweries = () => {
-    return breweries.sort((brewery, index) => )
+    let breweries = breweries.sort((a, b) => {
+              var nameA = a.name.toUpperCase();
+              var nameB = b.name.toUpperCase();
+              return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+            })
+    return breweries.map((brewery, index) => <BreweryLink key={index} brewery={brewery}/>)
   }
 
     return (
-              <Cell col={2}>
-              <Link className="beer-links" to={'/beer' + '/' + beer.id} > </Link>
-              </Cell>
+            mapAndSortBreweries()
     )
 }
 

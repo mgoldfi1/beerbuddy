@@ -10,10 +10,10 @@ class BreweriesContainer extends Component {
     breweries: []
   }
 
-  fetchBreweries = () = {
+  fetchBreweries = () => {
     fetch('/api/breweries')
     .then(res => res.json())
-    .then(json => this.setState({breweries: json.breweries})
+    .then(json => this.setState({breweries: json.breweries}))
   }
 
   componentWillMount(){

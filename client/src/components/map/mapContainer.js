@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import BreweryList from '../breweryList'
+import BreweriesContainer from '../breweries/breweriesContainer'
 import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 
@@ -123,7 +123,7 @@ const apiKey = require('../apikey')
             </Cell>
             </Grid>
           </div>
-          <div className="list"><BreweryList breweries={this.state.breweries}/></div>
+          <BreweriesContainer/>
           </div>
           )
     }
