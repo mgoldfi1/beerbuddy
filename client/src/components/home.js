@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
 import BeerContainer from './beers/beerContainer'
-import MapContainer from './map'
+import MapContainer from './map/mapContainer'
 import BreweryList from './breweryList'
 
 
