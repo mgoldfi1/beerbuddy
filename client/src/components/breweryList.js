@@ -5,30 +5,26 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Grid, Cell } from 'react-mdl'
 
 
-export default class BreweryList extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-
+class BreweryList extends Component {
 
     render() {
         return (
             <div>
-                <strong>Click on a brewery below to visit its page:</strong>
-                <Grid className="list">
-                {this.props.breweries.map(
-                    (brewery,i) => {
-                        return (
-                        <Cell key={i} col={2}>
-                        <div className="breweryCell"><a href="#">{brewery.name}</a></div>
-                        </Cell>
-                        )
-                    } 
-                )}
-                </Grid>
+              <strong>Click on a brewery below to visit its page:</strong>
+              <Grid className="list">
+              {this.props.breweries.map(
+                  (brewery,i) => {
+                      return (
+                      <Cell key={i} col={2}>
+                      <div className="breweryCell"><a href="#">{brewery.name}</a></div>
+                      </Cell>
+                      )
+                  } 
+              )}
+              </Grid>
             </div>
         )
     }
 }
+
+export default BreweryList
