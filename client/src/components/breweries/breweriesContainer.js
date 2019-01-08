@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import BreweryList from './breweryList'
+import BreweriesList from './breweriesList'
+import { Grid } from 'react-mdl'
+
 
 
 class BreweriesContainer extends Component {
+
+  state = {
+    breweries: []
+  }
+
+  fetchBreweries = () = {
+    fetch('/api/breweries')
+    .then(res => res.json())
+    .then(json => this.setState({breweries: json.breweries})
+  }
+
+  componentWillMount(){
+    this.fetchBreweries()
+  }
 
     render() {
         return (
             <div>
               <strong>Click on a brewery below to visit its page:</strong>
               <Grid className="list">
-              {this.props.breweries.map(
-                  (brewery,i) => {
-                      return (
-                      <Cell key={i} col={2}>
-                      <div className="breweryCell"><a href="#">{brewery.name}</a></div>
-                      </Cell>
-                      )
-                  }
-              )}
+              <BreweriesList breweries={this.state.breweries}/>
               </Grid>
             </div>
         )

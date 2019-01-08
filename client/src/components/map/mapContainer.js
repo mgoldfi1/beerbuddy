@@ -23,18 +23,15 @@ const apiKey = require('../apikey')
 // })
 
  class MapContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            lat: 39.8333333,
-            lng: -98.585522,
-            location: '',
-            showingInfoWindow: false,
-            activeMarker: {},
-            selectedPlace: {},
-            breweries: [],
-            zoom: 5
-        }
+   state = {
+        lat: 39.8333333,
+        lng: -98.585522,
+        location: '',
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+        breweries: [],
+        zoom: 5
     }
 
     handleSearch = () => {
@@ -65,19 +62,10 @@ const apiKey = require('../apikey')
     };
 
     componentWillMount() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-              this.setState({lat: position.coords.latitude, lng: position.coords.longitude, zoom: 14 }) })
-            }
-            fetch('/api/breweries')
-            .then(res => res.json())
-            .then(json => this.setState({breweries: json.breweries.sort(
-                function(a, b) {
-                    var nameA = a.name.toUpperCase();
-                    var nameB = b.name.toUpperCase();
-                    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
-                }
-            )}))
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.setState({lat: position.coords.latitude, lng: position.coords.longitude, zoom: 14 }) })
+          }
     }
 
     renderMarkers = () => {
