@@ -5,66 +5,63 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
 import BeerSorter from './beerSorter/beerSorter'
 
-export default class BeerContainer extends Component {
+class BeerContainer extends Component {
 
-constructor(props) {
-    super(props);
-    this.state = {
-        beers: [],
-        value: "abv",
-        more: true
+  state = {
+          beers: [],
+          value: "abv",
+          more: true
+      }
+
+
+  loadFunc = (page) => {
+    if (page < 6) {
+    fetch(`/api/beer/${this.state.value}/${page}`)
+      .then(res => res.json())
+      .then(json => this.setState({beers: [...this.state.beers, ...json.beer]}))
+    } else {
+       this.setState({more: false})
     }
-}
+  }
 
-loadFunc = (page) => {
-  if (page < 6) {
-  fetch(`/api/beer/${this.state.value}/${page}`)
-    .then(res => res.json())
-    .then(json => this.setState({beers: [...this.state.beers, ...json.beer]}))
-  } else {
-     this.setState({more: false})
+  handleChange = (event) => {
+      // let value = event.target.value
+      // fetch(`/api/beers?value=${value}`)
+      // .then()
+      // .then(json => {
+      //   this.setState({value: value, beers: json})
+      // })
+      this.setState({beers: [], value: event.target.value });
+    };
+
+  // componentWillMount() {
+  //     fetch('/api/beer')
+  //     .then(res => res.json())
+  //     .then(json => this.setState({beers: json.beer}))
+  // }
+
+  mapBeers = () => {
+    return this.state.beers.map(beer => <BeerCard beer={beer}/>)
+  }
+
+  render() {
+    console.log()
+      return (
+        <div>
+          <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
+          <InfiniteScroll
+              pageStart={-1}
+              loadMore={this.loadFunc}
+              hasMore={this.state.more}
+              loader={<div className="loader" key={0}>Loading ...</div>}
+              >
+              <Grid>
+                {this.mapBeers()}
+              </Grid>
+          </InfiniteScroll>
+        </div>
+      )
   }
 }
 
-handleChange = (event) => {
-    // let value = event.target.value
-    // fetch(`/api/beers?value=${value}`)
-    // .then()
-    // .then(json => {
-    //   this.setState({value: value, beers: json})
-    // })
-    this.setState({beers: [], value: event.target.value });
-  };
-
-// componentWillMount() {
-//     fetch('/api/beer')
-//     .then(res => res.json())
-//     .then(json => this.setState({beers: json.beer}))
-// }
-
-mapBeers = () => {
-  return this.state.beers.map(beer => <BeerCard beer={beer}/>)
-}
-
-render() {
-    return (
-        <div>
-        <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
-
-        <InfiniteScroll
-            pageStart={-1}
-            loadMore={this.loadFunc}
-            hasMore={this.state.more}
-            loader={<div className="loader" key={0}>Loading ...</div>}
-            >
-            <Grid>
-               {this.mapBeers()}
-            </Grid>
-        </InfiniteScroll>
-
-        </div>
-    )
-}
-
-
-}
+export default BeerContainer
