@@ -16,7 +16,7 @@ module.exports = () => {
         req.params.filter
       ]
     })
-      .then(beer => res.send({beer}))
+      .then(beers => res.send({beers}))
     });
 
       router.get('/:id', async(req, res, next) => {
