@@ -11,6 +11,8 @@ const BreweriesList = ({breweries}) => {
           // return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
   //     }
 
+  console.log(breweries)
+
   const mapAndSortBreweries = () => {
     let breweries = breweries.sort((a, b) => {
               var nameA = a.name.toUpperCase();

@@ -42,7 +42,7 @@ class BeerContainer extends Component {
   // }
 
   mapBeers = () => {
-    return this.state.beers.map(beer => <BeerCard beer={beer}/>)
+    return this.state.beers.map((beer,index) => <BeerCard key={index} beer={beer}/>)
   }
 
   render() {
