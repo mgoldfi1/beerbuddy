@@ -15,8 +15,6 @@ import '../../css/beer.css'
 
  const BeerCard = ({beer}) => {
 
-   console.log(beer)
-
       return (
         <Cell col={2}>
           <Link to={'/beer' + '/' + beer.id} >
