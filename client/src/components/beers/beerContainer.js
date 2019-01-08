@@ -32,7 +32,7 @@ class BeerContainer extends Component {
       // .then(json => {
       //   this.setState({value: value, beers: json})
       // })
-      this.setState({beers: [], value: event.target.value });
+      this.setState({beers: [], value: event.target.value, page: 0 });
     };
 
   // componentWillMount() {
@@ -51,7 +51,7 @@ class BeerContainer extends Component {
         <div>
           <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
           <InfiniteScroll
-              pageStart={-1}
+              pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
               loader={<div className="loader" key={0}>Loading ...</div>}
