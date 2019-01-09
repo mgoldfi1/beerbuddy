@@ -8,7 +8,7 @@ import 'react-mdl/extra/material.js';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './components/home'
 import LoginForm from './components/login/loginform'
-import BeerWrapper from './components/beers/BeerWrapper'
+import BeerWrapper from './components/beers/beerWrapper'
 import RegistrationForm from './components/login/registrationform'
 
 ReactDOM.render(

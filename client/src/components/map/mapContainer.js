@@ -10,7 +10,7 @@ import '../../css/map.css'
 import fetchApiData from '../HOC/fetchApiData'
 
 const apiKey = require('../apikey')
-const BreweriesContainerWithFetch = fetchApiData(BreweriesContainer, 'breweries')
+
 // const mapStyles = {
 //   width: '100%',
 //   height: '50%'
@@ -54,12 +54,12 @@ const BreweriesContainerWithFetch = fetchApiData(BreweriesContainer, 'breweries'
 }
 
     onMapClicked = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
-        }
+      if (this.state.showingInfoWindow) {
+        this.setState({
+          showingInfoWindow: false,
+          activeMarker: null
+        })
+      }
     };
 
     componentWillMount() {
@@ -81,6 +81,7 @@ const BreweriesContainerWithFetch = fetchApiData(BreweriesContainer, 'breweries'
     }
 
     render() {
+      const BreweriesContainerWithFetch = fetchApiData(BreweriesContainer, 'breweries')
         return (
           <div>
           <div className="map">
