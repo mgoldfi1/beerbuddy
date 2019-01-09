@@ -17,8 +17,6 @@ class MapWrapper extends Component {
     this.fetchBreweries()
   }
 
-
-
     render() {
         return (
             <>
