@@ -17,7 +17,6 @@ const apiKey = require('../apikey')
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        breweries: [],
         zoom: 5
     }
 
@@ -34,9 +33,11 @@ const apiKey = require('../apikey')
     }
 
     onMarkerClick = (props, marker, e) => {
+      console.log(props.position)
+      console.log(marker)
         this.setState({
-             lat: marker.position.lat,
-             lng: marker.position.lng,
+             lat: props.position.lat,
+             lng: props.position.lng,
              selectedPlace: props,
              activeMarker: marker,
              showingInfoWindow: true
@@ -61,7 +62,7 @@ const apiKey = require('../apikey')
 
     renderMarkers = () => {
         return (
-            this.state.breweries.map(brewery => {
+            this.props.data.breweries.map(brewery => {
                 return (
                     <Marker onClick={this.onMarkerClick} position={{lat: brewery.latitude, lng: brewery.longitude}} title={brewery.name} name={brewery.name} website={brewery.website}>
                     </Marker>
@@ -71,6 +72,8 @@ const apiKey = require('../apikey')
     }
 
     render() {
+        const center = {lat: this.state.lat, lng: this.state.lng}
+        console.log(this.state)
         return (
           <div>
           <div className="map">
@@ -82,10 +85,9 @@ const apiKey = require('../apikey')
           onClick={this.onMapClicked}
           google={this.props.google}
           zoom={this.state.zoom}
-          center={{
-           lat: this.state.lat,
-           lng: this.state.lng
-          }}
+          minZoom={2}
+          initialCenter={center}
+          center={center}
               >
               {this.renderMarkers()}
               <InfoWindow
