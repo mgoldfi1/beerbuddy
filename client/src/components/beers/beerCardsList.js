@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
 import BeerSorter from './beerSorter/beerSorter'
 
-class BeerContainer extends Component {
+class BeerCardsList extends Component {
 
   state = {
           beers: [],
@@ -64,4 +64,4 @@ class BeerContainer extends Component {
   }
 }
 
-export default BeerContainer
+export default BeerCardsList
