@@ -19,7 +19,7 @@ module.exports = () => {
         }
         }
         catch(err) {
-            res.status(500).send({err: err.message})
+            res.status(500).send({err: err})
         }
     } 
     )
@@ -29,3 +29,4 @@ module.exports = () => {
     return router;
 
 };
+
