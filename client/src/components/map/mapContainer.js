@@ -7,9 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import BreweriesContainer from '../breweries/breweriesContainer'
 import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
+import fetchData from '../HOC/fetchData'
 
 const apiKey = require('../apikey')
-
+const BreweriesContainerWithFetch = fetchData(BreweriesContainer, 'breweries')
 // const mapStyles = {
 //   width: '100%',
 //   height: '50%'
@@ -121,7 +122,7 @@ const apiKey = require('../apikey')
           </Cell>
           </Grid>
         </div>
-        <BreweriesContainer/>
+        {BreweriesContainerWithFetch}
         </div>
         )
     }

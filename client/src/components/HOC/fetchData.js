@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 
 function fetchData(WrappedComponent, fetchLink) {
   return class extends Component {
-      this.state = {
+      state = {
         fetchLink: fetchLink,
         data: null,
         loading: true
-      };
-    }
+      }
 
     componentDidMount() {
       fetch(`/api/${this.state.fetchLink}`)
       .then(res => res.json())
-      .then(json => this.setState({data: json, loading: false}))
+      .then(json => this.setState({data: json.fetchLink, loading: false}))
     }
 
     render() {
