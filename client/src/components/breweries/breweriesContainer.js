@@ -26,12 +26,12 @@ class BreweriesContainer extends Component {
 
     render() {
         return (
-            <div>
+            <>
               <strong>Click on a brewery below to visit its page:</strong>
               <Grid className="list">
               {this.displayBreweries()}
               </Grid>
-            </div>
+            </>
         )
     }
 }

@@ -79,57 +79,50 @@ const apiKey = require('../apikey')
         )
     }
 
-    renderMap = () => {
-        return (
-            <div>
-            <div className="map">
-            <TextField
-                id="outlined-email-input"
-                label="Zipcode or Address"
-                type="text"
-                name="address"
-                margin="normal"
-                variant="outlined"
-                style={{height: 40, margin: 7}}
-                onChange={(event) => this.setState({location: event.target.value})}
-            />
-            <Button variant="contained" onClick={this.handleSearch}style={{marginTop: 8}}color="primary">
-                Find Breweries
-            </Button>
-            <Grid>
-            <Cell col={12}>
-            <Map
-            className='brewery-map'
-            onClick={this.onMapClicked}
-            google={this.props.google}
-            zoom={this.state.zoom}
-            center={{
-             lat: this.state.lat,
-             lng: this.state.lng
-            }}
-                >
-                {this.renderMarkers()}
-                <InfoWindow
-                    marker={this.state.activeMarker}
-                    visible={this.state.showingInfoWindow}>
-                <div>
-                    <p><strong>{this.state.selectedPlace.name}</strong><br/>
-                    <a href={this.state.selectedPlace.website} target="_blank">Company Website</a></p>
-                </div>
-        </InfoWindow>
-            </Map>
-            </Cell>
-            </Grid>
-          </div>
-          <BreweriesContainer/>
-          </div>
-          )
-    }
     render() {
         return (
-            <div>
-            {this.renderMap()}
-            </div>
+          <div>
+          <div className="map">
+          <TextField
+              id="outlined-email-input"
+              label="Zipcode or Address"
+              type="text"
+              name="address"
+              margin="normal"
+              variant="outlined"
+              style={{height: 40, margin: 7}}
+              onChange={(event) => this.setState({location: event.target.value})}
+          />
+          <Button variant="contained" onClick={this.handleSearch}style={{marginTop: 8}}color="primary">
+              Find Breweries
+          </Button>
+          <Grid>
+          <Cell col={12}>
+          <Map
+          className='brewery-map'
+          onClick={this.onMapClicked}
+          google={this.props.google}
+          zoom={this.state.zoom}
+          center={{
+           lat: this.state.lat,
+           lng: this.state.lng
+          }}
+              >
+              {this.renderMarkers()}
+              <InfoWindow
+                  marker={this.state.activeMarker}
+                  visible={this.state.showingInfoWindow}>
+              <div>
+                  <p><strong>{this.state.selectedPlace.name}</strong><br/>
+                  <a href={this.state.selectedPlace.website} target="_blank">Company Website</a></p>
+              </div>
+      </InfoWindow>
+          </Map>
+          </Cell>
+          </Grid>
+        </div>
+        <BreweriesContainer/>
+        </div>
         )
     }
 }
