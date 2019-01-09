@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Beer from './beer'
 
-class FetchBeer extends Component {
+class BeerWrapper extends Component {
 
   state = {
     beer: null
@@ -28,4 +28,4 @@ class FetchBeer extends Component {
   }
 }
 
-export default FetchBeer
+export default BeerWrapper
