@@ -1,27 +1,13 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import BreweriesContainer from '../breweries/breweriesContainer'
 import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
-import fetchApiData from '../HOC/fetchApiData'
+import BrewerySearchBar from './brewerySearchBar'
 
 const apiKey = require('../apikey')
-
-// const mapStyles = {
-//   width: '100%',
-//   height: '50%'
-// };
-// const styles = theme => ({
-//     textField: {
-//       marginLeft: theme.spacing.unit,
-//       marginRight: theme.spacing.unit,
-//       width: 200,
-//     }
-// })
 
  class MapContainer extends Component {
    state = {
@@ -41,6 +27,10 @@ const apiKey = require('../apikey')
         .then(res => res.json())
         .then(json => {this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10 })})
         }
+    }
+
+    handleChange = (event) => {
+      this.setState({location: event.target.value})
     }
 
     onMarkerClick = (props, marker, e) => {
@@ -81,23 +71,10 @@ const apiKey = require('../apikey')
     }
 
     render() {
-      const BreweriesContainerWithFetch = fetchApiData(BreweriesContainer, 'breweries')
         return (
           <div>
           <div className="map">
-          <TextField
-              id="outlined-email-input"
-              label="Zipcode or Address"
-              type="text"
-              name="address"
-              margin="normal"
-              variant="outlined"
-              style={{height: 40, margin: 7}}
-              onChange={(event) => this.setState({location: event.target.value})}
-          />
-          <Button variant="contained" onClick={this.handleSearch}style={{marginTop: 8}}color="primary">
-              Find Breweries
-          </Button>
+          <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
           <Grid>
           <Cell col={12}>
           <Map
@@ -123,7 +100,7 @@ const apiKey = require('../apikey')
           </Cell>
           </Grid>
         </div>
-        <BreweriesContainerWithFetch/>
+        <BreweriesContainer breweries={this.props.data.breweries}/>
         </div>
         )
     }

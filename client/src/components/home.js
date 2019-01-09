@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
 import BeerCardsList from './beers/beerCardsList'
-import MapWrapper from './map/mapWrapper'
+import fetchApiData from './HOC/fetchApiData'
+import MapContainer from './map/mapContainer'
 
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { activeTab: 0, beer: ''}
-    }
+    state = { activeTab: 0, beer: ''}
 
     tabSwitch = () => {
+      const MapContainerWithFetchBreweries = fetchApiData(MapContainer, 'breweries')
        switch (this.state.activeTab) {
            case 2:
            return (<div>Top</div>)
            case 0:
            return (<BeerCardsList/>)
            case 1:
-           return (<MapWrapper/>)
+           return (<MapContainerWithFetchBreweries/>)
        }
     }
 
@@ -32,7 +31,6 @@ export default class Home extends Component {
             </Tabs>
             <section>
                 {this.tabSwitch()}
-
             </section>
         </div>
         )
