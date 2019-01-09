@@ -6,6 +6,7 @@ import BreweriesContainer from '../breweries/breweriesContainer'
 import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 import BrewerySearchBar from './brewerySearchBar'
+import MarkersList from './markersList'
 
 const apiKey = require('../apikey')
 
@@ -20,6 +21,13 @@ const apiKey = require('../apikey')
         zoom: 5
     }
 
+    componentWillMount() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.setState({lat: position.coords.latitude, lng: position.coords.longitude, zoom: 14 }) })
+          }
+      }
+
     handleSearch = () => {
         if (this.state.location){
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=${apiKey}`)
@@ -33,16 +41,14 @@ const apiKey = require('../apikey')
     }
 
     onMarkerClick = (props, marker, e) => {
-      console.log(props.position)
-      console.log(marker)
         this.setState({
              lat: props.position.lat,
              lng: props.position.lng,
              selectedPlace: props,
              activeMarker: marker,
              showingInfoWindow: true
-    });
-}
+        });
+    }
 
     onMapClicked = (props) => {
       if (this.state.showingInfoWindow) {
@@ -52,13 +58,6 @@ const apiKey = require('../apikey')
         })
       }
     };
-
-    componentWillMount() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(position => {
-            this.setState({lat: position.coords.latitude, lng: position.coords.longitude, zoom: 14 }) })
-          }
-    }
 
     renderMarkers = () => {
         return (
@@ -73,36 +72,33 @@ const apiKey = require('../apikey')
 
     render() {
         const center = {lat: this.state.lat, lng: this.state.lng}
-        console.log(this.state)
         return (
           <div>
-          <div className="map">
-          <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
-          <Grid>
-          <Cell col={12}>
-          <Map
-          className='brewery-map'
-          onClick={this.onMapClicked}
-          google={this.props.google}
-          zoom={this.state.zoom}
-          minZoom={2}
-          initialCenter={center}
-          center={center}
-              >
-              {this.renderMarkers()}
-              <InfoWindow
-                  marker={this.state.activeMarker}
-                  visible={this.state.showingInfoWindow}>
-              <div>
-                  <p><strong>{this.state.selectedPlace.name}</strong><br/>
-                  <a href={this.state.selectedPlace.website} target="_blank">Company Website</a></p>
-              </div>
-      </InfoWindow>
-          </Map>
-          </Cell>
-          </Grid>
-        </div>
-        <BreweriesContainer breweries={this.props.data.breweries}/>
+            <div className="map">
+              <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
+              <Grid>
+                <Cell col={12}>
+                  <Map
+                  className='brewery-map'
+                  onClick={this.onMapClicked}
+                  google={this.props.google}
+                  zoom={this.state.zoom}
+                  minZoom={2}
+                  initialCenter={center}
+                  center={center}
+                      >
+                  {this.renderMarkers()}
+                  <InfoWindow
+                      marker={this.state.activeMarker}
+                      visible={this.state.showingInfoWindow}>
+                      <p><strong>{this.state.selectedPlace.name}</strong><br/>
+                      <a href={this.state.selectedPlace.website} target="_blank">Company Website</a></p>
+                  </InfoWindow>
+                </Map>
+              </Cell>
+            </Grid>
+          </div>
+          <BreweriesContainer breweries={this.props.data.breweries} onMarkerClick={this.onMarkerClick}/>
         </div>
         )
     }
