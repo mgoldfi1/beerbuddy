@@ -122,7 +122,7 @@ const BreweriesContainerWithFetch = fetchData(BreweriesContainer, 'breweries')
           </Cell>
           </Grid>
         </div>
-        {BreweriesContainerWithFetch}
+        <BreweriesContainerWithFetch/>
         </div>
         )
     }

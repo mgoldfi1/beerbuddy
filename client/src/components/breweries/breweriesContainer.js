@@ -9,7 +9,7 @@ class BreweriesContainer extends Component {
             <>
               <strong>Click on a brewery below to visit its page:</strong>
               <Grid className="list">
-              <BreweriesList breweries={this.props.data}/>
+              <BreweriesList breweries={this.props.data.breweries}/>
               </Grid>
             </>
         )

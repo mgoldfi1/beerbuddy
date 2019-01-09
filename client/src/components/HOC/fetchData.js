@@ -11,12 +11,15 @@ function fetchData(WrappedComponent, fetchLink) {
     componentDidMount() {
       fetch(`/api/${this.state.fetchLink}`)
       .then(res => res.json())
-      .then(json => this.setState({data: json.fetchLink, loading: false}))
+      .then(json => this.setState({data: json, loading: false}))
     }
+
 
     render() {
       if (this.state.loading === false) {
-        return <WrappedComponent data={this.state.data} {...this.props} />;
+        return <WrappedComponent data={this.state.data} {...this.props}/>;
+      } else {
+        return null
       }
     }
   };
