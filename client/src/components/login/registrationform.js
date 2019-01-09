@@ -71,6 +71,8 @@ render()  {
           margin="normal"
           variant="outlined"
         />
+        <div style={{color: 'red'}}>{this.state.password !== this.state.passwordConfirmation ? "The passwords do not match." : null}</div>
+        <div style={{color: 'red'}}>{ 6 > this.state.password.length || this.state.password.length > 12 ? "Password must be between 6-12 characters." : null}</div>
         </div>
         </div>
         <div className="loginBox">
