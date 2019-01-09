@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function fetchData(WrappedComponent, fetchLink) {
+function fetchApiData(WrappedComponent, fetchLink) {
   return class extends Component {
       state = {
         fetchLink: fetchLink,
@@ -25,4 +25,4 @@ function fetchData(WrappedComponent, fetchLink) {
   };
 }
 
-export default fetchData
+export default fetchApiData

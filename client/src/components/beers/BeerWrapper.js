@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Beer from './beer'
-import fetchData from '../HOC/fetchData'
+import fetchApiData from '../HOC/fetchApiData'
 
 class BeerWrapper extends Component {
 
   render(){
 
-    const BeerWithFetchData = fetchData(Beer, `beer/${this.props.match.params.id}`)
+    const BeerWithFetch = fetchApiData(Beer, `beer/${this.props.match.params.id}`)
 
     return(
       <div>
-      <BeerWithFetchData/>
+      <BeerWithFetch/>
       </div>
     )
   }
