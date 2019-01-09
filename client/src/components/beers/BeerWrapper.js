@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import Beer from './beer'
+import fetchData from '../HOC/fetchData'
 
 class BeerWrapper extends Component {
 
-  state = {
-    beer: null
-  }
-
-  componentWillMount() {
-      fetch('/api/beer' + '/' + this.props.match.params.id)
-      .then(res => res.json())
-      .then(json => this.setState({beer: json}))
-  }
-
-  renderBeer = () => {
-    if (this.state.beer){
-      return <Beer beer={this.state.beer}/>
-    }
-  }
-
   render(){
+
+    const BeerWithFetchData = fetchData(Beer, `beer/${this.props.match.params.id}`)
+
     return(
       <div>
-      {this.renderBeer()}
+      <BeerWithFetchData/>
       </div>
     )
   }

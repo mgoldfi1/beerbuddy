@@ -5,7 +5,9 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 
-const Beer = ({beer}) => {
+const Beer = (props) => {
+
+  const beer = props.data
 
     return (
         <React.Fragment>
