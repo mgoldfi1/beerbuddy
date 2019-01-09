@@ -8,14 +8,14 @@ import 'react-mdl/extra/material.js';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './components/home'
 import LoginForm from './components/login/loginform'
-import FetchBeer from './components/beers/fetchBeer'
+import BeerWrapper from './components/beers/beerWrapper'
 import RegistrationForm from './components/login/registrationform'
 
 ReactDOM.render(
 <BrowserRouter>
 <React.Fragment>
 <Route exact path="/" component={App} />
-<Route path="/beer/:id" component={FetchBeer} />
+<Route path="/beer/:id" component={BeerWrapper} />
 <Route exact path="/login" component={LoginForm} />
 <Route exact path="/registration" component={RegistrationForm} />
 </React.Fragment>

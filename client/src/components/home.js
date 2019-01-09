@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
-import BeerContainer from './beers/beerContainer'
-import MapContainer from './map'
-import BreweryList from './breweryList'
-
+import BeerCardsList from './beers/beerCardsList'
+import MapWrapper from './map/mapWrapper'
 
 export default class Home extends Component {
     constructor(props) {
@@ -16,9 +14,9 @@ export default class Home extends Component {
            case 2:
            return (<div>Top</div>)
            case 0:
-           return (<div className="cardContainer"><BeerContainer/></div>)
+           return (<BeerCardsList/>)
            case 1:
-           return (<div className="mapContainer"><MapContainer/></div>)
+           return (<MapWrapper/>)
        }
     }
 

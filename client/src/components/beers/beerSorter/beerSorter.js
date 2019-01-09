@@ -12,8 +12,9 @@ class BeerSorter extends Component {
   }
 
   mapLabels = () => {
-    return this.state.labels.map(label =>
+    return this.state.labels.map((label, index) =>
       <FormControlLabel
+        key={index}
         value={label.toLowerCase()}
         control={<Radio color="primary" />}
         label={label}
