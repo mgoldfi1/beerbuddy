@@ -61,9 +61,9 @@ const apiKey = require('../apikey')
 
     renderMarkers = () => {
         return (
-            this.props.data.breweries.map(brewery => {
+            this.props.data.breweries.map((brewery,index) => {
                 return (
-                    <Marker onClick={this.onMarkerClick} position={{lat: brewery.latitude, lng: brewery.longitude}} title={brewery.name} name={brewery.name} website={brewery.website}>
+                    <Marker key={index} onClick={this.onMarkerClick} position={{lat: brewery.latitude, lng: brewery.longitude}} title={brewery.name} name={brewery.name} website={brewery.website}>
                     </Marker>
                 )
             })
