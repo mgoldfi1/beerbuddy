@@ -72,7 +72,9 @@ const apiKey = require('../apikey')
 
     render() {
         const center = {lat: this.state.lat, lng: this.state.lng}
+        const { isLoading } = this.props
         return (
+          isLoading === false ?
           <div>
             <div className="map">
               <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
@@ -99,7 +101,7 @@ const apiKey = require('../apikey')
             </Grid>
           </div>
           <BreweriesContainer breweries={this.props.data.breweries} onMarkerClick={this.onMarkerClick}/>
-        </div>
+        </div> : null
         )
     }
 }

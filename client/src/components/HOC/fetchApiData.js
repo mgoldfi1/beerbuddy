@@ -4,12 +4,11 @@ function fetchApiData(WrappedComponent, fetchLink) {
   return class extends Component {
     state = {
       data: null,
-      isLoading: false,
+      isLoading: true,
       hasError: false,
     };
 
     componentDidMount() {
-      this.setState({ isLoading: true });
       fetch(`/api/${fetchLink}`)
         .then(res => res.json())
         .then(json => this.setState({ data: json, isLoading: false }))
