@@ -9,6 +9,29 @@ import { Link } from 'react-router-dom'
 
 export default class LoginForm extends Component {
 
+  state = {
+    email: '',
+    password: ''
+  }
+
+  logIn = () => {
+    console.log(this.state)
+    fetch('/api/users/login',
+    {method: 'post',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(this.state)
+    }
+    )
+    .then(res => res.json())
+    .then(json => {
+        if (json.user) {
+            this.setState({userId: json.user.id})
+        }
+    })
+  }
+
 render()  {
     return (
         <React.Fragment>
@@ -22,6 +45,7 @@ render()  {
           label="Email"
           margin="normal"
           variant="outlined"
+          onChange={(event) => this.setState({email: event.target.value})}
         />
         </div>
          <TextField
@@ -31,11 +55,12 @@ render()  {
           type="password"
           margin="normal"
           variant="outlined"
+          onChange={(event) => this.setState({password: event.target.value})}
         />
         </div>
         <div className="loginBox">
         <div className="button">
-        <Button variant="contained" color="primary">Log In</Button>
+        <Button onClick={this.logIn} variant="contained" color="primary">Log In</Button>
          </div>
          </div>
          <div className="loginBox">
