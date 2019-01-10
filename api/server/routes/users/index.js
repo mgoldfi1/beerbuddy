@@ -2,10 +2,12 @@ const express = require('express');
 const models = require('../../../models/')
 const router = express.Router();
 const bcrypt = require('bcrypt')
-
+const User = require('../../../models/user')
+const passport = require('passport')
 
 module.exports = () => {
     router.post('/registration', async (req, res, next) => { 
+        
         try {
         if (req.body.password !== req.body.passwordConfirmation) {
             throw new Error("Passwords do not match.")
@@ -19,11 +21,30 @@ module.exports = () => {
         }
         }
         catch(err) {
+            console.log(err)
             res.status(500).send({err: err})
         }
     } 
     )
 
+
+    // Authentication
+
+    isAuthenticated = (req, res, next) => {
+        console.log(req.isAuthenticated())
+        if (req.isAuthenticated()) return next()
+        return res.send("Forbidden Acess")
+    }
+
+    //Login Route
+   
+    router.post('/login', passport.authenticate("local"), (req, res) => {
+        res.send(req.user)
+    })
+
+    router.post('/dashboard', isAuthenticated, passport.authenticate("local"), (req, res) => {
+        res.send("DASHBOARD")
+    })
 
 
     return router;

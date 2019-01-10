@@ -4,7 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
 import Icon from '@material-ui/core/Icon';
-
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Redirect,
+    withRouter
+  } from "react-router-dom";
 
 export default class RegistrationForm extends Component {
 
@@ -14,7 +20,8 @@ constructor(props) {
     this.state = {
         email: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        userId: ''
     }
 }
 
@@ -30,14 +37,27 @@ registration = () => {
     }
     )
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => {
+        if (json.user) {
+            this.setState({userId: json.user.id})
+        }
+    })
     
+}
+
+redirectMe = () => {
+    if (this.state.userId) {
+        return <Redirect to='/' />
+    }
+
 }
 
 
 render()  {
+    
     return (
         <React.Fragment>
+            {this.redirectMe()}
         <Navbar/>
         <div className="spacer"/>
         <div className="loginBox">
