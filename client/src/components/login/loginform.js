@@ -4,14 +4,22 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
 import Icon from '@material-ui/core/Icon';
-import { Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
 
 
 export default class LoginForm extends Component {
 
   state = {
     email: '',
-    password: ''
+    password: '',
+    loggedIn: false,
+    err: ''
   }
 
   logIn = () => {
@@ -26,13 +34,25 @@ export default class LoginForm extends Component {
     )
     .then(res => res.json())
     .then(json => {
-        console.log(json)
+      if (json) {
+        this.setState({loggedIn: true})
+      } else {
+        this.setState({err: "Invalid Username or Password"})
+      }
     })
   }
+
+  redirectMe = () => {
+    if (this.state.loggedIn) {
+        return <Redirect to='/' />
+    }
+
+}
 
 render()  {
     return (
         <React.Fragment>
+          {this.redirectMe()}
         <Navbar/>
         <div className="spacer"/>
         <div className="loginBox">
@@ -55,6 +75,7 @@ render()  {
           variant="outlined"
           onChange={(event) => this.setState({password: event.target.value})}
         />
+        <div>{this.state.err}</div>
         </div>
         <div className="loginBox">
         <div className="button">
