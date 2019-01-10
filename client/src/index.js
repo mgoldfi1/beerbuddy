@@ -24,7 +24,7 @@ ReactDOM.render(
     <BrowserRouter>
     <React.Fragment>
         <Route exact path="/" component={App} />
-        <Route path="/beer/:id" component={BeerWrapper} />
+        <Route path="/beer/:id" component={BeerPage} />
         <Route path="/breweries/:id" component={BreweryPage} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/registration" component={RegistrationForm} />
