@@ -7,7 +7,7 @@ const BreweryLink = ({brewery}) => {
 
     return (
             <Cell col={2}>
-            <Link to={brewery.name}>{brewery.name} </Link>
+            <Link to={"/breweries/" + brewery.id}>{brewery.name} </Link>
             </Cell>
     )
 }
