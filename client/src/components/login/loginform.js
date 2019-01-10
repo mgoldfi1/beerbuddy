@@ -26,9 +26,7 @@ export default class LoginForm extends Component {
     )
     .then(res => res.json())
     .then(json => {
-        if (json.user) {
-            this.setState({userId: json.user.id})
-        }
+        console.log(json)
     })
   }
 

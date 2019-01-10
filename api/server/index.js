@@ -7,6 +7,10 @@ const Brewery = require('../models/brewery')
 const app = express();
 const session = require('express-session');
 const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
+
+
 
 app.use(logger('dev'));
 
@@ -20,9 +24,38 @@ app.use(session({
     saveUninitialized: true
 }))
 
-// Passport Middleware 
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  done(null,user.id)
+})
+passport.deserializeUser((user, done) => {
+  done(null,user)
+})
+
+passport.use(new LocalStrategy(
+  {usernameField:"email", passwordField:"password"},
+   async (email, password, done) => {
+    
+    const user = await models.User.findOne({ where: {email: email}})
+    if (user) {
+        const match =  await bcrypt.compare(password, user.password)
+        console.log(match)
+        if (!match) return done(null,false)
+        return done(null,user)
+    }
+
+      return done(null, false);
+  }
+));
+
+
+
+
+
+
 
 const routes = require('./routes');
 app.use(express.static('public'));
