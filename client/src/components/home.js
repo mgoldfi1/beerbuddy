@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
 import BeerCardsList from './beers/beerCardsList'
-import fetchApiData from './HOC/fetchApiData'
+import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
 
 export default class Home extends Component {
     state = { activeTab: 0, beer: ''}
 
     tabSwitch = () => {
-      const MapContainerWithFetchBreweries = fetchApiData(MapContainer, 'breweries')
+      const MapContainerWithFetchBreweries = FetchApiData(MapContainer, 'breweries')
        switch (this.state.activeTab) {
            case 2:
            return (<div>Top</div>)

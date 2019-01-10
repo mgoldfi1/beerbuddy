@@ -8,7 +8,7 @@ import 'react-mdl/extra/material.js';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './components/home'
 import LoginForm from './components/login/loginform'
-import BeerWrapper from './components/beers/beerWrapper'
+import BeerPage from './components/beers/beerPage'
 import RegistrationForm from './components/login/registrationform'
 import rootReducer from './reducers/rootReducer';
 import BreweryPage from './components/breweries/breweryPage'

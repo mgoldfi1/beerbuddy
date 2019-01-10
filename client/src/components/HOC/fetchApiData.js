@@ -2,27 +2,24 @@ import React, { Component } from 'react';
 
 function fetchApiData(WrappedComponent, fetchLink) {
   return class extends Component {
-      state = {
-        fetchLink: fetchLink,
-        data: null,
-        loading: true
-      }
+    state = {
+      data: null,
+      isLoading: false,
+      hasError: false,
+    };
 
     componentDidMount() {
-      fetch(`/api/${this.state.fetchLink}`)
-      .then(res => res.json())
-      .then(json => this.setState({data: json, loading: false}))
+      this.setState({ isLoading: true });
+      fetch(`/api/${fetchLink}`)
+        .then(res => res.json())
+        .then(json => this.setState({ data: json, isLoading: false }))
+        .catch(err => this.setState({ hasError: true }));
     }
 
-
     render() {
-      if (this.state.loading === false) {
-        return <WrappedComponent data={this.state.data} {...this.props}/>;
-      } else {
-        return null
-      }
+      return <WrappedComponent {...this.state} {...this.props} />;
     }
   };
 }
 
-export default fetchApiData
+export default fetchApiData;
