@@ -4,10 +4,12 @@ import { Grid, Cell } from 'react-mdl'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import FetchApiData from '../HOC/fetchApiData'
 
 const Beer = (props) => {
 
   const beer = props.data
+  console.log(props)
 
     return (
         <React.Fragment>
@@ -40,6 +42,7 @@ const Beer = (props) => {
         </Grid>
         </React.Fragment>
     )
+
 }
 
 export default Beer

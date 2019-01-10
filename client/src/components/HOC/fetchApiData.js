@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-function fetchApiData(WrappedComponent, fetchLink) {
-  return class extends Component {
+const FetchApiData = (WrappedComponent, fetchLink) => {
+  return class FetchApiData extends Component {
       state = {
         fetchLink: fetchLink,
         data: null,
@@ -14,15 +14,17 @@ function fetchApiData(WrappedComponent, fetchLink) {
       .then(json => this.setState({data: json, loading: false}))
     }
 
+    renderComponent = () => {
+      return this.state.loading === false ? <WrappedComponent data={this.state.data} {...this.props}/> : null
+    }
+
 
     render() {
-      if (this.state.loading === false) {
-        return <WrappedComponent data={this.state.data} {...this.props}/>;
-      } else {
-        return null
-      }
+      return(
+        this.renderComponent()
+      )
     }
   };
 }
 
-export default fetchApiData
+export default FetchApiData
