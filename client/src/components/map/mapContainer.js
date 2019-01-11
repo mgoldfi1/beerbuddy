@@ -15,6 +15,7 @@ const apiKey = require('../apikey')
         lat: 39.8333333,
         lng: -98.585522,
         location: '',
+        noResults: false,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -32,7 +33,7 @@ const apiKey = require('../apikey')
         if (this.state.location){
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=${apiKey}`)
         .then(res => res.json())
-        .then(json => {return json.status === "OK" ? this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10 }) : null })
+        .then(json => {return json.status === "OK" ? this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10 }) : this.setState({noResults: true}) })
         }
     }
 
@@ -78,7 +79,7 @@ const apiKey = require('../apikey')
           isLoading === false ?
           <div>
             <div className="map">
-              <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
+              <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange} noResults={this.state.noResults}/>
               <Grid>
                 <Cell col={12}>
                   <Map

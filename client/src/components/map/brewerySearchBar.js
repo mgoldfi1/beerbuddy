@@ -36,6 +36,7 @@ class BrewerySearchBar extends Component {
       <Button variant="contained" onClick={this.props.handleSearch}style={{marginTop: 8}}color="primary">
           Find Breweries
       </Button>
+      <span>{this.props.noResults ? 'Location Not Found' : null}</span>
       </>
     )
   }
