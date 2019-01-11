@@ -4,6 +4,7 @@ import { Grid, Cell } from 'react-mdl'
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
 import BeerSorter from './beerSorter/beerSorter'
+import { FiLoader } from "react-icons/fi";
 
 class BeerCardsList extends Component {
 
