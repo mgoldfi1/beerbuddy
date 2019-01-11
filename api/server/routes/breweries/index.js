@@ -10,7 +10,9 @@ module.exports = () => {
     })
 
     router.get('/:id',  async (req, res, next) => {
-      brewery = await models.Brewery.findOne({ where: {id: req.params.id}})
+      brewery = await models.Brewery.findOne({ where: {id: req.params.id}, include: [{
+        model: models.Beer
+        }]})
       res.send(brewery)
     })
     return router;

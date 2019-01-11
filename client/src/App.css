@@ -74,3 +74,8 @@
 .breweryHeader {
   text-align: center;
 }
+
+.breweryBeers {
+  height: 200px;
+  width: 200x;
+}
