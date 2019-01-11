@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 const Brewery = (props) => {
   const brewery = props.data;
   const { isLoading, hasError } = props;
+  console.log(props)
   return (
     <React.Fragment>
       {isLoading ? <p>Loading</p> : null}
@@ -17,7 +18,7 @@ const Brewery = (props) => {
           <Navbar />
           <Grid>
             <Cell col={12}>
-              <h1>{brewery.message}</h1>
+              <h1>{brewery.name}</h1>
             </Cell>
           </Grid>
         </React.Fragment>

@@ -9,8 +9,9 @@ module.exports = () => {
       .then(breweries => res.send({breweries}))
     })
 
-    router.get('/:id', (req, res, next) => {
-      res.send({message: "hello"})
+    router.get('/:id',  async (req, res, next) => {
+      brewery = await models.Brewery.findOne({ where: {id: req.params.id}})
+      res.send(brewery)
     })
     return router;
 
