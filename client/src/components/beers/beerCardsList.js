@@ -54,7 +54,7 @@ class BeerCardsList extends Component {
               pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
-              loader={<div className="loader" key={0}>Loading ...</div>}
+              loader={<FiLoader className="loader"/>}
               >
               <Grid>
                 {this.mapBeers()}
