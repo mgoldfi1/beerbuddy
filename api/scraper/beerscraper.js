@@ -14,10 +14,13 @@ function scrapeBeers() {
                 models.Brewery.findOrCreate({
                     where: {name: beer.breweries[0].name}, defaults: {
                     description: beer.breweries[0].description,
+                    openToPublic: beer.breweries[0].locations[0].openToPublic,
+                    country: beer.breweries[0].locations[0].country.name,
+                    region: beer.breweries[0].locations[0].region,
                     website: beer.breweries[0].website,
                     year: beer.breweries[0].established,
                     latitude: beer.breweries[0].locations[0].latitude,
-                    longitude: beer.breweries[0].locations[0].longitude
+                    longitude: beer.breweries[0].locations[0].longitude,
                     }
                 })
             .spread((brewery,created) => {

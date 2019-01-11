@@ -8,6 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      logo: {
+        type: Sequelize.STRING
+      },
+      country: {
+        type: Sequelize.STRING
+      },
+      region: {
+        type: Sequelize.STRING
+      },
+      openToPublic: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING,
         unique: true 
