@@ -33,7 +33,7 @@ const apiKey = require('../apikey')
         if (this.state.location){
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=${apiKey}`)
         .then(res => res.json())
-        .then(json => {return json.status === "OK" ? this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10 }) : this.setState({noResults: true}) })
+        .then(json => {return json.status === "OK" ? this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10, noResults: false }) : this.setState({noResults: true}) })
         }
     }
 

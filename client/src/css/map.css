@@ -1,3 +1,10 @@
 .brewery-map {
   height: 50% !important;
 }
+
+.not-found-message{
+  position: absolute;
+  display: inline-flex;
+  padding-top: 15px;
+  margin-left: 40px;
+}
