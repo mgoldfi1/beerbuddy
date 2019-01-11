@@ -1,3 +1,4 @@
+
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -38,7 +39,7 @@ passport.deserializeUser((user, done) => {
 passport.use(new LocalStrategy(
   {usernameField:"email", passwordField:"password"},
    async (email, password, done) => {
-    
+
     const user = await models.User.findOne({ where: {email: email}})
     if (user) {
         const match =  await bcrypt.compare(password, user.password)
@@ -52,27 +53,11 @@ passport.use(new LocalStrategy(
 ));
 
 
-
-
-
-
-
 const routes = require('./routes');
 app.use(express.static('public'));
-// app.get('/favicon.ico', (req, res, next) => {
-//     return res.sendStatus(204);
-// });
 
 
 app.use('/api', routes());
-
-// app.use((req, res, next) => {
-//     return next(createError(404, 'File not found'));
-// });
-
-
-
-
 
 app.listen(3001);
 

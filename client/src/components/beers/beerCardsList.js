@@ -12,7 +12,8 @@ class BeerCardsList extends Component {
           beers: [],
           value: "abv",
           page: 0,
-          more: true
+          more: true,
+          error: null
       }
 
 
@@ -27,20 +28,8 @@ class BeerCardsList extends Component {
   }
 
   handleChange = (event) => {
-      // let value = event.target.value
-      // fetch(`/api/beers?value=${value}`)
-      // .then()
-      // .then(json => {
-      //   this.setState({value: value, beers: json})
-      // })
       this.setState({beers: [], value: event.target.value, page: 0 });
     };
-
-  // componentWillMount() {
-  //     fetch('/api/beer')
-  //     .then(res => res.json())
-  //     .then(json => this.setState({beers: json.beer}))
-  // }
 
   mapBeers = () => {
     return this.state.beers.map((beer,index) => <BeerCard key={index} beer={beer}/>)
@@ -54,7 +43,7 @@ class BeerCardsList extends Component {
               pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
-              loader={<FiLoader className="loader"/>}
+              loader={<div className='loaderContainer'><span>{this.state.error}</span><FiLoader className="loader"/></div>}
               >
               <Grid>
                 {this.mapBeers()}
