@@ -27,15 +27,6 @@
   width: 100vw;
 }
 
-.breweryHeader {
-  text-align: center;
-}
-
-.breweryBeers {
-  height: 200px;
-  width: 200x;
-}
-
 .loader{
   position: absolute;
   margin-top: 25vh;
