@@ -7,7 +7,6 @@ import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 import BrewerySearchBar from './brewerySearchBar'
 import MarkersList from './markersList'
-import { FiLoader } from "react-icons/fi";
 
 const apiKey = require('../apikey')
 
@@ -102,7 +101,7 @@ const apiKey = require('../apikey')
             </Grid>
           </div>
           <BreweriesContainer breweries={this.props.data.breweries} onMarkerClick={this.onMarkerClick}/>
-        </div> 
+        </div>
         )
     }
 }
