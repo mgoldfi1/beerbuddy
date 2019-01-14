@@ -9,8 +9,7 @@ import { FiLoader } from "react-icons/fi";
 const Beer = (props) => {
   const beer = props.data;
   return (
-    <React.Fragment>
-      {!!beer ? (
+      !!beer ? (
         <React.Fragment>
           <Navbar />
           <Grid>
@@ -60,8 +59,7 @@ const Beer = (props) => {
             </Cell>
           </Grid>
         </React.Fragment>
-      ) : null}
-    </React.Fragment>
+      ) : null
   );
 };
 

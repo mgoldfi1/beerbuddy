@@ -17,10 +17,7 @@ const Brewery = (props) => {
   const { isLoading, hasError } = props;
   console.log(props)
   return (
-    <React.Fragment>
-      {isLoading ? <p>Loading</p> : null}
-      {hasError ? <p>Error</p> : null}
-      {!!brewery ? (
+      !!brewery ? (
         <React.Fragment>
           <Navbar />
           <Grid>
@@ -88,8 +85,7 @@ const Brewery = (props) => {
             </Cell>
           </Grid>
         </React.Fragment>
-      ) : null}
-    </React.Fragment>
+      ) : null
   );
 };
 
