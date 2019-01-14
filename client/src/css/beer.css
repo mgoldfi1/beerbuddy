@@ -1,5 +1,17 @@
 .cards {
   color: transparent;
+  height: 100%;
+  max-width: 300px;
+}
+
+.card-container {
+  background-color: #ddd;
+}
+
+.star-ratings {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .beer-links {
