@@ -7,6 +7,7 @@ import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 import BrewerySearchBar from './brewerySearchBar'
 import MarkersList from './markersList'
+import { FiLoader } from "react-icons/fi";
 
 const apiKey = require('../apikey')
 
@@ -74,9 +75,7 @@ const apiKey = require('../apikey')
 
     render() {
         const center = {lat: this.state.lat, lng: this.state.lng}
-        const { isLoading } = this.props
         return (
-          isLoading === false ?
           <div>
             <div className="map">
               <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange} noResults={this.state.noResults}/>
@@ -103,7 +102,7 @@ const apiKey = require('../apikey')
             </Grid>
           </div>
           <BreweriesContainer breweries={this.props.data.breweries} onMarkerClick={this.onMarkerClick}/>
-        </div> : null
+        </div> 
         )
     }
 }
