@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../navbar'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
@@ -53,7 +52,6 @@ render()  {
     return (
         <React.Fragment>
           {this.redirectMe()}
-        <Navbar/>
         <div className="spacer"/>
         <div className="loginBox">
         <div>

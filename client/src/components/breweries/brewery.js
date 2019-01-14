@@ -18,8 +18,6 @@ const Brewery = (props) => {
   console.log(props)
   return (
       !!brewery ? (
-        <React.Fragment>
-          <Navbar />
           <Grid>
             <Cell className="breweryHeader" col={12}>
               <h1>{brewery.name}</h1>
@@ -84,7 +82,6 @@ const Brewery = (props) => {
                 })}
             </Cell>
           </Grid>
-        </React.Fragment>
       ) : null
   );
 };

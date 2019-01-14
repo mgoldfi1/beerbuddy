@@ -9,8 +9,6 @@ const Beer = (props) => {
   const beer = props.data;
   return (
       !!beer ? (
-        <React.Fragment>
-          <Navbar />
           <Grid>
             <Cell col={12}>
               <h1>{beer.name}</h1>
@@ -57,7 +55,6 @@ const Beer = (props) => {
               </div>
             </Cell>
           </Grid>
-        </React.Fragment>
       ) : null
   );
 };

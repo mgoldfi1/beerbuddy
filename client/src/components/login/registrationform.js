@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../navbar'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
@@ -16,7 +15,7 @@ export default class RegistrationForm extends Component {
 
 constructor(props) {
     super(props);
-    
+
     this.state = {
         email: '',
         password: '',
@@ -42,7 +41,7 @@ registration = () => {
             this.setState({userId: json.user.id})
         }
     })
-    
+
 }
 
 redirectMe = () => {
@@ -54,11 +53,10 @@ redirectMe = () => {
 
 
 render()  {
-    
+
     return (
         <React.Fragment>
             {this.redirectMe()}
-        <Navbar/>
         <div className="spacer"/>
         <div className="loginBox">
         <TextField

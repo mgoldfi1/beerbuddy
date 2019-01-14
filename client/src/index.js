@@ -5,13 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'react-mdl/extra/material.css';
 import 'react-mdl/extra/material.js';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import Home from './components/home'
-import LoginForm from './components/login/loginform'
-import BeerPage from './components/beers/beerPage/beerPage'
-import RegistrationForm from './components/login/registrationform'
+import { BrowserRouter, Route} from 'react-router-dom'
 import rootReducer from './reducers/rootReducer';
-import BreweryPage from './components/breweries/breweryPage'
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -23,11 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
     <BrowserRouter>
     <React.Fragment>
-        <Route exact path="/" component={App} />
-        <Route path="/beer/:id" component={BeerPage} />
-        <Route path="/breweries/:id" component={BreweryPage} />
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/registration" component={RegistrationForm} />
+        <Route path="/" component={App} />
     </React.Fragment>
     </BrowserRouter>
     </Provider>
