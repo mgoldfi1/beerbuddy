@@ -10,6 +10,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import '../../css/user.css'
 
 
 export default class LoginForm extends Component {
@@ -53,7 +54,7 @@ render()  {
         <React.Fragment>
           {this.redirectMe()}
         <div className="spacer"/>
-        <div className="loginBox">
+        <div className="login-box">
         <div>
         <TextField
           required
@@ -75,12 +76,12 @@ render()  {
         />
         <div>{this.state.err}</div>
         </div>
-        <div className="loginBox">
+        <div className="login-box">
         <div className="button">
         <Button onClick={this.logIn} variant="contained" color="primary">Log In</Button>
          </div>
          </div>
-         <div className="loginBox">
+         <div className="login-box">
          <div className="box">You can also sign in with:</div>
          <span className="button">
            <Button variant="contained" color="default">

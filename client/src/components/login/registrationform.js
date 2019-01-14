@@ -58,7 +58,7 @@ render()  {
         <React.Fragment>
             {this.redirectMe()}
         <div className="spacer"/>
-        <div className="loginBox">
+        <div className="login-box">
         <TextField
           onChange={(event) => this.setState({email: event.target.value})}
           required
@@ -93,7 +93,7 @@ render()  {
         <div style={{color: 'red'}}>{ 6 > this.state.password.length || this.state.password.length > 12 ? "Password must be between 6-12 characters." : null}</div>
         </div>
         </div>
-        <div className="loginBox">
+        <div className="login-box">
         <div className="button">
         <Button variant="contained" color="primary" onClick={this.registration}>Sign Up</Button>
          </div>
