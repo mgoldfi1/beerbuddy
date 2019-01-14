@@ -4,6 +4,7 @@ import { Grid, Cell } from 'react-mdl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import '../../../css/beer.css'
 
 const Beer = (props) => {
   const beer = props.data;
@@ -26,22 +27,22 @@ const Beer = (props) => {
                 <strong>Ratings for this beer: 0</strong>
               </div>
             </Cell>
-            <Cell className="beerBlurb" col={6}>
-              <img className="beerPagePic" src={beer.label} />
-              <div className="beerPageInfo">
-                <div className="beerText">
+            <Cell className="beer-blurb" col={6}>
+              <img className="beer-page-pic" src={beer.label} />
+              <div className="beer-page-info">
+                <div className="beer-text">
                   <strong>ABV:</strong> {beer.abv}%
                 </div>
-                <div className="beerText">
+                <div className="beer-text">
                   <strong>IBU:</strong> {beer.ibu}
                 </div>
-                <div className="beerText">
+                <div className="beer-text">
                   <strong>Style:</strong> {beer.style}
                 </div>
-                <div className="beerText">
+                <div className="beer-text">
                   <strong>Brewery Name:</strong> {beer.brewery.name}
                 </div>
-                <div className="beerText">
+                <div className="beer-text">
                   <strong>Brewery Website:</strong>{' '}
                   <a href={beer.brewery.website} target="_blank">
                     {beer.brewery.website}

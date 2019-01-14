@@ -7,10 +7,6 @@
   max-width: 300px;
 }
 
-.beerName {
-  font-size: 5%;
-}
-
 .map {
   height: 60vh;
   z-index: 1
@@ -44,29 +40,6 @@
 .spacer {
   height: 15vh;
   width: 100vw;
-}
-
-.beerBlurb {
-  height: 70vh;
-  max-width: 500px;
-  text-align: center;
-  border: 1px solid black;
-  position: relative;
-  right: 0px;
-}
-
-.beerPagePic {
-    height: 25%;
-    width: 50%;
-
-}
-
-.beerPageInfo {
-  text-align: left;
-}
-
-.beerText {
-  margin-left: 8px;
 }
 
 .breweryHeader {

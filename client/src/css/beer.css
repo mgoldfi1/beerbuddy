@@ -5,3 +5,30 @@
 .beer-links {
   text-decoration: none;
 }
+
+.beer-name {
+  font-size: 5%;
+}
+
+.beer-blurb {
+  height: 70vh;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid black;
+  position: relative;
+  right: 0px;
+}
+
+.beer-page-pic {
+    height: 25%;
+    width: 50%;
+
+}
+
+.beer-page-info {
+  text-align: left;
+}
+
+.beer-text {
+  margin-left: 8px;
+}
