@@ -20,8 +20,6 @@
   z-index: 1000;
 }
 
-
-
 .star-ratings {
   width: 100%;
   text-align: center;
@@ -78,4 +76,18 @@
 .breweryBeers {
   height: 200px;
   width: 200x;
+}
+
+.loader{
+  position: absolute;
+  margin-top: 25vh;
+  margin-left: 50%;
+  height: 40px;
+  width: auto;
+  animation: spin 4.5s linear infinite;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
 }

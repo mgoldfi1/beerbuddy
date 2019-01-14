@@ -4,14 +4,12 @@ import { Grid, Cell } from 'react-mdl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import { FiLoader } from "react-icons/fi";
 
 const Beer = (props) => {
   const beer = props.data;
-  const { isLoading, hasError } = props;
   return (
     <React.Fragment>
-      {isLoading ? <p>Loading</p> : null}
-      {hasError ? <p>Error</p> : null}
       {!!beer ? (
         <React.Fragment>
           <Navbar />

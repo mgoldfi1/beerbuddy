@@ -4,6 +4,7 @@ import { Grid, Cell } from 'react-mdl'
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
 import BeerSorter from './beerSorter/beerSorter'
+import { FiLoader } from "react-icons/fi";
 
 class BeerCardsList extends Component {
 
@@ -11,38 +12,28 @@ class BeerCardsList extends Component {
           beers: [],
           value: "abv",
           page: 0,
-          more: true
+          more: true,
+          error: null
       }
 
 
-  loadFunc = (page) => {
-    fetch(`/api/beer/${this.state.value}/${this.state.page}`)
-      .then(res => res.json())
-      .then(json => {
-        if (json.beers.length > 0) {
-          this.setState(currentState => ({beers: [...currentState.beers, ...json.beers], page: currentState.page + 1}) )
-        }
-    })
-  }
+  loadFunc = async (page) => {
+     const res = await fetch(`/api/beer/${this.state.value}/${this.state.page}`)
+     const body = await res.json()
+     if (res.status === 200){
+         this.setState(currentState => ({beers: [...currentState.beers, ...body.beers], page: currentState.page + 1}) )
+     } else {
+       this.setState({more: false})
+     }
+}
 
   handleChange = (event) => {
-      // let value = event.target.value
-      // fetch(`/api/beers?value=${value}`)
-      // .then()
-      // .then(json => {
-      //   this.setState({value: value, beers: json})
-      // })
-      this.setState({beers: [], value: event.target.value, page: 0 });
+      this.setState({beers: [], value: event.target.value, page: 0, more:true });
     };
 
-  // componentWillMount() {
-  //     fetch('/api/beer')
-  //     .then(res => res.json())
-  //     .then(json => this.setState({beers: json.beer}))
-  // }
-
   mapBeers = () => {
-    return this.state.beers.map((beer,index) => <BeerCard key={index} beer={beer}/>)
+    let beers = this.state.beers
+    return  beers.length > 0 ? beers.map((beer,index) => <BeerCard key={index} beer={beer}/>) : null
   }
 
   render() {
@@ -53,7 +44,7 @@ class BeerCardsList extends Component {
               pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
-              loader={<div className="loader" key={0}>Loading ...</div>}
+              loader={<div className='loaderContainer'><span>{this.state.error}</span><FiLoader className="loader"/></div>}
               >
               <Grid>
                 {this.mapBeers()}

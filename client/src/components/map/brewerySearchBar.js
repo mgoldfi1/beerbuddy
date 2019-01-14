@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import '../../css/map.css'
 
 
 class BrewerySearchBar extends Component {
@@ -36,6 +37,7 @@ class BrewerySearchBar extends Component {
       <Button variant="contained" onClick={this.props.handleSearch}style={{marginTop: 8}}color="primary">
           Find Breweries
       </Button>
+      <div className='not-found-message'>{this.props.noResults ? 'Location Not Found' : ''}</div>
       </>
     )
   }
