@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { Layout, Drawer, Navigation, Content, Header } from 'react-mdl'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-export default class Navbar extends Component {
+ class Navbar extends Component {
+
+    changeNav = () => {
+        if (this.props.user) {
+            return  (<Link to="/login">{this.props.user.email}</Link>)
+        } else {
+            return (<Link to="/login">LOG IN</Link>)
+        }
+    }
 
     render() {
         return(
@@ -13,7 +22,7 @@ export default class Navbar extends Component {
                 <Link to="/">Home</Link>
                 <a href="#">Beers</a>
                 <a href="#">Breweries</a>
-                <Link to="/login">LOG IN</Link>
+                {this.changeNav()}
             </Navigation>
         </Header>
         <Drawer title="Title">
@@ -30,3 +39,10 @@ export default class Navbar extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+      user: state.user.user
+    }
+  }
+
+export default connect(mapStateToProps)(Navbar)
