@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../navbar';
+import Navbar from '../../navbar';
 import { Grid, Cell } from 'react-mdl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';

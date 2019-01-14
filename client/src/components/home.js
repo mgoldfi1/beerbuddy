@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
-import BeerCardsList from './beers/beerCardsList'
+import BeerCardsList from './beers/beerCard/beerCardsList'
 import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
 

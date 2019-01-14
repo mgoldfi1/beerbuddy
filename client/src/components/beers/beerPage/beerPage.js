@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Beer from './beer';
-import fetchApiData from '../HOC/fetchApiData';
+import fetchApiData from '../../HOC/fetchApiData';
 
 class BeerPage extends Component {
   render() {
