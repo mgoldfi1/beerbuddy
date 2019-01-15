@@ -14,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {});
   Brewery.associate = function(models) {
-    // associations can be defined here
-    Brewery.hasMany(models.Beer)
+    Brewery.hasMany(models.Beer, {as: 'beers'})
   };
   return Brewery;
 };
