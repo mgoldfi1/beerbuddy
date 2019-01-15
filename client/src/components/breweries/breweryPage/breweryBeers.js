@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
+import MapBeers from './mapBeers'
 
 class BreweryBeers extends Component {
 
@@ -11,47 +11,14 @@ class BreweryBeers extends Component {
     scroller: 0
   }
 
-  // componentWillMount(){
-  //   this.getWindowWidth();
-  //   window.addEventListener('resize', this.getWindowWidth)
-  // }
-  //
-  // componentWillUnmount(){
-  //   window.removeEventListener('resize', this.getWindowWidth)
-  // }
-  //
-  // getWindowWidth = () => {
-  //   console.log(window.innerWidth)
-  // }
-
-  mapBeers = () => {
-    return this.props.beers.map((beer, index) => {
-         return(
-           <Link
-            key={index}
-            to={"/beer/" + beer.id}>
-            <img className="brewery-beers" src={beer.label}/>
-           </Link>
-       )
-    })
-  }
-
-
-  // when mouse enters div, check size of beer link and div container
-  // if container width is not equal to the width stored in local state, setState to new width
-  // beer link width will not change depending on the resizing of the window, only set state once
-
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].children[0].children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     let scroller = event.currentTarget.children[0]
-    this.interval = setInterval(() => scroller.scrollBy(this.state.scroller,0), 50)
+    this.interval = setInterval(() => scroller.scrollBy(this.state.scroller, 0, 'smooth'), 50)
     if (this.state.divWidth !== divWidth) {
       this.setState({center: (divWidth/2), offset: linkWidth})
-    } else {
-
     }
-    // scroller.scrollBy(10, 0)
   }
 
   handleMouseLeave = () => {
@@ -62,24 +29,25 @@ class BreweryBeers extends Component {
     let coord = event.clientX
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * 0.2})
+        this.setState({scroller: (coord - centerRange[0]) * 0.1})
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * 0.2})
+        this.setState({scroller: (coord - centerRange[1]) * 0.1})
+    } else {
+      this.setState({scroller: 0})
     }
   }
 
 render(){
-  console.log(this.state)
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
-        <div style={{height: '300px'}}
+        <div style={{height: '300px', marginTop: '20px'}}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseMove={this.handleMouseMove}
         >
-          <HorizontalScroll >
-            {this.mapBeers()}
+          <HorizontalScroll>
+            <MapBeers beers={this.props.beers}/>
           </HorizontalScroll>
         </div>
         </>
