@@ -39,7 +39,7 @@ import '../../../css/beer.css'
                     </CardContent>
                     <div>
                     <StarRatings
-                        rating={0}
+                        rating={beer.ratingAvg}
                         numberOfStars={5}
                         name='rating'
                         starDimension="25px"

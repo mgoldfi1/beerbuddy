@@ -9,7 +9,9 @@ export default class RatingSelect extends Component {
     state = {
         value: '',
         userId: this.props.user.id,
-        beerId: this.props.beerId
+        beerId: this.props.beerId,
+        err: '',
+        msg: ''
     }
 
     sendRating = () => {
@@ -21,7 +23,14 @@ export default class RatingSelect extends Component {
         }
         )
         .then(res => res.json())
-        .then(rating => console.log(rating))
+        .then(rating => {
+            if (rating.err) {
+                this.setState({err: rating.err})
+            } else {
+                this.setState({msg: rating.message})
+            }
+        }
+        )
     }
     
 
@@ -49,6 +58,9 @@ export default class RatingSelect extends Component {
           <Button onClick={this.sendRating} variant="contained" color="primary" size="small">
           Go
           </Button>
+          <div>
+              {this.state.err || this.state.msg}
+          </div>
           </div>
           </div>
         )

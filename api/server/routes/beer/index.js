@@ -47,8 +47,8 @@ module.exports = () => {
         else {
          const value = req.body.value 
          const beerRating = await models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
-         const beer = await models.Beer.find({where: {id: req.body.id}})
-         models.Beer.update({ratingAvg: (((beer.ratingAvg*beer.ratingCount) + (value))/(beer.ratingCount + 1)), ratingCount: (beer.ratingCount + 1)}, {where: beer.id})
+         const beer = await models.Beer.findOne({where: {id: req.body.beerId}})
+         models.Beer.update({ratingAvg: (((beer.ratingAvg*beer.ratingCount) + (value))/(beer.ratingCount + 1)), ratingCount: (beer.ratingCount + 1)}, {where: {id: beer.id}})
          res.status(200).send({message: "Your rating has been logged."})
         } 
       })
