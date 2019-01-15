@@ -59,16 +59,13 @@ class BreweryBeers extends Component {
   }
 
   handleMouseMove = (event) => {
-  //   let coord = event.clientX
-  //   let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
-  //   // console.log(centerRange, coord)
-  //   if (coord <= centerRange[0]){
-  //       event.currentTarget.children[0].scrollBy(-10, 0)
-  //   } else if (coord >= centerRange[1]) {
-  //       event.currentTarget.children[0].scrollBy(10, 0)
-  //   } else {
-  //     console.log('centered')
-  //   }
+    let coord = event.clientX
+    let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
+    if (coord <= centerRange[0]){
+        this.setState({scroller: (coord - centerRange[0]) * 0.2})
+    } else if (coord >= centerRange[1]) {
+        this.setState({scroller: (coord - centerRange[1]) * 0.2})
+    }
   }
 
 render(){
