@@ -10,6 +10,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
+import '../../css/brewery.css'
 
 
 const Brewery = (props) => {
@@ -17,14 +18,9 @@ const Brewery = (props) => {
   const { isLoading, hasError } = props;
   console.log(props)
   return (
-    <React.Fragment>
-      {isLoading ? <p>Loading</p> : null}
-      {hasError ? <p>Error</p> : null}
-      {!!brewery ? (
-        <React.Fragment>
-          <Navbar />
+      !!brewery ? (
           <Grid>
-            <Cell className="breweryHeader" col={12}>
+            <Cell className="brewery-header" col={12}>
               <h1>{brewery.name}</h1>
             </Cell>
             <div style={{width: '100vw', height: '10vh'}}/>
@@ -83,13 +79,11 @@ const Brewery = (props) => {
             <Cell col={12}>
             <div style={{fontSize: '16px'}}><strong>Beers made by this brewery:</strong></div>
                 {brewery.Beers.map(beer => {
-                    return <div style={{display: "inline"}}><Link to={"/beer/" + beer.id}><img className="breweryBeers" src={beer.label}/></Link></div>
+                    return <div style={{display: "inline"}}><Link to={"/beer/" + beer.id}><img className="brewery-beers" src={beer.label}/></Link></div>
                 })}
             </Cell>
           </Grid>
-        </React.Fragment>
-      ) : null}
-    </React.Fragment>
+      ) : null
   );
 };
 

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
 import { Cell } from 'react-mdl'
-import '../../css/beer.css'
+import '../../../css/beer.css'
 
 
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../navbar'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
@@ -11,8 +10,10 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import '../../css/user.css'
 import { logIn } from '../../actions/logIn';
 import { connect } from 'react-redux';
+
 
 
 class LoginForm extends Component {
@@ -55,9 +56,8 @@ render()  {
     return (
         <React.Fragment>
           {this.redirectMe()}
-        <Navbar/>
         <div className="spacer"/>
-        <div className="loginBox">
+        <div className="login-box">
         <div>
         <TextField
           required
@@ -79,12 +79,12 @@ render()  {
         />
         <div>{this.state.err}</div>
         </div>
-        <div className="loginBox">
+        <div className="login-box">
         <div className="button">
         <Button onClick={this.logIn} variant="contained" color="primary">Log In</Button>
          </div>
          </div>
-         <div className="loginBox">
+         <div className="login-box">
          <div className="box">You can also sign in with:</div>
          <span className="button">
            <Button variant="contained" color="default">
@@ -112,3 +112,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {logIn})(LoginForm)
+

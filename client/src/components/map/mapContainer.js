@@ -15,6 +15,7 @@ const apiKey = require('../apikey')
         lat: 39.8333333,
         lng: -98.585522,
         location: '',
+        noResults: false,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -32,7 +33,7 @@ const apiKey = require('../apikey')
         if (this.state.location){
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=${apiKey}`)
         .then(res => res.json())
-        .then(json => {this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10 })})
+        .then(json => {return json.status === "OK" ? this.setState({lat: json.results[0].geometry.location.lat, lng: json.results[0].geometry.location.lng, zoom: 10, noResults: false }) : this.setState({noResults: true}) })
         }
     }
 
@@ -70,14 +71,13 @@ const apiKey = require('../apikey')
         )
     }
 
+
     render() {
         const center = {lat: this.state.lat, lng: this.state.lng}
-        const { isLoading } = this.props
         return (
-          isLoading === false ?
           <div>
             <div className="map">
-              <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange}/>
+              <BrewerySearchBar handleSearch={this.handleSearch} handleChange={this.handleChange} noResults={this.state.noResults}/>
               <Grid>
                 <Cell col={12}>
                   <Map
@@ -101,7 +101,7 @@ const apiKey = require('../apikey')
             </Grid>
           </div>
           <BreweriesContainer breweries={this.props.data.breweries} onMarkerClick={this.onMarkerClick}/>
-        </div> : null
+        </div>
         )
     }
 }

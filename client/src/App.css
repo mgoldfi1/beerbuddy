@@ -1,16 +1,3 @@
-.cardContainer {
-  background-color: #ddd;
-}
-
-.cards {
-  height: 100%;
-  max-width: 300px;
-}
-
-.beerName {
-  font-size: 5%;
-}
-
 .map {
   height: 60vh;
   z-index: 1
@@ -18,19 +5,6 @@
 
 .list {
   z-index: 1000;
-}
-
-
-
-.star-ratings {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-.loginBox {
-  text-align: center;
-
 }
 
 .button {
@@ -48,34 +22,16 @@
   width: 100vw;
 }
 
-.beerBlurb {
-  height: 70vh;
-  max-width: 500px;
-  text-align: center;
-  border: 1px solid black;
-  position: relative;
-  right: 0px;
+.loader{
+  position: absolute;
+  margin-top: 25vh;
+  margin-left: 50%;
+  height: 40px;
+  width: auto;
+  animation: spin 4.5s linear infinite;
 }
 
-.beerPagePic {
-    height: 25%;
-    width: 50%;
-
-}
-
-.beerPageInfo {
-  text-align: left;
-}
-
-.beerText {
-  margin-left: 8px;
-}
-
-.breweryHeader {
-  text-align: center;
-}
-
-.breweryBeers {
-  height: 200px;
-  width: 200x;
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
 }

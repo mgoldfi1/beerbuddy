@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-mdl'
-import BeerCardsList from './beers/beerCardsList'
+import BeerCardsList from './beers/beerCard/beerCardsList'
 import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
 
@@ -21,6 +21,7 @@ export default class Home extends Component {
 
 
     render() {
+      console.log(<Tabs/>)
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
