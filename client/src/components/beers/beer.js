@@ -4,6 +4,7 @@ import { Grid, Cell } from 'react-mdl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import { Link } from 'react-router-dom'
 
 const Beer = (props) => {
   const beer = props.data;
@@ -26,10 +27,13 @@ const Beer = (props) => {
                 {beer.desc}
               </p>
               <div>
-                <strong>Reviews for this beer: 0</strong>
+                <strong>Reviews for this beer: </strong>
               </div>
               <div>
-                <strong>Ratings for this beer: 0</strong>
+                <strong>Ratings for this beer: {beer.ratingCount}</strong>
+              </div>
+              <div>
+              <strong>Average Rating: {beer.ratingAvg}</strong>
               </div>
             </Cell>
             <Cell className="beerBlurb" col={6}>
@@ -45,7 +49,7 @@ const Beer = (props) => {
                   <strong>Style:</strong> {beer.style}
                 </div>
                 <div className="beerText">
-                  <strong>Brewery Name:</strong> {beer.brewery.name}
+                  <strong>Brewery Name:</strong> <Link to={"/breweries/" + beer.brewery.id}>{beer.brewery.name}</Link>
                 </div>
                 <div className="beerText">
                   <strong>Brewery Website:</strong>{' '}
