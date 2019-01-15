@@ -40,6 +40,13 @@ module.exports = () => {
 
       router.post('/rating', async(req, res, next) => {
         console.log(req.body)
+        const rating = await models.BeerRatings.findOne({where: {beerId: req.body.beerId, userId: req.body.userId}})
+        if (rating) {
+          throw new Error("Already rated.")
+        }
+        else {
+          models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
+        }
       })
 
     return router;
