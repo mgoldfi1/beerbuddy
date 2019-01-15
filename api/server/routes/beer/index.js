@@ -42,11 +42,15 @@ module.exports = () => {
         console.log(req.body)
         const rating = await models.BeerRatings.findOne({where: {beerId: req.body.beerId, userId: req.body.userId}})
         if (rating) {
-          throw new Error("Already rated.")
+          res.status(500).send({err: "Already Rated."})
         }
         else {
-          models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
-        }
+         const value = req.body.value 
+         const beerRating = await models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
+         const beer = await models.Beer.find({where: {id: req.body.id}})
+         models.Beer.update({ratingAvg: (((beer.ratingAvg*beer.ratingCount) + (value))/(beer.ratingCount + 1)), ratingCount: (beer.ratingCount + 1)}, {where: beer.id})
+         res.status(200).send({message: "Your rating has been logged."})
+        } 
       })
 
     return router;
