@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
 import MapBeers from './mapBeers'
+import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
 
 class BreweryBeers extends Component {
 
@@ -41,7 +42,7 @@ render(){
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
-        <div style={{height: '300px', marginTop: '20px'}}
+        <div className="scroller-container"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseMove={this.handleMouseMove}
@@ -50,6 +51,8 @@ render(){
             <MapBeers beers={this.props.beers}/>
           </HorizontalScroll>
         </div>
+          <TiChevronLeftOutline id='arrow-left' className='scroller-arrows'/>
+          <TiChevronRightOutline id='arrow-right' className='scroller-arrows'/>
         </>
     )
   }

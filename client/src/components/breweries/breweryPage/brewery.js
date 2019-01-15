@@ -28,7 +28,7 @@ const Brewery = (props) => {
                 summary='Open to the Public?'
               />
             </Cell>
-            <Cell col={12}>
+            <Cell className="brewery-beers-container"col={12}>
               <BreweryBeers beers={brewery.beers}/>
             </Cell>
           </Grid>

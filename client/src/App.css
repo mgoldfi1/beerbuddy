@@ -35,3 +35,26 @@
 0% { transform: rotate(0deg); }
 100% { transform: rotate(360deg); }
 }
+
+.scroller-arrows {
+  position: absolute;
+  bottom: 50%;
+  display: inline-block;
+  width: auto;
+  height: 40px;
+}
+
+#arrow-right {
+  right: 0;
+}
+
+#arrow-left {
+  left: 0;
+}
+
+.scroller-container {
+  height: 300px;
+  width: 100%;
+  margin-top: 20px;
+  display: inline-block;
+}
