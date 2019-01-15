@@ -9,9 +9,9 @@ render(){
     return (
         <>
           <TiChevronLeftOutline
-          style={{visibility: this.props.visibility, color: this.props.activate === 'left' ? 'green' : null }}
+          style={{visibility: this.props.visibility, transform: this.props.activate === 'left' ? 'scale(1.2)' : null }}
           id='arrow-left' className='scroller-arrows'/>
-          <TiChevronRightOutline style={{visibility: this.props.visibility, color: this.props.activate === 'right' ? 'green' : null}}
+          <TiChevronRightOutline style={{visibility: this.props.visibility, transform: this.props.activate === 'right' ? 'scale(1.2)' : null}}
           id='arrow-right' className='scroller-arrows'/>
         </>
     )
