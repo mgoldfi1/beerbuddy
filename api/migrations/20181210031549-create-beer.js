@@ -13,10 +13,12 @@ module.exports = {
         unique: true
       },
       ratingCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       ratingAvg: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        defaultValue: 0
       },
       abv: {
         type: Sequelize.FLOAT
