@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import HorizontalScroll from 'react-scroll-horizontal'
 
-const BreweryBeers = ({beers}) => {
-  const mapBeers = () => {
-    return beers.map(beer => {
+class BreweryBeers extends Component {
+
+  mapBeers = () => {
+    return this.props.beers.map(beer => {
          return(
            <Link
-            target="_blank"
             to={"/beer/" + beer.id}>
             <img className="brewery-beers" src={beer.label}/>
            </Link>
@@ -15,13 +16,18 @@ const BreweryBeers = ({beers}) => {
     })
   }
 
-
-  return (
-      <>
-      <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
-        {mapBeers()}
-      </>
-  )
+render(){
+    return (
+        <>
+        <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
+        <div style={{height: '300px'}}>
+        <HorizontalScroll>
+          {this.mapBeers()}
+          </HorizontalScroll>
+        </div>
+        </>
+    )
+  }
 };
 
 BreweryBeers.propTypes = {

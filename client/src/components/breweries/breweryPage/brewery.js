@@ -29,7 +29,7 @@ const Brewery = (props) => {
               />
             </Cell>
             <Cell col={12}>
-            <BreweryBeers beers={brewery.beers}/>
+              <BreweryBeers beers={brewery.beers}/>
             </Cell>
           </Grid>
       ) : null
