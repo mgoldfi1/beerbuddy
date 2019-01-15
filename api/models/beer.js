@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     ibu: DataTypes.FLOAT,
     desc: DataTypes.TEXT,
     label: DataTypes.STRING,
-    style: DataTypes.STRING
+    style: DataTypes.STRING,
+    ratingCount: DataTypes.STRING,
+    ratingAvg: DataTypes.STRING
   }, {});
   Beer.associate = (models) => {
     // associations can be defined here
