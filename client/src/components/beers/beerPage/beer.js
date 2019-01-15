@@ -4,6 +4,7 @@ import { Grid, Cell } from 'react-mdl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import BeerTitle from './beerTitle'
 import '../../../css/beer.css'
 
 const Beer = (props) => {
@@ -11,21 +12,16 @@ const Beer = (props) => {
   return (
       !!beer ? (
           <Grid>
-            <Cell col={12}>
-              <h1>{beer.name}</h1>
-            </Cell>
+            <BeerTitle name={beer.name} colLength={12}/>
             <Cell col={6}>
               <p>
                 <strong>Description:</strong>
                 <br />
                 {beer.desc}
               </p>
-              <div>
                 <strong>Reviews for this beer: 0</strong>
-              </div>
-              <div>
+                <br/>
                 <strong>Ratings for this beer: 0</strong>
-              </div>
             </Cell>
             <Cell className="beer-blurb" col={6}>
               <img className="beer-page-pic" src={beer.label} />
