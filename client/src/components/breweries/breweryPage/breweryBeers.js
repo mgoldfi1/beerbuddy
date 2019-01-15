@@ -49,11 +49,19 @@ class BreweryBeers extends Component {
   }
 
   handleMouseMove = (event) => {
-    console.log('Mouse Horizonal Position', event.clientX)
+    let coord = event.clientX
+    let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
+    console.log(centerRange, coord)
+    if (coord <= centerRange[0]){
+      console.log('left')
+    } else if (coord >= centerRange[1]) {
+      console.log('right')
+    } else {
+      console.log('centered')
+    }
   }
 
 render(){
-  console.log(this.state)
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
