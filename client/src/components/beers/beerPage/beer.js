@@ -17,10 +17,8 @@ const Beer = (props) => {
             <BeerTitle name={beer.name} colLength={12}/>
             <BeerMisc desc={beer.desc} colLength={6}/>
             <BeerBlurb {...beer} colLength={6}/>
-            <Cell col={12}>
-              <div>
+            <Cell className='similar-beers' col={12}>
                 <strong>Beers With A Similar Style</strong>
-              </div>
             </Cell>
           </Grid>
       ) : null

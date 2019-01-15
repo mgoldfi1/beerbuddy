@@ -34,13 +34,9 @@
 .beer-page-pic {
     height: 25%;
     width: 50%;
-
-}
-
-.beer-page-info {
-  text-align: left;
 }
 
 .beer-page-info {
   margin-left: 8px;
+  text-align: left;
 }

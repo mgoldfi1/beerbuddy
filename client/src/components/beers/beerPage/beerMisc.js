@@ -4,7 +4,7 @@ import { Cell } from 'react-mdl';
 const BeerMisc = ({colLength, desc}) => {
 
   return (
-    <Cell col={colLength}>
+    <Cell className='beer-misc' col={colLength}>
       <p>
         <strong>Description:</strong>
         <br />
