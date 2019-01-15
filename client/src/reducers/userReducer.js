@@ -2,6 +2,7 @@ export default function userReducer(state = {user: '', logging_out: false, loadi
     switch (action.type) {
   
       case 'LOG_IN':
+        console.log(action)
         return {user: action.user, logging_out: false, loading: false};
   
       case 'LOG_OUT':

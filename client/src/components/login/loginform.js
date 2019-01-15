@@ -11,14 +11,16 @@ import {
   withRouter
 } from "react-router-dom";
 import '../../css/user.css'
+import { logIn } from '../../actions/logIn';
+import { connect } from 'react-redux';
 
 
-export default class LoginForm extends Component {
+
+class LoginForm extends Component {
 
   state = {
     email: '',
     password: '',
-    loggedIn: false,
     err: ''
   }
 
@@ -33,9 +35,9 @@ export default class LoginForm extends Component {
     }
     )
     .then(res => res.json())
-    .then(json => {
-      if (json) {
-        this.setState({loggedIn: true})
+    .then(user => {
+      if (user) {
+        this.props.logIn(user)
       } else {
         this.setState({err: "Invalid Username or Password"})
       }
@@ -43,7 +45,8 @@ export default class LoginForm extends Component {
   }
 
   redirectMe = () => {
-    if (this.state.loggedIn) {
+    if (this.props.user) {
+      console.log(this.props.user)
         return <Redirect to='/' />
     }
 
@@ -101,3 +104,12 @@ render()  {
 }
 
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user
+  }
+}
+
+export default connect(mapStateToProps, {logIn})(LoginForm)
+
