@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import BeerTitle from './beerTitle'
 import BeerMisc from './beerMisc'
+import BeerBlurb from './beerBlurb'
 import '../../../css/beer.css'
 
 const Beer = (props) => {
@@ -15,29 +16,7 @@ const Beer = (props) => {
           <Grid>
             <BeerTitle name={beer.name} colLength={12}/>
             <BeerMisc desc={beer.desc} colLength={6}/>
-            <Cell className="beer-blurb" col={6}>
-              <img className="beer-page-pic" src={beer.label} />
-              <div className="beer-page-info">
-                <div className="beer-text">
-                  <strong>ABV:</strong> {beer.abv}%
-                </div>
-                <div className="beer-text">
-                  <strong>IBU:</strong> {beer.ibu}
-                </div>
-                <div className="beer-text">
-                  <strong>Style:</strong> {beer.style}
-                </div>
-                <div className="beer-text">
-                  <strong>Brewery Name:</strong> {beer.brewery.name}
-                </div>
-                <div className="beer-text">
-                  <strong>Brewery Website:</strong>{' '}
-                  <a href={beer.brewery.website} target="_blank">
-                    {beer.brewery.website}
-                  </a>
-                </div>
-              </div>
-            </Cell>
+            <BeerBlurb {...beer} colLength={6}/>
             <Cell col={12}>
               <div>
                 <strong>Beers With A Similar Style</strong>
