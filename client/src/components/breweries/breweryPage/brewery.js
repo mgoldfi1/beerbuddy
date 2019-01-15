@@ -7,13 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 import BreweryPanel from './breweryPanel'
-import PageTitle from '../pageTitle'
-import '../../css/brewery.css'
+import PageTitle from '../../pageTitle'
+import PropTypes from 'prop-types'
+import '../../../css/brewery.css'
 
 
 const Brewery = (props) => {
   const brewery = props.data;
-  console.log(brewery)
   return (
       !!brewery ? (
           <Grid>
@@ -63,5 +63,10 @@ const Brewery = (props) => {
       ) : null
   );
 };
+
+Brewery.propTypes = {
+  data: PropTypes.object.isRequired
+}
+
 
 export default Brewery

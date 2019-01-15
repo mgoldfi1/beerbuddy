@@ -6,7 +6,7 @@ function fetchApiData(WrappedComponent, fetchLink) {
     state = {
       data: null,
       isLoading: true,
-      hasError: false,
+      hasError: false
     };
 
     componentDidMount() {
