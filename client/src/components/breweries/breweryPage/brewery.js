@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
-import Navbar from '../navbar';
+import React from 'react';
 import { Grid, Cell } from 'react-mdl';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
-import '../../css/brewery.css'
+import BreweryPanel from './breweryPanel'
+import '../../../css/brewery.css'
 
 
 const Brewery = (props) => {
   const brewery = props.data;
-  const { isLoading, hasError } = props;
-  console.log(props)
+  console.log(brewery)
   return (
       !!brewery ? (
           <Grid>
@@ -25,26 +21,8 @@ const Brewery = (props) => {
             </Cell>
             <div style={{width: '100vw', height: '10vh'}}/>
             <Cell col={6}>
-            <ExpansionPanel>
-                <ExpansionPanelSummary >
-                <Typography style={{fontSize: '16px'}}><strong>Location</strong></Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                <Typography style={{fontSize: '14px'}}>
-            {brewery.region + ', ' + brewery.country}
-            </Typography>
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary >
-                <Typography style={{fontSize: '16px'}} ><strong>Description</strong></Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                <Typography style={{fontSize: '14px'}}>
-            {brewery.description}
-            </Typography>
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
+            <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
+            <BreweryPanel details='NUNYA' summary='Description'/>
             <ExpansionPanel>
                 <ExpansionPanelSummary >
                 <Typography style={{fontSize: '16px'}} ><strong>Founded In</strong></Typography>

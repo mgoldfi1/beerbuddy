@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from '../navbar'
 import Brewery from './brewery';
-import fetchApiData from '../HOC/fetchApiData';
+import fetchApiData from '../../HOC/fetchApiData';
 
 
 export default class BreweryPage extends Component {

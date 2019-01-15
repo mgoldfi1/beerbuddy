@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/home'
 import Navbar from './components/navbar'
-import BreweryPage from './components/breweries/breweryPage'
+import BreweryPage from './components/breweries/breweryPage/breweryPage'
 import LoginForm from './components/login/loginform'
 import BeerPage from './components/beers/beerPage/beerPage'
 import RegistrationForm from './components/login/registrationform'
