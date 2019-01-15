@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 import BreweryPanel from './breweryPanel'
-import '../../../css/brewery.css'
+import PageTitle from '../pageTitle'
+import '../../css/brewery.css'
 
 
 const Brewery = (props) => {
@@ -16,9 +17,7 @@ const Brewery = (props) => {
   return (
       !!brewery ? (
           <Grid>
-            <Cell className="brewery-header" col={12}>
-              <h1>{brewery.name}</h1>
-            </Cell>
+            <PageTitle title={brewery.name} colLength={12}/>
             <div style={{width: '100vw', height: '10vh'}}/>
             <Cell col={6}>
             <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
