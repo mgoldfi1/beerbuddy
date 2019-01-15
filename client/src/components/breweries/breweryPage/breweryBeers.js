@@ -9,7 +9,8 @@ class BreweryBeers extends Component {
   state = {
     center: 0,
     offset: 0,
-    scroller: 0
+    scroller: 0,
+    visibility: 'hidden'
   }
 
   handleMouseEnter = (event) => {
@@ -18,12 +19,15 @@ class BreweryBeers extends Component {
     let scroller = event.currentTarget.children[0]
     this.interval = setInterval(() => scroller.scrollBy(this.state.scroller, 0, 'smooth'), 50)
     if (this.state.divWidth !== divWidth) {
-      this.setState({center: (divWidth/2), offset: linkWidth})
+      this.setState({center: (divWidth/2), offset: linkWidth, visibility: ''})
+    } else {
+      this.setState({visibility: ''})
     }
   }
 
   handleMouseLeave = () => {
     clearInterval(this.interval)
+    this.setState({visibility: 'hidden'})
   }
 
   handleMouseMove = (event) => {
@@ -39,6 +43,7 @@ class BreweryBeers extends Component {
   }
 
 render(){
+  console.log(this.state.visibility)
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
@@ -51,8 +56,10 @@ render(){
             <MapBeers beers={this.props.beers}/>
           </HorizontalScroll>
         </div>
-          <TiChevronLeftOutline id='arrow-left' className='scroller-arrows'/>
-          <TiChevronRightOutline id='arrow-right' className='scroller-arrows'/>
+          <TiChevronLeftOutline style={{visibility: this.state.visibility}}
+          id='arrow-left' className='scroller-arrows'/>
+          <TiChevronRightOutline style={{visibility: this.state.visibility}}
+          id='arrow-right' className='scroller-arrows'/>
         </>
     )
   }
