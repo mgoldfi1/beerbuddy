@@ -7,7 +7,8 @@ class BreweryBeers extends Component {
 
   state = {
     center: 0,
-    offset: 0
+    offset: 0,
+    scroller: 0
   }
 
   // componentWillMount(){
@@ -43,30 +44,41 @@ class BreweryBeers extends Component {
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].children[0].children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
+    let scroller = event.currentTarget.children[0]
+    this.interval = setInterval(() => scroller.scrollBy(this.state.scroller,0), 50)
     if (this.state.divWidth !== divWidth) {
       this.setState({center: (divWidth/2), offset: linkWidth})
+    } else {
+
     }
+    // scroller.scrollBy(10, 0)
+  }
+
+  handleMouseLeave = () => {
+    clearInterval(this.interval)
   }
 
   handleMouseMove = (event) => {
-    let coord = event.clientX
-    let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
-    console.log(centerRange, coord)
-    if (coord <= centerRange[0]){
-      console.log('left')
-    } else if (coord >= centerRange[1]) {
-      console.log('right')
-    } else {
-      console.log('centered')
-    }
+  //   let coord = event.clientX
+  //   let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
+  //   // console.log(centerRange, coord)
+  //   if (coord <= centerRange[0]){
+  //       event.currentTarget.children[0].scrollBy(-10, 0)
+  //   } else if (coord >= centerRange[1]) {
+  //       event.currentTarget.children[0].scrollBy(10, 0)
+  //   } else {
+  //     console.log('centered')
+  //   }
   }
 
 render(){
+  console.log(this.state)
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
         <div style={{height: '300px'}}
         onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         onMouseMove={this.handleMouseMove}
         >
           <HorizontalScroll >
