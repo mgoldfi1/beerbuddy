@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
 import MapBeers from './mapBeers'
-import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
+import ScrollerArrows from './scrollerArrows'
 
 class BreweryBeers extends Component {
 
@@ -10,7 +10,8 @@ class BreweryBeers extends Component {
     center: 0,
     offset: 0,
     scroller: 0,
-    visibility: 'hidden'
+    visibility: 'hidden',
+    activate: ''
   }
 
   handleMouseEnter = (event) => {
@@ -34,11 +35,11 @@ class BreweryBeers extends Component {
     let coord = event.clientX
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * 0.1})
+        this.setState({scroller: (coord - centerRange[0]) * 0.1, activate: 'left'})
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * 0.1})
+        this.setState({scroller: (coord - centerRange[1]) * 0.1, activate: 'right'})
     } else {
-      this.setState({scroller: 0})
+      this.setState({scroller: 0, activate: ''})
     }
   }
 
@@ -56,10 +57,7 @@ render(){
             <MapBeers beers={this.props.beers}/>
           </HorizontalScroll>
         </div>
-          <TiChevronLeftOutline style={{visibility: this.state.visibility}}
-          id='arrow-left' className='scroller-arrows'/>
-          <TiChevronRightOutline style={{visibility: this.state.visibility}}
-          id='arrow-right' className='scroller-arrows'/>
+        <ScrollerArrows visibility={this.state.visibility} activate={this.state.activate}/>
         </>
     )
   }

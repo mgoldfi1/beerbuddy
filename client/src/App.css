@@ -38,7 +38,7 @@
 
 .scroller-arrows {
   position: absolute;
-  bottom: 50%;
+  top: 50%;
   display: inline-block;
   width: auto;
   height: 40px;
