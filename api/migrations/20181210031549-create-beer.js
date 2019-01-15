@@ -12,6 +12,12 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      ratingCount: {
+        type: Sequelize.INTEGER
+      },
+      ratingAvg: {
+        type: Sequelize.FLOAT
+      },
       abv: {
         type: Sequelize.FLOAT
       },
