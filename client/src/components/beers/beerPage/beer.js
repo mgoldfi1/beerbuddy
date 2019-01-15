@@ -8,6 +8,7 @@ import BeerTitle from './beerTitle'
 import BeerMisc from './beerMisc'
 import BeerBlurb from './beerBlurb'
 import '../../../css/beer.css'
+import { connect } from 'react-redux';
 
 const Beer = (props) => {
   const beer = props.data;
@@ -15,7 +16,7 @@ const Beer = (props) => {
       !!beer ? (
           <Grid>
             <BeerTitle name={beer.name} colLength={12}/>
-            <BeerMisc desc={beer.desc} colLength={6}/>
+            <BeerMisc user={props.user} ratings={beer.ratingCount} avg={beer.ratingAvg} desc={beer.desc} colLength={6}/>
             <BeerBlurb {...beer} colLength={6}/>
             <Cell className='similar-beers' col={12}>
                 <strong>Beers With A Similar Style</strong>
@@ -25,4 +26,10 @@ const Beer = (props) => {
   );
 };
 
-export default Beer
+const mapStateToProps = (state) => {
+    return {
+      user: state.user.user
+    }
+  }
+
+export default connect(mapStateToProps)(Beer)
