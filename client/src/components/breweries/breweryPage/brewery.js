@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Grid, Cell } from 'react-mdl';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 import BreweryPanel from './breweryPanel'
 import PageTitle from '../../pageTitle'
-import PropTypes from 'prop-types'
+import BreweryBeers from './breweryBeers'
 import '../../../css/brewery.css'
 
 
@@ -28,10 +29,7 @@ const Brewery = (props) => {
               />
             </Cell>
             <Cell col={12}>
-              <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
-                {brewery.Beers.map(beer => {
-                    return <div style={{display: "inline"}}><Link target="_blank" to={"/beer/" + beer.id}><img className="brewery-beers" src={beer.label}/></Link></div>
-                })}
+            <BreweryBeers beers={brewery.beers}/>
             </Cell>
           </Grid>
       ) : null
