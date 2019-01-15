@@ -7,7 +7,9 @@ const selectChoices = [1,2,3,4,5]
 
 export default class RatingSelect extends Component {
     state = {
-        value: ''
+        value: '',
+        userId: this.props.user.id,
+        beerId: this.props.beerId
     }
 
     sendRating = () => {
