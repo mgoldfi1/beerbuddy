@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import BeerTitle from './beerTitle'
 import '../../../css/beer.css'
+import { connect } from 'react-redux';
 
 const Beer = (props) => {
   const beer = props.data;
