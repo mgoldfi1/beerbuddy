@@ -37,5 +37,10 @@ module.exports = () => {
         res.send(beer)
       });
 
+
+      router.post('/rating', async(req, res, next) => {
+        console.log(req.body)
+      })
+
     return router;
 };

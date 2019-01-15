@@ -9,6 +9,18 @@ export default class RatingSelect extends Component {
     state = {
         value: ''
     }
+
+    sendRating = () => {
+        fetch('/api/beer/rating', {method: 'post',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.state)
+        }
+        )
+        .then(res => res.json())
+        .then(rating => console.log(rating))
+    }
     
 
     render() {
@@ -32,7 +44,7 @@ export default class RatingSelect extends Component {
             ))}
           </TextField>
           <div>
-          <Button  variant="contained" color="primary" size="small">
+          <Button onClick={this.sendRating} variant="contained" color="primary" size="small">
           Go
           </Button>
           </div>
