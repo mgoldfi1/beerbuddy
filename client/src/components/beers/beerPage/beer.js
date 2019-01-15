@@ -5,8 +5,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import BeerTitle from './beerTitle'
+import BeerMisc from './beerMisc'
 import '../../../css/beer.css'
-import { connect } from 'react-redux';
 
 const Beer = (props) => {
   const beer = props.data;
@@ -14,16 +14,7 @@ const Beer = (props) => {
       !!beer ? (
           <Grid>
             <BeerTitle name={beer.name} colLength={12}/>
-            <Cell col={6}>
-              <p>
-                <strong>Description:</strong>
-                <br />
-                {beer.desc}
-              </p>
-                <strong>Reviews for this beer: 0</strong>
-                <br/>
-                <strong>Ratings for this beer: 0</strong>
-            </Cell>
+            <BeerMisc desc={beer.desc} colLength={6}/>
             <Cell className="beer-blurb" col={6}>
               <img className="beer-page-pic" src={beer.label} />
               <div className="beer-page-info">
