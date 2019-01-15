@@ -5,6 +5,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+
 
 const Beer = (props) => {
   const beer = props.data;
@@ -71,4 +73,10 @@ const Beer = (props) => {
   );
 };
 
-export default Beer
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user
+  }
+}
+
+export default connect(mapStateToProps)(Beer)
