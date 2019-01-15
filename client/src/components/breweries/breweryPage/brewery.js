@@ -19,44 +19,23 @@ const Brewery = (props) => {
           <Grid>
             <PageTitle title={brewery.name} colLength={12}/>
             <div style={{width: '100vw', height: '10vh'}}/>
-            <Cell col={6}>
-            <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
-            <BreweryPanel details='NUNYA' summary='Description'/>
-            <ExpansionPanel>
-                <ExpansionPanelSummary >
-                <Typography style={{fontSize: '16px'}} ><strong>Founded In</strong></Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                <Typography style={{fontSize: '14px'}}>
-            {brewery.year}
-            </Typography>
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary >
-                <Typography style={{fontSize: '16px'}} ><strong>Brewery Website</strong></Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                <Typography style={{fontSize: '14px'}}>
-            <a href={brewery.website} target="_blank">{brewery.website}</a>
-            </Typography>
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary >
-                <Typography style={{fontSize: '16px'}}><strong>Open to the public?</strong></Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                <Typography style={{fontSize: '14px'}}>
-            {brewery.openToPublic === "Y" ? "Yes":"No"}
-            </Typography>
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
-            </Cell>
+              <Cell col={6}>
+                <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
+                <BreweryPanel details={brewery.description} summary='Description'/>
+                <BreweryPanel details={brewery.year} summary='Founded In'/>
+                <BreweryPanel
+                  details={<a href={brewery.website} target="_blank"> {brewery.website}</a>}
+                  summary='Brewery Website'
+                 />
+                <BreweryPanel
+                  details={brewery.openToPublic === "Y" ? "Yes":"No"}
+                  summary='Open to the Public?'
+                />
+              </Cell>
             <Cell col={12}>
             <div style={{fontSize: '16px'}}><strong>Beers made by this brewery:</strong></div>
                 {brewery.Beers.map(beer => {
-                    return <div style={{display: "inline"}}><Link to={"/beer/" + beer.id}><img className="brewery-beers" src={beer.label}/></Link></div>
+                    return <div style={{display: "inline"}}><Link target="_blank" to={"/beer/" + beer.id}><img className="brewery-beers" src={beer.label}/></Link></div>
                 })}
             </Cell>
           </Grid>
