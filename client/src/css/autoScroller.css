@@ -16,6 +16,10 @@
   height: 40px;
 }
 
+.scroller-arrows-hidden {
+  visibility: hidden;
+}
+
 #arrow-right {
   right: 0;
 }
