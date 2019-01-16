@@ -37,7 +37,8 @@ import '../../../css/beer.css'
                         Brewed By: {beer.brewery.name}
                     </Typography>
                     </CardContent>
-                    <div>
+                    </CardActionArea>
+                    <div className="star-div">
                     <StarRatings
                         rating={beer.ratingAvg}
                         numberOfStars={5}
@@ -47,7 +48,6 @@ import '../../../css/beer.css'
                         starRatedColor="rgb(255, 204, 0)"
                         />
                         </div>
-                    </CardActionArea>
                   </Card>
                 </Link>
               </Cell>

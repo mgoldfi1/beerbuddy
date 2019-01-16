@@ -15,6 +15,7 @@ export default class RatingSelect extends Component {
     }
 
     sendRating = () => {
+        if (this.state.value) {
         fetch('/api/beer/rating', {method: 'post',
         headers: {
             "Content-Type": "application/json"
@@ -31,11 +32,13 @@ export default class RatingSelect extends Component {
             }
         }
         )
+        } else {
+            this.setState({err: 'Please choose a value before submitting.'})
+        }
     }
     
 
     render() {
-        {console.log(this.state.value)}
         return (
             <div>
             <strong> Leave a rating for this beer: </strong>
@@ -59,7 +62,7 @@ export default class RatingSelect extends Component {
           Go
           </Button>
           <div>
-              {this.state.err || this.state.msg}
+              {this.state.msg || this.state.err}
           </div>
           </div>
           </div>
