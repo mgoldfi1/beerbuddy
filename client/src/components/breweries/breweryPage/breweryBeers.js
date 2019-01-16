@@ -13,11 +13,9 @@ render(){
     return (
         <>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
-        <div className="scroller-container">
           <AutoScroller>
             <MapBeers beers={this.props.beers}/>
           </AutoScroller>
-        </div>
         </>
     )
   }
