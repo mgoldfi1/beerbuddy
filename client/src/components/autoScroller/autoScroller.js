@@ -11,15 +11,14 @@ class AutoScroller extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('timeout start')
     setTimeout(() => this.checkCounter(prevState), 500)
 }
 
   checkCounter = (prevState) => {
     if (this.state.counter === prevState.counter && this.state.counter !== 0){
-        clearInterval(this.interval)
+        this.eraseInterval()
+        console.log('interval cleared', this.interval)
         this.setState({counter: 0})
-        console.log('cleared')
     }
   }
 
@@ -31,24 +30,35 @@ class AutoScroller extends Component {
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
-    let scroller = event.currentTarget
-    this.interval = setInterval( () =>  this.scrollLogger(scroller), 50)
     if (this.state.divWidth !== divWidth) {
       this.setState({center: (divWidth/2), offset: (linkWidth)})
     }
   }
 
   handleMouseLeave = () => {
+    this.eraseInterval()
+  }
+
+  eraseInterval = () => {
     clearInterval(this.interval)
+    this.interval = undefined
+  }
+
+  checkOrSetInterval = (event) => {
+    let scroller = event.currentTarget
+    if (!this.interval) {
+      console.log(this.interval)
+      this.interval = setInterval( () =>  this.scrollLogger(scroller), 30)
+    }
   }
 
   handleMouseMove = (event) => {
     let coord = event.clientX
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * 0.1})
+        this.setState({scroller: (coord - centerRange[0]) * 0.1}, this.checkOrSetInterval(event))
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * 0.1})
+        this.setState({scroller: (coord - centerRange[1]) * 0.1}, this.checkOrSetInterval(event))
     } else {
       this.setState({scroller: 0})
     }
@@ -64,7 +74,7 @@ class AutoScroller extends Component {
   }
 
     render() {
-      console.log(this.state.counter)
+      // console.log(this.state.scroller)
         return (
           <div className='auto-scroller-container'>
           <div className='auto-scroller'
