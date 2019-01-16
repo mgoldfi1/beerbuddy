@@ -55,7 +55,13 @@ module.exports = () => {
 
       router.post('/favorite', async(req, res, next) => {
         console.log(req.body)
-        res.send("closed loop")
+        const favorite = await models.BeerFavorites.findOne({where: {beerId: req.body.beerId, userId: req.body.userId}})
+        if (favorite) {
+          res.status(500).send({err: "This beer is already in your favorites."})
+        } else {
+          const favorite = await models.BeerFavorites.create({beerId: req.body.beerId, userId: req.body.userId})
+          res.status(200).send({message: "Added to favorites."})
+        }
       })
 
     return router;
