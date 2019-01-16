@@ -2,7 +2,6 @@ import React from 'react';
 import { Cell } from 'react-mdl';
 import TextField from '@material-ui/core/TextField';
 import RatingSelect from './ratingSelect'
-import FavoriteButton from './favoriteButton'
 const BeerMisc = ({user, beerId, colLength, desc, ratings, avg}) => {
 
 
@@ -11,7 +10,6 @@ const ratingInput = () => {
    return (
     <React.Fragment>
     <RatingSelect user={user} beerId={beerId}/>
-    <FavoriteButton user={user} beerId={beerId}/>
     </React.Fragment>
    )
  }

@@ -9,6 +9,7 @@ import BeerMisc from './beerMisc'
 import BeerBlurb from './beerBlurb'
 import '../../../css/beer.css'
 import { connect } from 'react-redux';
+import FavoriteButton from './favoriteButton'
 
 const Beer = (props) => {
   const beer = props.data;
@@ -16,6 +17,7 @@ const Beer = (props) => {
       !!beer ? (
           <Grid>
             <PageTitle title={beer.name} colLength={12}/>
+            <Cell col={12}><FavoriteButton user={props.user} beerId={beer.id}/></Cell>
             <BeerMisc user={props.user} beerId={beer.id} ratings={beer.ratingCount} avg={beer.ratingAvg} desc={beer.desc} colLength={6}/>
             <BeerBlurb {...beer} colLength={6}/>
             <Cell className='similar-beers' col={12}>

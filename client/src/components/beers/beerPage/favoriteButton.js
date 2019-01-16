@@ -7,7 +7,7 @@ export default class FavoriteButton extends Component {
 
     render() {
         return (
-            <Button variant="outlined" color="secondary" size="large">Hello</Button>
+            <Button variant="outlined" color="secondary" size="large">Favorite</Button>
         )
     }
 }
