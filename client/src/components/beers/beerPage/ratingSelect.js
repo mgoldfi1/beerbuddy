@@ -7,12 +7,38 @@ const selectChoices = [1,2,3,4,5]
 
 export default class RatingSelect extends Component {
     state = {
-        value: ''
+        value: '',
+        userId: this.props.user.id,
+        beerId: this.props.beerId,
+        err: '',
+        msg: ''
+    }
+
+    sendRating = () => {
+        if (this.state.value) {
+        fetch('/api/beer/rating', {method: 'post',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.state)
+        }
+        )
+        .then(res => res.json())
+        .then(rating => {
+            if (rating.err) {
+                this.setState({err: rating.err})
+            } else {
+                this.setState({msg: rating.message})
+            }
+        }
+        )
+        } else {
+            this.setState({err: 'Please choose a value before submitting.'})
+        }
     }
     
 
     render() {
-        {console.log(this.state.value)}
         return (
             <div>
             <strong> Leave a rating for this beer: </strong>
@@ -32,9 +58,12 @@ export default class RatingSelect extends Component {
             ))}
           </TextField>
           <div>
-          <Button  variant="contained" color="primary" size="small">
+          <Button onClick={this.sendRating} variant="contained" color="primary" size="small">
           Go
           </Button>
+          <div>
+              {this.state.msg || this.state.err}
+          </div>
           </div>
           </div>
         )

@@ -16,7 +16,7 @@ const Beer = (props) => {
       !!beer ? (
           <Grid>
             <PageTitle title={beer.name} colLength={12}/>
-            <BeerMisc user={props.user} ratings={beer.ratingCount} avg={beer.ratingAvg} desc={beer.desc} colLength={6}/>
+            <BeerMisc user={props.user} beerId={beer.id} ratings={beer.ratingCount} avg={beer.ratingAvg} desc={beer.desc} colLength={6}/>
             <BeerBlurb {...beer} colLength={6}/>
             <Cell className='similar-beers' col={12}>
                 <strong>Beers With A Similar Style</strong>
