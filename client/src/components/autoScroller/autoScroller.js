@@ -19,6 +19,8 @@ class AutoScroller extends Component {
     componentDidUpdate(prevProps, prevState){
       if (this.state.direction !== null && this.state.direction !== prevState.direction) {
         this.setState({className: defaultEnterState.className + ` ${this.state.direction}`})
+      } else if (this.state.direction === null && this.state.direction !== prevState.direction) {
+          this.setState(defaultEnterState)
       }
     }
 
