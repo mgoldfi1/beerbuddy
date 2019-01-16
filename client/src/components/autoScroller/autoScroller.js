@@ -11,11 +11,17 @@ class AutoScroller extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-      if (this.state.counter === prevState.counter && this.state.counter !== 0){
+    console.log('timeout start')
+    setTimeout(() => this.checkCounter(prevState), 500)
+}
+
+  checkCounter = (prevState) => {
+    if (this.state.counter === prevState.counter && this.state.counter !== 0){
         clearInterval(this.interval)
         this.setState({counter: 0})
-      }
-}
+        console.log('cleared')
+    }
+  }
 
 
   scrollLogger = (scroller) => {
@@ -52,6 +58,9 @@ class AutoScroller extends Component {
     this.setState((prevState) => {
      return { counter: prevState.counter + 1 }
    })
+   setTimeout(() => this.setState((prevState) => {
+    return { counter: prevState.counter}
+  }), 500)
   }
 
     render() {
