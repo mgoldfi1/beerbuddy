@@ -53,5 +53,10 @@ module.exports = () => {
         } 
       })
 
+      router.post('/favorite', async(req, res, next) => {
+        console.log(req.body)
+        res.send("closed loop")
+      })
+
     return router;
 };
