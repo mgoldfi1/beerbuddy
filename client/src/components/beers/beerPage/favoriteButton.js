@@ -28,7 +28,6 @@ export default class FavoriteButton extends Component {
 
 
     render() {
-        {console.log(this.state.err)}
         return (
             <React.Fragment>
             <Button variant="outlined" color="secondary" size="large" onClick={this.sendFavorite}>Favorite</Button>
