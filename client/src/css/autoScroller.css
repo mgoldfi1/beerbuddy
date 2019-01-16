@@ -1,9 +1,9 @@
-.auto-scroller-container > {
-  display: inline ;
-}
-
-.auto-scroller-container {
+.auto-scroller {
   overflow: hidden;
    height: inherit;
    white-space: nowrap;
+}
+
+.auto-scroller *:hover {
+  transform: scale(1.2);
 }

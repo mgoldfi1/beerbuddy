@@ -7,18 +7,28 @@ class AutoScroller extends Component {
     center: 0,
     offset: 0,
     scroller: 0,
-    visibility: 'hidden',
-    activate: ''
+    counter: 0
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+      if (this.state.counter === prevState.counter && this.state.counter !== 0){
+        clearInterval(this.interval)
+        this.setState({counter: 0})
+      }
+}
+
+
+  scrollLogger = (scroller) => {
+    scroller.scrollBy(this.state.scroller, 0)
   }
 
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     let scroller = event.currentTarget
-    this.interval = setInterval(() => scroller.scrollBy(this.state.scroller, 0, 'smooth'), 50)
+    this.interval = setInterval( () =>  this.scrollLogger(scroller), 50)
     if (this.state.divWidth !== divWidth) {
       this.setState({center: (divWidth/2), offset: (linkWidth)})
-    } else {
     }
   }
 
@@ -38,14 +48,24 @@ class AutoScroller extends Component {
     }
   }
 
+  handleScroll = (event) => {
+    this.setState((prevState) => {
+     return { counter: prevState.counter + 1 }
+   })
+  }
+
     render() {
+      console.log(this.state.counter)
         return (
-          <div className='auto-scroller-container'
+          <div className='auto-scroller-container'>
+          <div className='auto-scroller'
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onMouseMove={this.handleMouseMove}
+          onScroll={this.handleScroll}
           >
             {this.props.children}
+          </div>
           </div>
         )
     }
