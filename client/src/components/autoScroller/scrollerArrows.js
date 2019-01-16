@@ -4,7 +4,6 @@ import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
 class ScrollerArrows extends Component {
 
   render(){
-    console.log(this.props.className)
       return (
           <>
             <TiChevronLeftOutline

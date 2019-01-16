@@ -43,7 +43,6 @@ class AutoScrollerChild extends Component {
     if (this.interval) {
       clearInterval(this.interval)
       this.interval = undefined
-      console.log('interval cleared')
     }
   }
 
@@ -51,19 +50,24 @@ class AutoScrollerChild extends Component {
     let scroller = event.currentTarget
     if (!this.interval) {
       this.interval = setInterval( () =>  this.scrollLogger(scroller), 30)
-      console.log('set interval')
     }
+  }
+
+  handleStateCallBack = (event) => {
+    this.checkOrSetInterval(event)
+    this.props.updateDirection(this.state.scroller > 0 ? 'right' : 'left')
   }
 
   handleMouseMove = (event) => {
     let coord = event.clientX
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * 0.1}, this.checkOrSetInterval(event))
+        this.setState({scroller: (coord - centerRange[0]) * 0.1}, this.handleStateCallBack(event))
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * 0.1}, this.checkOrSetInterval(event))
+        this.setState({scroller: (coord - centerRange[1]) * 0.1}, this.handleStateCallBack(event))
     } else {
       this.setState({scroller: 0})
+      this.props.updateDirection(null)
     }
   }
 
