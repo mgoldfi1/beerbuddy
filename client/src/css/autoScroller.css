@@ -1,0 +1,9 @@
+.auto-scroller-container > {
+  display: inline ;
+}
+
+.auto-scroller-container {
+  overflow: hidden;
+   height: inherit;
+   white-space: nowrap;
+}

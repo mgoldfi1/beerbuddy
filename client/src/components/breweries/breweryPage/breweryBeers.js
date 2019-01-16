@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
 import MapBeers from './mapBeers'
 import ScrollerArrows from './scrollerArrows'
+import AutoScroller from '../../autoScroller/autoScroller'
 
 class BreweryBeers extends Component {
 
@@ -53,11 +54,10 @@ render(){
         onMouseLeave={this.handleMouseLeave}
         onMouseMove={this.handleMouseMove}
         >
-          <HorizontalScroll>
+          <AutoScroller>
             <MapBeers beers={this.props.beers}/>
-          </HorizontalScroll>
+          </AutoScroller>
         </div>
-        <ScrollerArrows visibility={this.state.visibility} activate={this.state.activate}/>
         </>
     )
   }
@@ -68,5 +68,6 @@ BreweryBeers.propTypes = {
 }
 
     // <div style={{display: "inline"}}>
+    // <ScrollerArrows visibility={this.state.visibility} activate={this.state.activate}/>
 
 export default BreweryBeers
