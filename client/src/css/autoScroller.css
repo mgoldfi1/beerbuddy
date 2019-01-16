@@ -7,3 +7,19 @@
 .auto-scroller *:hover {
   transform: scale(1.2);
 }
+
+.scroller-arrows {
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: auto;
+  height: 40px;
+}
+
+#arrow-right {
+  right: 0;
+}
+
+#arrow-left {
+  left: 0;
+}

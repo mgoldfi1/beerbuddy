@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
 import MapBeers from './mapBeers'
-import ScrollerArrows from './scrollerArrows'
 import AutoScroller from '../../autoScroller/autoScroller'
 
 class BreweryBeers extends Component {
