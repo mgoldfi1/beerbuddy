@@ -55,7 +55,7 @@ class AutoScrollerChild extends Component {
 
   handleStateCallBack = (event) => {
     this.checkOrSetInterval(event)
-    this.props.updateDirection(this.state.scroller > 0 ? 'right' : 'left')
+    this.props.updateDirection(this.state.scroller > 0 ? `right` : `left`)
   }
 
   handleMouseMove = (event) => {

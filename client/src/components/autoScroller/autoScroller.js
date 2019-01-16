@@ -8,12 +8,22 @@ const initialState =  {
   direction: null
 }
 
+const defaultEnterState = {
+  className: `scroller-arrows`
+}
+
 class AutoScroller extends Component {
 
     state = initialState
 
+    componentDidUpdate(prevProps, prevState){
+      if (this.state.direction !== null && this.state.direction !== prevState.direction) {
+        this.setState({className: defaultEnterState.className + ` ${this.state.direction}`})
+      }
+    }
+
     handleMouseEnter = () => {
-      this.setState({className: `scroller-arrows`})
+      this.setState(defaultEnterState)
     }
 
     handleMouseLeave = () => {
@@ -28,7 +38,6 @@ class AutoScroller extends Component {
 
 
     render() {
-        console.log(this.state.direction)
         return (
           <div className='auto-scroller-container'
           onMouseEnter={this.handleMouseEnter}
