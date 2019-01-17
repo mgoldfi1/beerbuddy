@@ -38,7 +38,6 @@ class AutoScroller extends Component {
     }
 
     render() {
-      console.log(this.state.scroll)
         return (
           <div className='auto-scroller-container'>
             <AutoScrollerChild
