@@ -4,6 +4,9 @@
    white-space: nowrap;
 }
 
+.auto-scroller-container {
+  height: auto;
+}
 .auto-scroller *:hover {
   transform: scale(1.2);
 }
@@ -34,5 +37,13 @@
 }
 
 .scroller-arrows.left:first-of-type {
-  transform: scale(1.3);  
+  transform: scale(1.3);
+}
+
+.scroller-arrows.right.hide:last-of-type {
+  visibility: hidden;
+}
+
+.scroller-arrows.left.hide:first-of-type {
+  visibility: hidden;
 }

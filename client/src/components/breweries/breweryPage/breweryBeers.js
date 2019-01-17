@@ -6,8 +6,6 @@ import AutoScroller from '../../autoScroller/autoScroller'
 
 class BreweryBeers extends Component {
 
-
-
 render(){
     return (
         <>

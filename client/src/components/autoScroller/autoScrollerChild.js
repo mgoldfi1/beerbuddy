@@ -12,13 +12,13 @@ class AutoScrollerChild extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    setTimeout(() => this.checkCounter(prevState), 500)
+    setTimeout(() => this.checkCounter(prevState), 200)
 }
 
   checkCounter = (prevState) => {
     if (this.state.counter === prevState.counter && this.state.counter !== 0){
         this.eraseInterval()
-        this.setState({counter: 0})
+        this.setState({counter: 0}, this.props.updateCounter(0))
     }
   }
 
@@ -55,7 +55,7 @@ class AutoScrollerChild extends Component {
 
   handleStateCallBack = (event) => {
     this.checkOrSetInterval(event)
-    this.props.updateDirection(this.state.scroller > 0 ? `right` : `left`)
+    this.props.updateScroller(this.state.scroller)
   }
 
   handleMouseMove = (event) => {
@@ -66,8 +66,7 @@ class AutoScrollerChild extends Component {
     } else if (coord >= centerRange[1]) {
         this.setState({scroller: (coord - centerRange[1]) * 0.1}, this.handleStateCallBack(event))
     } else {
-      this.setState({scroller: 0})
-      this.props.updateDirection(null)
+      this.setState({scroller: 0}, this.props.updateScroller(0))
     }
   }
 
