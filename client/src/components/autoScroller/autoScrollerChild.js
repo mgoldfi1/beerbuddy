@@ -23,7 +23,7 @@ class AutoScrollerChild extends Component {
     let linkWidth = event.currentTarget.children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     if (this.state.divWidth !== divWidth) {
-      this.setState({center: (divWidth/2), offset: (linkWidth)})
+      this.setState({center: (divWidth/2), offset: (linkWidth/2)})
     }
       this.props.handleMouseEnter(event, divWidth)
   }
@@ -78,6 +78,7 @@ class AutoScrollerChild extends Component {
   }
 
     render() {
+      console.log('child scroll value', this.state.scroll)
       console.log(this.state.scroller)
         return (
           <div className='auto-scroller'

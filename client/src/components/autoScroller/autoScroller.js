@@ -18,14 +18,14 @@ class AutoScroller extends Component {
     state = initialState
 
     handleMouseEnter = (event, divWidth) => {
-      // let lastEl = event.currentTarget.lastChild
-      // let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
-      // console.log('total width', totalWidth, 'div width', divWidth)
-      // let clear = totalWidth - divWidth > 0 ? true : false
-      // console.log(clear)
-      // if (this.state.clear || clear) {
+      let lastEl = event.currentTarget.lastChild
+      let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
+      console.log('total width', totalWidth, 'div width', divWidth)
+      let clear = totalWidth - divWidth > 0 ? true : false
+      console.log(clear)
+      if (this.state.clear || clear) {
         this.setState(defaultEnterState)
-      // }
+      }
     }
 
     handleMouseLeave = () => {
@@ -55,7 +55,9 @@ class AutoScroller extends Component {
             >
               {this.props.children}
             </AutoScrollerChild>
-            <ScrollerArrows {...this.state}/>
+            {this.state.clear ?
+              <ScrollerArrows {...this.state}/> : null
+          }
           </div>
         )
     }
