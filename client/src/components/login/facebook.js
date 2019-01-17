@@ -1,10 +1,13 @@
 import FacebookLogin from 'react-facebook-login'
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { logIn } from '../../actions/logIn';
 
 
-export default class Facebook extends Component {
+ class Facebook extends Component {
 
     responseFacebook = (response) => {
+        if (response.name) {
         fetch('/api/users/facebook/login',
         {method: 'post',
         headers: {
@@ -13,23 +16,23 @@ export default class Facebook extends Component {
             body: JSON.stringify(response)
         }
         )
-  
+        .then(res => res.json())
+        .then(user => this.props.logIn(user.user))
+        }
     }
 
-    componentClicked = () => {
-        console.log("clicked")
-    }
+   
 
     render() {
         return (
             <FacebookLogin
             appId="552435025257967"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
-            onClick={this.componentClicked}
             callback={this.responseFacebook} />
         )
     }
 }
 
-    
+
+    export default connect(null, { logIn} )(Facebook)

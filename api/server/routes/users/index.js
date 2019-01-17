@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const User = require('../../../models/user')
 const passport = require('passport')
+const axios = require('axios')
 
 module.exports = () => {
     router.post('/registration', async (req, res, next) => { 
@@ -48,8 +49,14 @@ module.exports = () => {
 
     //Facebook Login
 
-    router.post('/facebook/login', (req, res) => {
-        console.log(req.body)
+    router.post('/facebook/login', async (req, res) => {
+        const user = await models.User.findOne({where: {email: req.body.email}})
+        axios.get(`https://graph.facebook.com/debug_token?input_token=${req.body.accessToken}&access_token=552435025257967|T8Fi5uP5c06-BGnu30BTY8fqxAE`)
+        .then( async response => {if (response.data.data.is_valid == true){
+            models.User.update({password: req.body.accessToken}, {where: {id: user.id}})
+            const updatedUser = await models.User.findOne({where: {email: req.body.email}})
+            res.send({user: updatedUser})
+        }})
     })
 
     return router;
