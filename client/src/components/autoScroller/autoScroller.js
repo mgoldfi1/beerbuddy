@@ -23,7 +23,11 @@ class AutoScroller extends Component {
     }
 
     handleMouseLeave = () => {
-      setTimeout(() => this.setState(initialState), 66)
+      setTimeout(() => this.setState({
+        scroller: initialState.scroller,
+        scroll: initialState.scroll,
+        entered: initialState.entered
+      }), 66)
     }
 
     updateScroller = (scroller) => {
