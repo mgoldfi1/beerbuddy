@@ -39,7 +39,6 @@ class ScrollerArrows extends Component {
   }
 
   render(){
-    console.log(this.props.counter)
       return (
           <>
             <TiChevronLeft

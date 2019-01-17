@@ -19,7 +19,6 @@ class AutoScroller extends Component {
 
     componentDidUpdate(prevProps, prevState){
       if ((this.state.scroller == 0 || this.state.scroller === null) && this.state.scroller !== prevState.scroller) {
-        console.log('here')
         this.setState({counter: null})
       }
     }
