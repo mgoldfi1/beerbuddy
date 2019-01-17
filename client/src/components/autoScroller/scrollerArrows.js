@@ -10,7 +10,7 @@ class ScrollerArrows extends Component {
 
   componentDidUpdate(prevProps){
     if (prevProps !== this.props){
-      this.setState({direction: this.setDirection()})
+      this.setState({direction: this.setDirection(), visibility: this.setVisibility()})
     }
   }
 
@@ -24,15 +24,13 @@ class ScrollerArrows extends Component {
     }
   }
 
-  // setVisibility = () => {
-  //   if(this.props.counter === 0 && (this.props.scroller > 0 || this.props.scroller < 0)){
-  //     return `hide`
-  //   } else if (this.props.counter === null && this.props.scroller < 0) {
-  //     return 'hide'
-  //   } else {
-  //     return ``
-  //   }
-  // }
+  setVisibility = () => {
+    if(!this.props.scroll && (this.props.scroller > 0 || this.props.scroller < 0)){
+      return `hide`
+    } else {
+      return ``
+    }
+  }
 
   concatClassNames = () => {
     return this.props.className + ` ` + this.state.direction + ` ` + this.state.visibility

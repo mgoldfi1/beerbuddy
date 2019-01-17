@@ -6,7 +6,7 @@ import '../../css/autoScroller.css'
 const initialState =  {
   className: `scroller-arrows-hidden`,
   scroller: null,
-  counter: null
+  scroll: false
 }
 
 const defaultEnterState = {
@@ -17,34 +17,11 @@ class AutoScroller extends Component {
 
     state = initialState
 
-    componentDidUpdate(prevProps, prevState){
-      if ((this.state.scroller == 0 || this.state.scroller === null) && this.state.scroller !== prevState.scroller) {
-        this.setState({counter: null})
-      }
-    }
-
-    // handleHideArrow = (prevProps, prevState) => {
-    //   if (this.state.counter === 0 && this.state.counter !== prevState.counter){
-    //     this.setState({className: this.state.className + ` hidden`})
-    //   }
-    // }
-    //
-    // handleDirection = (prevProps, prevState) => {
-    //   if (this.state.direction !== null && this.state.direction !== prevState.direction) {
-    //     this.setState({className: defaultEnterState.className + ` ${this.state.direction}`})
-    //   } else if (this.state.direction === null && this.state.direction !== prevState.direction) {
-    //       this.setState(defaultEnterState)
-    //   }
-    // }
-
-
     handleMouseEnter = () => {
-      // console.log('entered')
       this.setState(defaultEnterState)
     }
 
     handleMouseLeave = () => {
-      // console.log('left')
       this.setState(initialState)
     }
 
@@ -54,23 +31,21 @@ class AutoScroller extends Component {
       }
     }
 
-    updateCounter = (counter) => {
-      if (counter !== this.state.counter) {
-        this.setState({counter: counter})
+    updateScroll = (scroll) => {
+      if (scroll !== this.state.scroll) {
+        this.setState({scroll: scroll})
       }
     }
 
-
     render() {
+      console.log(this.state.scroll)
         return (
-          <div className='auto-scroller-container'
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          >
+          <div className='auto-scroller-container'>
             <AutoScrollerChild
+            handleMouseEnter={this.handleMouseEnter}
+            handleMouseLeave={this.handleMouseLeave}
+            updateScroll={this.updateScroll}
             updateScroller={this.updateScroller}
-            updateCounter={this.updateCounter}
-
             >
               {this.props.children}
             </AutoScrollerChild>
