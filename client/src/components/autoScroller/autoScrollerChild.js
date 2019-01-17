@@ -20,6 +20,7 @@ class AutoScrollerChild extends Component {
 }
 
   handleMouseEnter = (event) => {
+    this.props.handleMouseEnter()
     let linkWidth = event.currentTarget.children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     if (this.state.divWidth !== divWidth) {
@@ -28,6 +29,7 @@ class AutoScrollerChild extends Component {
   }
 
   handleMouseLeave = () => {
+     this.props.handleMouseLeave()
      this.eraseInterval()
   }
 
