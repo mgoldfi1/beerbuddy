@@ -1,34 +1,33 @@
 .auto-scroller {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: inline-block;
   width: 90%;
   height: 100%;
   white-space: nowrap;
-  border: 1px solid black;
 }
 
 .auto-scroller-container {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   text-align: center;
-  height: auto;
+  height: 200px;
   width: 100%;
 }
 .auto-scroller *:hover {
   transform: scale(1.2);
 }
 
+.auto-scroller :last-child :last-child:hover {
+  transform-origin: right;
+}
+
 .scroller-arrows {
   position: absolute;
   top: 50%;
-  display: inline-block;
-  width: auto;
-  height: 4vh;
+  width: 4.5%;
+  height: auto;
   color: #3F51B5;
-  border: 1px solid black;
-}
-
-.scroller-arrows-hidden {
-  visibility: hidden;
 }
 
 #arrow-right {

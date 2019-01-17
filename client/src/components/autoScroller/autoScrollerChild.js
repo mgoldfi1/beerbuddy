@@ -29,8 +29,8 @@ class AutoScrollerChild extends Component {
   }
 
   handleMouseLeave = () => {
-     this.props.handleMouseLeave()
      this.eraseInterval()
+     this.props.handleMouseLeave()
   }
 
     eraseInterval = () => {
@@ -72,14 +72,11 @@ class AutoScrollerChild extends Component {
     this.props.updateScroll(true)
     clearTimeout(this.timeoutID)
     this.timeoutID = setTimeout(() => this.setState((prevState) => {
-        console.log('scroll ended')
         return { scroll: false }
       }, () => this.props.updateScroll(false)), 66)
   }
 
     render() {
-      console.log('child scroll value', this.state.scroll)
-      console.log(this.state.scroller)
         return (
           <div className='auto-scroller'
           onMouseEnter={this.handleMouseEnter}
