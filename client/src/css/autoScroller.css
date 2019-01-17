@@ -1,9 +1,49 @@
-.auto-scroller-container > {
-  display: inline ;
-}
-
-.auto-scroller-container {
+.auto-scroller {
   overflow: hidden;
    height: inherit;
    white-space: nowrap;
+}
+
+.auto-scroller-container {
+  height: auto;
+}
+.auto-scroller *:hover {
+  transform: scale(1.2);
+}
+
+.scroller-arrows {
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: auto;
+  height: 40px;
+  color: #3F51B5;
+}
+
+.scroller-arrows-hidden {
+  visibility: hidden;
+}
+
+#arrow-right {
+  right: 0;
+}
+
+#arrow-left {
+  left: 0;
+}
+
+.scroller-arrows.right:last-of-type {
+  transform: scale(1.3);
+}
+
+.scroller-arrows.left:first-of-type {
+  transform: scale(1.3);
+}
+
+.scroller-arrows.right.hide:last-of-type {
+  visibility: hidden;
+}
+
+.scroller-arrows.left.hide:first-of-type {
+  visibility: hidden;
 }
