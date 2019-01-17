@@ -5,7 +5,15 @@ import React, { Component } from 'react'
 export default class Facebook extends Component {
 
     responseFacebook = (response) => {
-        console.log(response)
+        fetch('/api/users/facebook/login',
+        {method: 'post',
+        headers: {
+        "Content-Type": "application/json"
+                     },
+            body: JSON.stringify(response)
+        }
+        )
+  
     }
 
     componentClicked = () => {
