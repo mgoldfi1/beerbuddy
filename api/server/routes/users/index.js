@@ -46,6 +46,11 @@ module.exports = () => {
         res.send("DASHBOARD")
     })
 
+    //Facebook Login
+
+    router.post('/facebook/login', (req, res) => {
+        console.log(req.body)
+    })
 
     return router;
 

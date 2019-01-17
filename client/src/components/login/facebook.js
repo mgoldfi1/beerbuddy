@@ -4,6 +4,13 @@ import React, { Component } from 'react'
 
 export default class Facebook extends Component {
 
+    responseFacebook = (response) => {
+        console.log(response)
+    }
+
+    componentClicked = () => {
+        console.log("clicked")
+    }
 
     render() {
         return (
@@ -16,3 +23,5 @@ export default class Facebook extends Component {
         )
     }
 }
+
+    
