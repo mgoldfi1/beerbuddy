@@ -15,17 +15,11 @@ class AutoScrollerChild extends Component {
     setTimeout(() => this.checkCounter(prevState), 200)
 }
 
-  checkCounter = (prevState) => {
-    if (this.state.counter === prevState.counter && this.state.counter !== 0){
-        this.eraseInterval()
-        this.setState({counter: 0}, this.props.updateCounter(0))
+    checkCounter = (prevState) => {
+      if (this.state.counter === prevState.counter && this.state.counter !== 0){
+          this.eraseInterval()
+      }
     }
-  }
-
-
-  scrollLogger = (scroller) => {
-    scroller.scrollBy(this.state.scroller, 0)
-  }
 
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].offsetWidth
@@ -39,24 +33,25 @@ class AutoScrollerChild extends Component {
      this.eraseInterval()
   }
 
-  eraseInterval = () => {
-    if (this.interval) {
-      clearInterval(this.interval)
-      this.interval = undefined
+    eraseInterval = () => {
+      if (this.interval) {
+        clearInterval(this.interval)
+        this.interval = undefined
+        console.log('cleared interval')
+      }
     }
-  }
 
-  checkOrSetInterval = (event) => {
-    let scroller = event.currentTarget
-    if (!this.interval) {
-      this.interval = setInterval( () =>  this.scrollLogger(scroller), 30)
+    checkOrSetInterval = (event) => {
+      let scroller = event.currentTarget
+      if (!this.interval) {
+        this.interval = setInterval( () => scroller.scrollBy(this.state.scroller, 0), 30)
+      }
     }
-  }
 
-  handleStateCallBack = (event) => {
-    this.checkOrSetInterval(event)
-    this.props.updateScroller(this.state.scroller)
-  }
+    handleStateCallBack = (event) => {
+      this.checkOrSetInterval(event)
+      this.props.updateScroller(this.state.scroller)
+    }
 
   handleMouseMove = (event) => {
     let coord = event.clientX
@@ -72,14 +67,16 @@ class AutoScrollerChild extends Component {
 
   handleScroll = (event) => {
     this.setState((prevState) => {
-     return { counter: prevState.counter + 1 }
-   })
-   setTimeout(() => this.setState((prevState) => {
-    return { counter: prevState.counter}
-  }), 500)
+       return { counter: prevState.counter + 1 }
+    })
+    setTimeout(() => this.setState((prevState) => {
+        return { counter: prevState.counter }
+      }), 50)
   }
 
     render() {
+      console.log('counter', this.state.counter)
+      console.log('interval', this.interval)
         return (
           <div className='auto-scroller'
           onMouseEnter={this.handleMouseEnter}

@@ -5,7 +5,6 @@ class ScrollerArrows extends Component {
 
   state = {
     direction: ``,
-    visibility: ``
   }
 
   componentDidUpdate(prevProps){
@@ -24,18 +23,8 @@ class ScrollerArrows extends Component {
     }
   }
 
-  // setVisibility = () => {
-  //   if(this.props.counter === 0 && (this.props.scroller > 0 || this.props.scroller < 0)){
-  //     return `hide`
-  //   } else if (this.props.counter === null && this.props.scroller < 0) {
-  //     return 'hide'
-  //   } else {
-  //     return ``
-  //   }
-  // }
-
   concatClassNames = () => {
-    return this.props.className + ` ` + this.state.direction + ` ` + this.state.visibility
+    return this.props.className + ` ` + this.state.direction
   }
 
   render(){
