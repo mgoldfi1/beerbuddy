@@ -1,24 +1,19 @@
 .auto-scroller {
   overflow: hidden;
-   height: inherit;
-   white-space: nowrap;
+  width: 100%;
+  height: inherit;
+  white-space: nowrap;
+  border: 1px solid black;
 }
 
 .auto-scroller-container {
-  height: auto;
+    border: 1px solid black;
+  height: 200px;
+  width: 100%;
 }
-
 .auto-scroller *:hover {
   transform: scale(1.2);
 }
-
-.auto-scroller :last-child :last-child:hover {
-  transform-origin: right;
-}
-
-/* .auto-scroller:last-child *:hover{
-  transform: scale(1.9)
-} */
 
 .scroller-arrows {
   position: absolute;
@@ -27,6 +22,7 @@
   width: auto;
   height: 40px;
   color: #3F51B5;
+  border: 1px solid black;
 }
 
 .scroller-arrows-hidden {

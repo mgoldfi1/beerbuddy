@@ -4,14 +4,13 @@ import ScrollerArrows from './scrollerArrows'
 import '../../css/autoScroller.css'
 
 const initialState =  {
-  className: `scroller-arrows-hidden`,
   scroller: null,
   scroll: false,
-  clear: null
+  clear: false
 }
 
 const defaultEnterState = {
-  className: `scroller-arrows`
+  clear: true
 }
 
 class AutoScroller extends Component {
@@ -19,24 +18,23 @@ class AutoScroller extends Component {
     state = initialState
 
     handleMouseEnter = (event, divWidth) => {
-      let lastEl = event.currentTarget.lastChild
-      let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
-      console.log('total width', totalWidth, 'div width', divWidth)
-      let clear = totalWidth - divWidth > 0 ? true : false
-      console.log(clear)
-      if (this.state.clear ) {
+      // let lastEl = event.currentTarget.lastChild
+      // let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
+      // console.log('total width', totalWidth, 'div width', divWidth)
+      // let clear = totalWidth - divWidth > 0 ? true : false
+      // console.log(clear)
+      // if (this.state.clear || clear) {
         this.setState(defaultEnterState)
-      }
+      // }
     }
 
     handleMouseLeave = () => {
-      this.setState(initialState)
+      clearTimeout(this.timeoutID)
+      this.timeoutID = setTimeout(() => this.setState(initialState), 66)
     }
 
     updateScroller = (scroller) => {
-      if (scroller !== this.state.scroller) {
-        this.setState({scroller: scroller})
-      }
+      this.setState({scroller: scroller})
     }
 
     updateScroll = (scroll) => {
@@ -46,6 +44,7 @@ class AutoScroller extends Component {
     }
 
     render() {
+      console.log('container scroll value', this.state.scroll)
         return (
           <div className='auto-scroller-container'>
             <AutoScrollerChild
