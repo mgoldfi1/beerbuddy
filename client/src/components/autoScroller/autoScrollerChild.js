@@ -37,7 +37,6 @@ class AutoScrollerChild extends Component {
       if (this.interval) {
         clearInterval(this.interval)
         this.interval = undefined
-        // console.log('cleared interval')
       }
     }
 

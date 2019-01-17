@@ -44,6 +44,7 @@ class AutoScroller extends Component {
     }
 
     render() {
+      console.log(this.props.children)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}

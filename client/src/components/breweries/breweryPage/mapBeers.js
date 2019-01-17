@@ -1,17 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import BreweryBeerLink from './breweryBeerLink'
 
 const MapBeers = ({beers}) => {
 
     return (
       beers.map((beer, index) => {
            return(
-             <Link
-              className='brewery-beer-links'
-              key={index}
-              to={"/beer/" + beer.id}>
-              <img className="brewery-beers" src={beer.label}/>
-             </Link>
+             <BreweryBeerLink {...beer} index={index}/>
          )
       })
     )
