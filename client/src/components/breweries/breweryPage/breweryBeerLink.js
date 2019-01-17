@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 
  class BreweryBeerLink extends Component {
 
-   componentDidMount(){
-     this.refId = React.createRef()
-     console.log(this.refId)
-   }
+   // constructor(props) {
+   //   super(props);
+   //   this.refId = React.createRef();
+   //   console.log(this.refId)
+   // }
 
     render() {
         return (
