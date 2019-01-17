@@ -4,51 +4,61 @@ import ScrollerArrows from './scrollerArrows'
 import '../../css/autoScroller.css'
 
 const initialState =  {
-  className: `scroller-arrows-hidden`,
   scroller: null,
-  scroll: false
+  scroll: false,
+  cleared: false
 }
 
 const defaultEnterState = {
-  className: `scroller-arrows`
+  cleared: true
 }
 
 class AutoScroller extends Component {
 
     state = initialState
 
-    handleMouseEnter = () => {
-      this.setState(defaultEnterState)
-    }
-
-    handleMouseLeave = () => {
-      this.setState(initialState)
-    }
-
-    updateScroller = (scroller) => {
-      if (scroller !== this.state.scroller) {
-        this.setState({scroller: scroller})
+    handleMouseEnter = (event, divWidth) => {
+      let lastEl = event.currentTarget.lastChild
+      let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
+      let cleared = totalWidth - divWidth > 0 ? true : false
+      if (this.state.cleared || cleared) {
+        this.setState(defaultEnterState)
       }
     }
 
-    updateScroll = (scroll) => {
+    handleMouseLeave = () => {
+      setTimeout(() => this.setState(initialState), 66)
+    }
+
+    updateScroller = (scroller) => {
+      this.setState({scroller: scroller})
+    }
+
+    updateScrollAndOrClear = (scroll) => {
       if (scroll !== this.state.scroll) {
-        this.setState({scroll: scroll})
+        this.setState({scroll: scroll, cleared: true})
+      } else if ( scroll && scroll !== this.state.cleared){
+
+        this.setState({cleared: true})
       }
     }
 
     render() {
         return (
-          <div className='auto-scroller-container'>
+          <div className='auto-scroller-container'
+          onMouseLeave={this.handleMouseLeave}
+          >
             <AutoScrollerChild
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
-            updateScroll={this.updateScroll}
+            updateScrollAndOrClear={this.updateScrollAndOrClear}
             updateScroller={this.updateScroller}
             >
               {this.props.children}
             </AutoScrollerChild>
-            <ScrollerArrows {...this.state}/>
+            {this.state.cleared ?
+              <ScrollerArrows {...this.state}/> : null
+          }
           </div>
         )
     }

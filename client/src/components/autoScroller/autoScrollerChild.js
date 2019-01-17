@@ -20,17 +20,17 @@ class AutoScrollerChild extends Component {
 }
 
   handleMouseEnter = (event) => {
-    this.props.handleMouseEnter()
     let linkWidth = event.currentTarget.children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     if (this.state.divWidth !== divWidth) {
-      this.setState({center: (divWidth/2), offset: (linkWidth)})
+      this.setState({center: (divWidth/2), offset: (linkWidth/2)})
     }
+      this.props.handleMouseEnter(event, divWidth)
   }
 
   handleMouseLeave = () => {
-     this.props.handleMouseLeave()
      this.eraseInterval()
+     this.props.handleMouseLeave()
   }
 
     eraseInterval = () => {
@@ -66,14 +66,14 @@ class AutoScrollerChild extends Component {
   }
 
   handleScroll = (event) => {
-    if (this.state.scroll === false) {
-      this.setState({scroll: true}, () => this.props.updateScroll(this.state.scroll))
+    if (this.state.scroll === false){
+        this.setState({scroll: true})
     }
+    this.props.updateScrollAndOrClear(true)
     clearTimeout(this.timeoutID)
     this.timeoutID = setTimeout(() => this.setState((prevState) => {
-        // console.log('scroll ended')
         return { scroll: false }
-      }, () => this.props.updateScroll(this.state.scroll)), 66)
+      }, () => this.props.updateScrollAndOrClear(false)), 66)
   }
 
     render() {

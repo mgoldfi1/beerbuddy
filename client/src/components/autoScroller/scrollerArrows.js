@@ -50,4 +50,8 @@ class ScrollerArrows extends Component {
     }
 };
 
+ScrollerArrows.defaultProps = {
+  className: 'scroller-arrows'
+}
+
 export default ScrollerArrows
