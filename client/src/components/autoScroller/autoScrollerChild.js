@@ -69,11 +69,11 @@ class AutoScrollerChild extends Component {
     if (this.state.scroll === false){
         this.setState({scroll: true})
     }
-    this.props.updateScroll(true)
+    this.props.updateScrollAndOrClear(true)
     clearTimeout(this.timeoutID)
     this.timeoutID = setTimeout(() => this.setState((prevState) => {
         return { scroll: false }
-      }, () => this.props.updateScroll(false)), 66)
+      }, () => this.props.updateScrollAndOrClear(false)), 66)
   }
 
     render() {
