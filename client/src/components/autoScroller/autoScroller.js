@@ -6,40 +6,45 @@ import '../../css/autoScroller.css'
 const initialState =  {
   scroller: null,
   scroll: false,
-  cleared: false
+  cleared: false,
+  entered: false
 }
 
 const defaultEnterState = {
-  cleared: true
+  entered: true
 }
 
 class AutoScroller extends Component {
 
     state = initialState
 
-    handleMouseEnter = (event, divWidth) => {
-      let lastEl = event.currentTarget.lastChild
-      let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
-      let cleared = totalWidth - divWidth > 0 ? true : false
-      if (this.state.cleared || cleared) {
-        this.setState(defaultEnterState)
-      }
+    handleMouseEnter = () => {
+      this.setState(defaultEnterState)
     }
 
     handleMouseLeave = () => {
-      setTimeout(() => this.setState(initialState), 66)
+      setTimeout(() => this.setState({
+        scroller: initialState.scroller,
+        scroll: initialState.scroll,
+        entered: initialState.entered
+      }), 66)
     }
 
     updateScroller = (scroller) => {
       this.setState({scroller: scroller})
     }
 
-    updateScrollAndOrClear = (scroll) => {
+    updateScroll = (scroll) => {
       if (scroll !== this.state.scroll) {
         this.setState({scroll: scroll, cleared: true})
       } else if ( scroll && scroll !== this.state.cleared){
-
         this.setState({cleared: true})
+      }
+    }
+
+    updateCleared = (cleared) => {
+      if(cleared !== this.state.cleared){
+        this.setState({cleared: cleared})
       }
     }
 
@@ -51,12 +56,13 @@ class AutoScroller extends Component {
             <AutoScrollerChild
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
-            updateScrollAndOrClear={this.updateScrollAndOrClear}
+            updateScroll={this.updateScroll}
             updateScroller={this.updateScroller}
+            updateCleared={this.updateCleared}
             >
               {this.props.children}
             </AutoScrollerChild>
-            {this.state.cleared ?
+            {this.state.entered && this.state.cleared ?
               <ScrollerArrows {...this.state}/> : null
           }
           </div>
