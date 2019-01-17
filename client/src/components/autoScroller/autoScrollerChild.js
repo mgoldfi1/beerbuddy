@@ -15,6 +15,11 @@ class AutoScrollerChild extends Component {
     setTimeout(() => this.checkCounter(prevState), 200)
 }
 
+  componentDidMount(){
+    this.timeoutID = ''
+  }
+
+
     checkCounter = (prevState) => {
       if (this.state.counter === prevState.counter && this.state.counter !== 0){
           this.eraseInterval()
@@ -67,16 +72,16 @@ class AutoScrollerChild extends Component {
 
   handleScroll = (event) => {
     this.setState((prevState) => {
-       return { counter: prevState.counter + 1 }
+       return { counter: prevState.counter + 1}
     })
-    setTimeout(() => this.setState((prevState) => {
+    clearTimeout(this.timeoutID)
+    this.timeoutID = setTimeout(() => this.setState((prevState) => {
+        console.log('scroll ended')
         return { counter: prevState.counter }
-      }), 50)
+      }), 66)
   }
 
     render() {
-      console.log('counter', this.state.counter)
-      console.log('interval', this.interval)
         return (
           <div className='auto-scroller'
           onMouseEnter={this.handleMouseEnter}
