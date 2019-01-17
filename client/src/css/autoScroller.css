@@ -12,6 +12,14 @@
   transform: scale(1.2);
 }
 
+.auto-scroller :last-child :last-child:hover {
+  transform-origin: right;
+}
+
+/* .auto-scroller:last-child *:hover{
+  transform: scale(1.9)
+} */
+
 .scroller-arrows {
   position: absolute;
   top: 50%;
