@@ -6,7 +6,8 @@ import '../../css/autoScroller.css'
 const initialState =  {
   className: `scroller-arrows-hidden`,
   scroller: null,
-  scroll: false
+  scroll: false,
+  clear: null
 }
 
 const defaultEnterState = {
@@ -17,8 +18,15 @@ class AutoScroller extends Component {
 
     state = initialState
 
-    handleMouseEnter = () => {
-      this.setState(defaultEnterState)
+    handleMouseEnter = (event, divWidth) => {
+      let lastEl = event.currentTarget.lastChild
+      let totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
+      console.log('total width', totalWidth, 'div width', divWidth)
+      let clear = totalWidth - divWidth > 0 ? true : false
+      console.log(clear)
+      if (this.state.clear ) {
+        this.setState(defaultEnterState)
+      }
     }
 
     handleMouseLeave = () => {
@@ -38,7 +46,6 @@ class AutoScroller extends Component {
     }
 
     render() {
-      console.log(this.state.scroll)
         return (
           <div className='auto-scroller-container'>
             <AutoScrollerChild
