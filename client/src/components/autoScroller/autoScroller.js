@@ -6,7 +6,7 @@ import '../../css/autoScroller.css'
 const initialState =  {
   className: `scroller-arrows-hidden`,
   scroller: null,
-  counter: null
+  scroll: false
 }
 
 const defaultEnterState = {
@@ -31,13 +31,21 @@ class AutoScroller extends Component {
       }
     }
 
+    updateScroll = (scroll) => {
+      if (scroll !== this.state.scroll) {
+        this.setState({scroll: scroll})
+      }
+    }
+
     render() {
+      console.log(this.state.scroll)
         return (
           <div className='auto-scroller-container'
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           >
             <AutoScrollerChild
+            updateScroll={this.updateScroll}
             updateScroller={this.updateScroller}
             >
               {this.props.children}

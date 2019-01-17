@@ -8,23 +8,16 @@ class AutoScrollerChild extends Component {
     center: 0,
     offset: 0,
     scroller: 0,
-    counter: 0
+    counter: 0,
+    scroll: false
   }
 
   componentDidUpdate(prevProps, prevState) {
-    setTimeout(() => this.checkCounter(prevState), 200)
-}
-
-  componentDidMount(){
-    this.timeoutID = ''
-  }
-
-
-    checkCounter = (prevState) => {
-      if (this.state.counter === prevState.counter && this.state.counter !== 0){
-          this.eraseInterval()
-      }
+    clearTimeout(this.intervalId)
+    if (!this.state.scroll && prevState.scroll !== this.state.scroll){
+       this.intervalId = setTimeout(() => this.eraseInterval())
     }
+}
 
   handleMouseEnter = (event) => {
     let linkWidth = event.currentTarget.children[0].offsetWidth
@@ -42,7 +35,7 @@ class AutoScrollerChild extends Component {
       if (this.interval) {
         clearInterval(this.interval)
         this.interval = undefined
-        console.log('cleared interval')
+        // console.log('cleared interval')
       }
     }
 
@@ -71,14 +64,14 @@ class AutoScrollerChild extends Component {
   }
 
   handleScroll = (event) => {
-    this.setState((prevState) => {
-       return { counter: prevState.counter + 1}
-    })
+    if (this.state.scroll === false) {
+      this.setState({scroll: true}, () => this.props.updateScroll(this.state.scroll))
+    }
     clearTimeout(this.timeoutID)
     this.timeoutID = setTimeout(() => this.setState((prevState) => {
-        console.log('scroll ended')
-        return { counter: prevState.counter }
-      }), 66)
+        // console.log('scroll ended')
+        return { scroll: false }
+      }, () => this.props.updateScroll(this.state.scroll)), 66)
   }
 
     render() {
