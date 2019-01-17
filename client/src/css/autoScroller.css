@@ -1,13 +1,21 @@
 .auto-scroller {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
   overflow: hidden;
-   height: inherit;
-   white-space: nowrap;
+  display: inline-block;
+  width: 90%;
+  height: 100%;
+  white-space: nowrap;
 }
 
 .auto-scroller-container {
-  height: auto;
+  /* border: 1px solid rgba(0, 0, 0, 0.3); */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  height: 200px;
+  width: 100%;
 }
-
 .auto-scroller *:hover {
   transform: scale(1.2);
 }
@@ -16,21 +24,12 @@
   transform-origin: right;
 }
 
-/* .auto-scroller:last-child *:hover{
-  transform: scale(1.9)
-} */
-
 .scroller-arrows {
   position: absolute;
   top: 50%;
-  display: inline-block;
-  width: auto;
-  height: 40px;
+  width: 4.5%;
+  height: auto;
   color: #3F51B5;
-}
-
-.scroller-arrows-hidden {
-  visibility: hidden;
 }
 
 #arrow-right {
