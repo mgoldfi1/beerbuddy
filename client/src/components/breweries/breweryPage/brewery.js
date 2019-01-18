@@ -11,6 +11,7 @@ import '../../../css/brewery.css'
 
 const Brewery = (props) => {
   const brewery = props.data;
+  console.log(brewery)
   return (
       !!brewery ? (
           <Grid>

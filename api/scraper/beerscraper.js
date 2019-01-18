@@ -11,7 +11,8 @@ function scrapeBeers() {
     axios.get('https://api.brewerydb.com/v2/beers/?key=6874f07b7858b637eaefd5cc5f5f1de6&hasLabels=Y&withBreweries=Y')
     .then(res => {
         for (const beer of res.data.data) {
-                models.Brewery.findOrCreate({
+          debugger;
+                 models.Brewery.findOrCreate({
                     where: {name: beer.breweries[0].name}, defaults: {
                     description: beer.breweries[0].description,
                     openToPublic: beer.breweries[0].locations[0].openToPublic,
@@ -21,9 +22,11 @@ function scrapeBeers() {
                     year: beer.breweries[0].established,
                     latitude: beer.breweries[0].locations[0].latitude,
                     longitude: beer.breweries[0].locations[0].longitude,
+                    logo: beer.breweries[0].images ? beer.breweries[0].images.squareLarge : null
                     }
                 })
             .spread((brewery,created) => {
+              debugger;
                 models.Beer.create({
                     name: beer.name,
                     abv: parseFloat(beer.abv),
