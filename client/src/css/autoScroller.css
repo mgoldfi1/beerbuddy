@@ -8,10 +8,6 @@
   white-space: nowrap;
 }
 
-.auto-scroller.no-borders{
-  border: none; 
-}
-
 .auto-scroller-container {
   margin-top: 10px;
   margin-bottom: 10px;

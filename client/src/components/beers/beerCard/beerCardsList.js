@@ -44,7 +44,7 @@ class BeerCardsList extends Component {
               pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
-              loader={<FiLoader className="loader"/>}
+              loader={<FiLoader key={1} className="loader"/>}
               >
               <Grid>
                 {this.mapBeers()}
