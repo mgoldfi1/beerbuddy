@@ -37,5 +37,32 @@ module.exports = () => {
         res.send(beer)
       });
 
+
+      router.post('/rating', async(req, res, next) => {
+        console.log(req.body)
+        const rating = await models.BeerRatings.findOne({where: {beerId: req.body.beerId, userId: req.body.userId}})
+        if (rating) {
+          res.status(500).send({err: "Already Rated."})
+        }
+        else {
+         const value = req.body.value 
+         const beerRating = await models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
+         const beer = await models.Beer.findOne({where: {id: req.body.beerId}})
+         models.Beer.update({ratingAvg: (((beer.ratingAvg*beer.ratingCount) + (value))/(beer.ratingCount + 1)), ratingCount: (beer.ratingCount + 1)}, {where: {id: beer.id}})
+         res.status(200).send({message: "Your rating has been logged."})
+        } 
+      })
+
+      router.post('/favorite', async(req, res, next) => {
+        console.log(req.body)
+        const favorite = await models.BeerFavorites.findOne({where: {beerId: req.body.beerId, userId: req.body.userId}})
+        if (favorite) {
+          res.status(500).send({err: "This beer is already in your favorites."})
+        } else {
+          const favorite = await models.BeerFavorites.create({beerId: req.body.beerId, userId: req.body.userId})
+          res.status(200).send({message: "Added to favorites."})
+        }
+      })
+
     return router;
 };
