@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
     changeNav = () => {
         if (this.props.user) {
-            return  (<Link to="/login">{this.props.user.email}</Link>)
+            return  (<Link to={"/user/" + this.props.user.id}>{this.props.user.email}</Link>)
         } else {
             return (<Link to="/login">LOG IN</Link>)
         }
