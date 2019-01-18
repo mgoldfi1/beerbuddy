@@ -2,15 +2,6 @@
   text-align: center;
 }
 
-.brewery-beers {
-  height: 200px;
-  width: 200x;
-}
-
-.brewery-beer-links:hover {
-  transform: scale(1.2);
-}
-
 .brewery-beers-container{
   position: relative;
 }

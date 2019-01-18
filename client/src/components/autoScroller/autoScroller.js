@@ -49,6 +49,8 @@ class AutoScroller extends Component {
     }
 
     render() {
+      console.log('cleared', this.state.cleared)
+      console.log('entered', this.state.entered)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}

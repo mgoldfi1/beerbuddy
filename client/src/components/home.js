@@ -19,9 +19,7 @@ export default class Home extends Component {
        }
     }
 
-
     render() {
-      console.log(<Tabs/>)
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
