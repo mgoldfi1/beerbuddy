@@ -9,23 +9,25 @@ class AutoScrollerChild extends Component {
       offset: 0,
       scroller: 0,
       counter: 0,
-      scroll: false
+      scroll: false,
+      className: ''
     }
     scrollerRef = React.createRef();
+
+  componentDidMount(){
+    const divWidth = this.scrollerRef.current.offsetWidth
+    const lastEl = this.scrollerRef.current.lastChild
+    const totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
+    let cleared = totalWidth - divWidth > 0 ? true : false
+    this.props.updateCleared(cleared)
+    this.setState({className: cleared ? '' : 'no-borders'})
+  }
 
   componentDidUpdate(prevProps, prevState) {
     clearTimeout(this.intervalId)
     if (!this.state.scroll && prevState.scroll !== this.state.scroll){
        this.intervalId = setTimeout(() => this.eraseInterval())
     }
-}
-
-componentDidMount(){
-  const divWidth = this.scrollerRef.current.offsetWidth
-  const lastEl = this.scrollerRef.current.lastChild
-  const totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
-  let cleared = totalWidth - divWidth > 0 ? true : false
-  this.props.updateCleared(cleared)
 }
 
   handleMouseEnter = (event) => {
@@ -86,7 +88,7 @@ componentDidMount(){
 
     render() {
         return (
-          <div className='auto-scroller'
+          <div className={`auto-scroller ${this.state.className}`}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onMouseMove={this.handleMouseMove}
