@@ -8,8 +8,8 @@ const BeerBlurb = (props) => {
     <Cell className="beer-blurb" col={colLength}>
       <img className="beer-page-pic" src={label} />
       <div className="beer-page-info">
-          <strong>ABV:</strong> {abv}%<br/>
-          <strong>IBU:</strong> {ibu}<br/>
+          <strong>ABV:</strong> {abv ? abv + "%" : "N/A"}<br/>
+          <strong>IBU:</strong> {ibu ? ibu : "N/A"}<br/>
           <strong>Style:</strong> {style}<br/>
           <BeerBrewery brewery={brewery}/>
       </div>
