@@ -7,7 +7,7 @@ import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 import BrewerySearchBar from './brewerySearchBar'
 import MarkersList from './markersList'
-
+import { Link } from 'react-router-dom'
 const apiKey = require('../apikey')
 
  class MapContainer extends Component {
@@ -64,7 +64,7 @@ const apiKey = require('../apikey')
         return (
             this.props.data.breweries.map((brewery,index) => {
                 return (
-                    <Marker key={index} onClick={this.onMarkerClick} position={{lat: brewery.latitude, lng: brewery.longitude}} title={brewery.name} name={brewery.name} website={brewery.website}>
+                    <Marker key={index} onClick={this.onMarkerClick} position={{lat: brewery.latitude, lng: brewery.longitude}} breweryPage={brewery.id} title={brewery.name} name={brewery.name} website={brewery.website}>
                     </Marker>
                 )
             })
@@ -94,7 +94,8 @@ const apiKey = require('../apikey')
                       marker={this.state.activeMarker}
                       visible={this.state.showingInfoWindow}>
                       <p><strong>{this.state.selectedPlace.name}</strong><br/>
-                      <a href={this.state.selectedPlace.website} target="_blank">Company Website</a></p>
+                      <a href={this.state.selectedPlace.website} target="_blank">Company Website</a><br/>
+                      </p>
                   </InfoWindow>
                 </Map>
               </Cell>

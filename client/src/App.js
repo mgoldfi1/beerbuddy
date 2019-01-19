@@ -18,7 +18,7 @@ class App extends Component {
           <Route path="/beer/:id" component={BeerPage} />
           <Route path="/breweries/:id" component={BreweryPage} />
           <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/user/:id" component={UserProfile} />
+          <Route path="/user/:id" component={UserProfile} />
           <Route exact path="/registration" component={RegistrationForm} />
           <Route exact path="/" component={Home} />
         </React.Fragment>
