@@ -34,7 +34,7 @@ import '../../../css/beer.css'
                         <strong>{beer.name}</strong>
                     </Typography>
                     <Typography component="p">
-                       {beer.abv}% ABV<br/>
+                      { beer.abv ? beer.abv + "% ABV" : "N/A"}<br/>
                        {beer.style}<br/>
                         Brewed By: {beer.brewery.name}
                     </Typography>
