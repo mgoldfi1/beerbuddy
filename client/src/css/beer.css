@@ -1,4 +1,5 @@
-.cards {
+.beer-card {
+  position: relative;
   color: transparent;
   height: 100%;
   max-width: 300px;
@@ -6,6 +7,27 @@
 
 .card-container {
   background-color: #ddd;
+}
+
+.beer-card-action {
+  height: 85%
+}
+
+.beer-spacer {
+  height: 50px;
+  visibility: hidden;
+}
+
+.beer-content {
+  padding-bottom: 0px;
+}
+
+
+.star-div {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%
 }
 
 .star-ratings {
