@@ -5,3 +5,20 @@
 .brewery-beers-container{
   position: relative;
 }
+
+.brewery-logo {
+  height: 200px;
+  width: 200px;
+}
+
+.brewery-panels {
+  float: left;
+  height: 100%;
+}
+
+
+.brewery-logo-container {
+  float: right;
+  height: 100%;
+  text-align: center;
+}

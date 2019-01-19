@@ -11,12 +11,13 @@ import '../../../css/brewery.css'
 
 const Brewery = (props) => {
   const brewery = props.data;
-  console.log(brewery)
   return (
       !!brewery ? (
           <Grid>
             <PageTitle title={brewery.name} colLength={12}/>
-            <Cell col={6}>
+            <div>
+            <Cell className='brewery-logo-container' col={6}> <img className="brewery-logo" src={brewery.logo}/></Cell>
+            <Cell className='brewery-panels' col={6}>
               <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
               <BreweryPanel details={brewery.description} summary='Description'/>
               <BreweryPanel details={brewery.year} summary='Founded In'/>
@@ -29,6 +30,7 @@ const Brewery = (props) => {
                 summary='Open to the Public?'
               />
             </Cell>
+            </div>
             <Cell className="brewery-beers-container"col={12}>
               <BreweryBeers beers={brewery.beers}/>
             </Cell>
