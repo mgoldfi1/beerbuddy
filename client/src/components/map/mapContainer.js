@@ -7,7 +7,8 @@ import { Grid, Cell } from 'react-mdl'
 import '../../css/map.css'
 import BrewerySearchBar from './brewerySearchBar'
 import MarkersList from './markersList'
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import BreweryLink from '../breweries/breweryLink'
 const apiKey = require('../apikey')
 
  class MapContainer extends Component {
@@ -71,6 +72,10 @@ const apiKey = require('../apikey')
         )
     }
 
+    breweryNav = () => {
+      console.log("hello")
+    }
+
 
     render() {
         const center = {lat: this.state.lat, lng: this.state.lng}
@@ -93,8 +98,12 @@ const apiKey = require('../apikey')
                   <InfoWindow
                       marker={this.state.activeMarker}
                       visible={this.state.showingInfoWindow}>
-                      <p><strong>{this.state.selectedPlace.name}</strong><br/>
-                      <a href={this.state.selectedPlace.website} target="_blank">Company Website</a><br/>
+                      <p>
+                        <strong> <a className='marker-link'
+                        href={`/breweries/${this.state.selectedPlace.breweryPage}`}>
+                        {this.state.selectedPlace.name}</a>
+                        </strong><br/>
+                        <a href={this.state.selectedPlace.website} target="_blank">Company Website</a><br/>
                       </p>
                   </InfoWindow>
                 </Map>

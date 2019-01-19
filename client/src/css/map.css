@@ -8,3 +8,12 @@
   padding-top: 15px;
   margin-left: 40px;
 }
+
+.marker-link {
+  text-decoration: none;
+  color: black;
+}
+
+.marker-link:hover {
+  text-decoration: underline;
+}
