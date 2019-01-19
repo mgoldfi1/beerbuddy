@@ -10,13 +10,22 @@ import '../../../css/brewery.css'
 
 
 const Brewery = (props) => {
+
+ const renderLogo = () => {
+    if (brewery.logo) {
+      return (<img className="brewery-logo" src={brewery.logo}/>)
+    } else {
+      return (<img className="brewery-logo" src={require('./nodata.png')}/>)
+    }
+  }
+
   const brewery = props.data;
   return (
       !!brewery ? (
           <Grid>
             <PageTitle title={brewery.name} colLength={12}/>
             <div>
-            <Cell className='brewery-logo-container' col={6}> <img className="brewery-logo" src={brewery.logo}/></Cell>
+            <Cell className='brewery-logo-container' col={6}> {renderLogo()}</Cell>
             <Cell className='brewery-panels' col={6}>
               <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
               <BreweryPanel details={brewery.description} summary='Description'/>
