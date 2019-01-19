@@ -20,9 +20,19 @@ const Brewery = (props) => {
   }
 
   const brewery = props.data;
+  const bScore = () => {
+    let total = 0
+    for (const beer of brewery.beers) {
+      total = total + beer.ratingAvg
+    }
+    return (total/brewery.beers.length)
+  }
+
   return (
       !!brewery ? (
           <Grid>
+        {console.log(brewery.beers)}
+            
             <PageTitle title={brewery.name} colLength={12}/>
             <div>
             <Cell className='brewery-logo-container' col={6}> {renderLogo()}</Cell>
@@ -37,6 +47,10 @@ const Brewery = (props) => {
               <BreweryPanel
                 details={brewery.openToPublic === "Y" ? "Yes":"No"}
                 summary='Open to the Public?'
+              />
+                <BreweryPanel
+                details={bScore() + "/5"}
+                summary='BreweryScore'
               />
             </Cell>
             </div>
