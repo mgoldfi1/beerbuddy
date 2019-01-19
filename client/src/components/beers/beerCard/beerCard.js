@@ -18,8 +18,10 @@ import '../../../css/beer.css'
       return (
         <Cell col={2}>
           <Link className="beer-links" to={'/beer' + '/' + beer.id} >
-            <Card className="cards">
-                <CardActionArea>
+            <Card className="beer-card">
+                <CardActionArea
+                className='beer-card-action'
+                >
                     <CardMedia
                     component="img"
                     alt="beerpic"
@@ -38,6 +40,7 @@ import '../../../css/beer.css'
                     </Typography>
                     </CardContent>
                     </CardActionArea>
+                    <div className='beer-spacer'>.</div>
                     <div className="star-div">
                     <StarRatings
                         rating={beer.ratingAvg}

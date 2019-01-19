@@ -3,6 +3,7 @@ import {Tabs, Tab} from 'react-mdl'
 import BeerCardsList from './beers/beerCard/beerCardsList'
 import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
+import '../App.css'
 
 export default class Home extends Component {
     state = { activeTab: 0, beer: ''}
