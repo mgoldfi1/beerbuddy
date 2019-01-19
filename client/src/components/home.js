@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 import { tabClicked } from '../actions/tabClicked'
 
  class Home extends Component {
-    state = { activeTab: 0, beer: ''}
+    state = { beer: ''}
 
     tabSwitch = () => {
       const MapContainerWithFetchBreweries = FetchApiData(MapContainer, 'breweries')
-       switch (this.state.activeTab) {
+       switch (this.props.tab) {
            case 2:
            return (<div>Top</div>)
            case 0:
@@ -26,7 +26,7 @@ import { tabClicked } from '../actions/tabClicked'
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
-            <Tabs activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
+            <Tabs activeTab={this.props.tab} onChange={(tabId) => this.props.tabClicked(tabId) } ripple>
                 <Tab>Beers</Tab>
                 <Tab>Breweries</Tab>
                 <Tab>Top Rated</Tab>
@@ -41,7 +41,7 @@ import { tabClicked } from '../actions/tabClicked'
 
 const mapStateToProps = state => {
     return {
-        tab: state.tab
+        tab: state.user.tab
     }
 }
 

@@ -47,7 +47,6 @@ class LoginForm extends Component {
 
   redirectMe = () => {
     if (this.props.user) {
-      console.log(this.props.user)
         return <Redirect to='/' />
     }
 

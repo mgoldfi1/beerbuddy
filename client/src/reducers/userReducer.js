@@ -1,4 +1,4 @@
-export default function userReducer(state = {user: '', tab: '', logging_out: false, loading: false}, action) {
+export default function userReducer(state = {user: '', tab: 0, logging_out: false, loading: false}, action) {
     switch (action.type) {
   
       case 'LOG_IN':
@@ -8,6 +8,7 @@ export default function userReducer(state = {user: '', tab: '', logging_out: fal
         return {user: '', logging_out: true, loading: false}
 
       case 'TAB':
+      console.log(action)
         return {...state, tab: action.tab}
   
       default:
