@@ -4,8 +4,10 @@ import BeerCardsList from './beers/beerCard/beerCardsList'
 import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
 import '../App.css'
+import { connect } from 'react-redux';
+import { tabClicked } from '../actions/tabClicked'
 
-export default class Home extends Component {
+ class Home extends Component {
     state = { activeTab: 0, beer: ''}
 
     tabSwitch = () => {
@@ -36,3 +38,11 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        tab: state.tab
+    }
+}
+
+export default connect(mapStateToProps, { tabClicked })(Home)
