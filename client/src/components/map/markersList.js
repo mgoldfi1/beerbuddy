@@ -1,5 +1,6 @@
 import React from 'react';
 import { Marker } from 'google-maps-react';
+import { Link } from 'react-router-dom'
 
 const MarkersList = ({breweries, onMarkerClick}) => {
 
