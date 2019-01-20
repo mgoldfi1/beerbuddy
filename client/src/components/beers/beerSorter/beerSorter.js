@@ -1,42 +1,44 @@
 import React, { Component } from 'react';
+import CustRadioGroup from '../../CustRadioGroup'
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { MdArrowDownward, MdArrowUpward } from "react-icons/md";
+
 
 class BeerSorter extends Component {
 
-  state = {
-    labels: ['ABV', 'Name', 'Rating', 'Style', 'Brewery'],
-  }
-
-  mapLabels = () => {
-    return this.state.labels.map((label, index) =>
-      <FormControlLabel
-        key={index}
-        value={label.toLowerCase()}
-        control={<Radio color="primary" />}
-        label={label}
-        labelPlacement="bottom"
-        style={{margin: '1px'}}
-        />)
-  }
-
   render(){
+    console.log(this.props.onSortChange)
     return (
-      <FormControl component="fieldset">
-         <FormLabel  component="legend"><strong>Sort By:</strong></FormLabel>
-         <RadioGroup
-         aria-label="position"
-         name="position"
-         value={this.props.value}
-         onChange={this.props.handleChange}
-         row
-         >
-        {this.mapLabels()}
-     </RadioGroup>
-    </FormControl>
+      <div className="sort-container">
+        <CustRadioGroup
+        className="sort-styles"
+        labels={['ABV', 'Name', 'Rating']}
+        onChange={this.props.onChange}
+        value={this.props.value}
+        />
+        <FormControl component="fieldset">
+          <RadioGroup
+          className={'horizontal-radio-group'}
+          aria-label="position"
+          name="position"
+          value={this.props.order}
+          onChange={this.props.onOrderChange}
+          row
+          >
+          <FormControlLabel
+            value={'DESC'}
+            control={<Radio icon={<MdArrowUpward/>} checkedIcon={<MdArrowUpward/>} color="primary"/>}
+            />
+          <FormControlLabel
+              value={'ASC'}
+              control={<Radio icon={<MdArrowDownward/>} checkedIcon={<MdArrowDownward/>} color="primary"/>}
+              />
+         </RadioGroup>
+       </FormControl>
+      </div>
     )
   }
 

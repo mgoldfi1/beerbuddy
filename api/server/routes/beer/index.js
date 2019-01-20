@@ -4,17 +4,17 @@ const models = require('../../../models/')
 const router = express.Router();
 
 module.exports = () => {
-    router.get('/:filter/:page', async (req, res, next) => {
+    router.get('/:filter', async (req, res, next) => {
         try {
           let beers = await models.Beer.findAll({
             limit: 10,
-            offset: req.params.page*10,
+            offset: req.query.page*10,
             include: [{
               model: models.Brewery,
               as: 'brewery'
               }],
             order: [
-              req.params.filter
+              [req.params.filter, req.query.order]
             ]
         })
         if (beers.length > 0) {
@@ -45,12 +45,12 @@ module.exports = () => {
           res.status(500).send({err: "Already Rated."})
         }
         else {
-         const value = req.body.value 
+         const value = req.body.value
          const beerRating = await models.BeerRatings.create({userId: req.body.userId, beerId: req.body.beerId})
          const beer = await models.Beer.findOne({where: {id: req.body.beerId}})
          models.Beer.update({ratingAvg: (((beer.ratingAvg*beer.ratingCount) + (value))/(beer.ratingCount + 1)), ratingCount: (beer.ratingCount + 1)}, {where: {id: beer.id}})
          res.status(200).send({message: "Your rating has been logged."})
-        } 
+        }
       })
 
       router.post('/favorite', async(req, res, next) => {
