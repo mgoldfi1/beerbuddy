@@ -24,7 +24,7 @@ class BeerSorter extends Component {
           className={'horizontal-radio-group'}
           aria-label="position"
           name="position"
-          value={this.props.sortValue}
+          value={this.props.order}
           onChange={this.props.onOrderChange}
           row
           >

@@ -7,14 +7,18 @@ import BeerSorter from '../beerSorter/beerSorter'
 import { FiLoader } from "react-icons/fi";
 import '../../../css/beer.css'
 
+const resetValues = {
+    beers: [],
+    page: 0,
+    more: true
+}
+
 class BeerCardsList extends Component {
 
   state = {
-          beers: [],
+        ...resetValues,
           value: "abv",
           order: 'ASC',
-          page: 0,
-          more: true,
           error: null
       }
 
@@ -32,11 +36,11 @@ class BeerCardsList extends Component {
 }
 
   handleChange = (event) => {
-      this.setState({beers: [], value: event.target.value, page: 0, more:true });
+      this.setState({...resetValues, value: event.target.value});
     };
 
   handleOrderChange = (event) => {
-    this.setState({order: event.target.value})
+    this.setState({...resetValues, order: event.target.value})
   }
 
   mapBeers = () => {
@@ -50,7 +54,7 @@ class BeerCardsList extends Component {
           <BeerSorter
           value={this.state.value}
           onChange={this.handleChange}
-          sortValue={this.state.sortValue}
+          order={this.state.order}
           onOrderChange={this.handleOrderChange}
           />
           <InfiniteScroll
