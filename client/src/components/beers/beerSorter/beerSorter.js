@@ -10,15 +10,36 @@ import { MdArrowDownward, MdArrowUpward } from "react-icons/md";
 class BeerSorter extends Component {
 
   render(){
-    console.log(this.props.onSortChange)
     return (
       <div className="sort-container">
-        <CustRadioGroup
-        className="sort-styles"
-        labels={['ABV', 'Name', 'Rating']}
-        onChange={this.props.onChange}
-        value={this.props.value}
-        />
+        <FormControl className="sort-styles" component="fieldset">
+          <RadioGroup
+          aria-label="position"
+          name="position"
+          value={this.props.filter}
+          onChange={this.props.onChange}
+          row
+          >
+          <FormControlLabel
+            value="abv"
+            control={<Radio color="primary" />}
+            label="ABV"
+            labelPlacement="bottom"
+            />
+          <FormControlLabel
+            value="name"
+            control={<Radio color="primary" />}
+            label="Name"
+            labelPlacement="bottom"
+            />
+          <FormControlLabel
+            value="ratingAvg"
+            control={<Radio color="primary" />}
+            label="Rating"
+            labelPlacement="bottom"
+            />
+          </RadioGroup>
+         </FormControl>
         <FormControl component="fieldset">
           <RadioGroup
           className={'horizontal-radio-group'}

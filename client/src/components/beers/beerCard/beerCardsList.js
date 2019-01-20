@@ -17,7 +17,7 @@ class BeerCardsList extends Component {
 
   state = {
         ...resetValues,
-          value: "abv",
+          filter: "abv",
           order: 'ASC',
           error: null
       }
@@ -25,7 +25,7 @@ class BeerCardsList extends Component {
 
   loadFunc = async (page) => {
      const res = await fetch(
-       `/api/beer/${this.state.value}?page=${this.state.page}&order=${this.state.order}`
+       `/api/beer/${this.state.filter}?page=${this.state.page}&order=${this.state.order}`
      )
      const body = await res.json()
      if (res.status === 200){
@@ -36,7 +36,7 @@ class BeerCardsList extends Component {
 }
 
   handleChange = (event) => {
-      this.setState({...resetValues, value: event.target.value});
+      this.setState({...resetValues, filter: event.target.value});
     };
 
   handleOrderChange = (event) => {
@@ -49,10 +49,11 @@ class BeerCardsList extends Component {
   }
 
   render() {
+    console.log(this.state.beers)
       return (
         <div>
           <BeerSorter
-          value={this.state.value}
+          filter={this.state.filter}
           onChange={this.handleChange}
           order={this.state.order}
           onOrderChange={this.handleOrderChange}
