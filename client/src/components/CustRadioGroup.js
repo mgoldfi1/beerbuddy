@@ -28,7 +28,7 @@ class CustRadioGroup extends Component {
 
   render(){
     return (
-        <FormControl component="fieldset">
+        <FormControl className={this.props.className} component="fieldset">
           { this.props.label ?
            <FormLabel  component="legend"><strong>{this.props.label}</strong> </FormLabel>
            : null

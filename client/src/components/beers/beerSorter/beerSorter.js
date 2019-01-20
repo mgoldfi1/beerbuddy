@@ -14,6 +14,7 @@ class BeerSorter extends Component {
     return (
       <div className="sort-container">
         <CustRadioGroup
+        className="sort-styles"
         labels={['ABV', 'Name', 'Rating']}
         onChange={this.props.onChange}
         value={this.props.value}
