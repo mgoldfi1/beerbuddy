@@ -12,6 +12,7 @@ class BeerCardsList extends Component {
   state = {
           beers: [],
           value: "abv",
+          sortValue: 'ASC',
           page: 0,
           more: true,
           error: null
@@ -32,6 +33,10 @@ class BeerCardsList extends Component {
       this.setState({beers: [], value: event.target.value, page: 0, more:true });
     };
 
+  handleSortChange = (event) => {
+    console.log(event.target.value)
+  }
+
   mapBeers = () => {
     let beers = this.state.beers
     return  beers.length > 0 ? beers.map((beer,index) => <BeerCard key={index} beer={beer}/>) : null
@@ -40,7 +45,12 @@ class BeerCardsList extends Component {
   render() {
       return (
         <div>
-          <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
+          <BeerSorter
+          value={this.state.value}
+          onChange={this.handleChange}
+          sortValue={this.state.sortValue}
+          onSortChange={this.handleSortChange}
+          />
           <InfiniteScroll
               pageStart={0}
               loadMore={this.loadFunc}
