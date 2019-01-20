@@ -12,7 +12,7 @@ class BeerCardsList extends Component {
   state = {
           beers: [],
           value: "abv",
-          sortValue: 'ASC',
+          order: 'ASC',
           page: 0,
           more: true,
           error: null
@@ -20,7 +20,9 @@ class BeerCardsList extends Component {
 
 
   loadFunc = async (page) => {
-     const res = await fetch(`/api/beer/${this.state.value}/${this.state.page}`)
+     const res = await fetch(
+       `/api/beer/${this.state.value}?page=${this.state.page}&order=${this.state.order}`
+     )
      const body = await res.json()
      if (res.status === 200){
          this.setState(currentState => ({beers: [...currentState.beers, ...body.beers], page: currentState.page + 1}) )
@@ -33,8 +35,8 @@ class BeerCardsList extends Component {
       this.setState({beers: [], value: event.target.value, page: 0, more:true });
     };
 
-  handleSortChange = (event) => {
-    console.log(event.target.value)
+  handleOrderChange = (event) => {
+    this.setState({order: event.target.value})
   }
 
   mapBeers = () => {
@@ -49,7 +51,7 @@ class BeerCardsList extends Component {
           value={this.state.value}
           onChange={this.handleChange}
           sortValue={this.state.sortValue}
-          onSortChange={this.handleSortChange}
+          onOrderChange={this.handleOrderChange}
           />
           <InfiniteScroll
               pageStart={0}

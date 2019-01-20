@@ -25,7 +25,7 @@ class BeerSorter extends Component {
           aria-label="position"
           name="position"
           value={this.props.sortValue}
-          onChange={this.props.onSortChange}
+          onChange={this.props.onOrderChange}
           row
           >
           <FormControlLabel
