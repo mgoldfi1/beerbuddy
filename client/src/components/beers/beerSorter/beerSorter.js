@@ -12,7 +12,7 @@ class BeerSorter extends Component {
   render(){
     console.log(this.props.onSortChange)
     return (
-      <div>
+      <div className="sort-container">
         <CustRadioGroup
         labels={['ABV', 'Name', 'Rating']}
         onChange={this.props.onChange}
@@ -20,7 +20,7 @@ class BeerSorter extends Component {
         />
         <FormControl component="fieldset">
           <RadioGroup
-          className={this.props.horizontal ? 'horizontal-radio-group' : ''}
+          className={'horizontal-radio-group'}
           aria-label="position"
           name="position"
           value={this.props.sortValue}
@@ -31,7 +31,7 @@ class BeerSorter extends Component {
             value={'DESC'}
             control={<Radio icon={<MdArrowUpward/>} checkedIcon={<MdArrowUpward/>} color="primary"/>}
             />
-            <FormControlLabel
+          <FormControlLabel
               value={'ASC'}
               control={<Radio icon={<MdArrowDownward/>} checkedIcon={<MdArrowDownward/>} color="primary"/>}
               />
