@@ -9,12 +9,14 @@ class AutoScrollerChild extends Component {
       center: 0,
       offset: 0,
       scroller: 0,
-      counter: 0,
-      scroll: false,
     }
-    scrollerRef = React.createRef();
+    scrollerRef = React.createRef(); //provides rendered divs dimensions on mount
 
   componentDidMount(){
+    //checks div width based on the ref defined below state. if the last child's width from its starting
+    //position within the scroller is greater than the width of the scroller, then
+    // the div has overflow and can be scrolled, resulting in cleared === false
+    //otherwise the div has enough room for all of its elements resulting in cleared === true
     const divWidth = this.scrollerRef.current.offsetWidth
     const lastEl = this.scrollerRef.current.lastChild
     const totalWidth = lastEl.offsetLeft + lastEl.offsetWidth
@@ -22,9 +24,9 @@ class AutoScrollerChild extends Component {
     this.props.updateCleared(cleared)
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     clearTimeout(this.intervalId)
-    if (!this.state.scroll && prevState.scroll !== this.state.scroll){
+    if (!this.props.scroll && prevProps.scroll !== this.props.scroll){
        this.intervalId = setTimeout(() => this.eraseInterval())
     }
 }
@@ -85,14 +87,9 @@ class AutoScrollerChild extends Component {
     }
 
   handleScroll = (event) => {
-    if (this.state.scroll === false){
-        this.setState({scroll: true})
-    }
     this.props.updateScroll(true)
     clearTimeout(this.timeoutID)
-    this.timeoutID = setTimeout(() => this.setState((prevState) => {
-        return { scroll: false }
-      }, () => this.props.updateScroll(false)), 66)
+    this.timeoutID = setTimeout(() => this.props.updateScroll(false), 66)
   }
 
     render() {
