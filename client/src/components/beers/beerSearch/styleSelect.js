@@ -9,12 +9,11 @@ export default class StyleSelect extends Component {
    
     renderOptions = () => {
         return this.props.styles.map( style => {
-          return <option value={style.name}>{style.name}</option>
+          return <option key={style.id} value={style.name}>{style.name}</option>
         }) 
       }
 
   render() {
-      {console.log(this.props.styles)}
     return (
         <React.Fragment>
              <Select

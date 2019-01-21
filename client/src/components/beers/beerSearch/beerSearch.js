@@ -24,7 +24,7 @@ export default class BeerSearch extends Component {
   renderBreweries = () => {
     if (this.state.breweries) {
       return this.state.breweries.map(brewery => {
-        return <option value={brewery.id}>{brewery.name}</option>
+        return <option key={brewery.id} value={brewery.id}>{brewery.name}</option>
       })
     }
   }
