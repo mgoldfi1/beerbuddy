@@ -59,6 +59,7 @@ class AutoScroller extends Component {
             updateScroll={this.updateScroll}
             updateScroller={this.updateScroller}
             updateCleared={this.updateCleared}
+            speed={this.props.speed}
             >
               {this.props.children}
             </AutoScrollerChild>
@@ -68,6 +69,10 @@ class AutoScroller extends Component {
           </div>
         )
     }
+}
+
+AutoScroller.defaultProps = {
+  speed: 0.1
 }
 
 export default AutoScroller

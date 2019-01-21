@@ -70,9 +70,9 @@ class AutoScrollerChild extends Component {
     let coord = event.clientX
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * 0.1}, this.handleStateCallBack(event))
+        this.setState({scroller: (coord - centerRange[0]) * this.props.speed}, this.handleStateCallBack(event))
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * 0.1}, this.handleStateCallBack(event))
+        this.setState({scroller: (coord - centerRange[1]) * this.props.speed}, this.handleStateCallBack(event))
     } else {
       this.setState({scroller: 0}, this.props.updateScroller(0))
     }
