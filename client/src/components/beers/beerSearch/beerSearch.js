@@ -43,11 +43,11 @@ export default class BeerSearch extends Component {
           variant="outlined"
         /><br/>
         <div className="select-dropdown">
-        <InputLabel htmlFor="style-select">Beer Style</InputLabel>
+        <InputLabel htmlFor="style-select">Beer Style:</InputLabel>
         <StyleSelect styles={this.state.styles}/>
         </div>
         <div className="select-dropdown"> 
-        <InputLabel htmlFor="brewery-select">Brewery Name</InputLabel>
+        <InputLabel htmlFor="brewery-select">Brewery Name:</InputLabel>
         <Select
             native
             inputProps={{
@@ -57,6 +57,23 @@ export default class BeerSearch extends Component {
           >
           <option></option>
       {this.renderBreweries()}
+      </Select>
+      </div>
+      <div className="select-dropdown">
+      <InputLabel htmlFor="brewery-select">Above a certain rating:</InputLabel>
+        <Select
+            native
+            inputProps={{
+              name: 'rating',
+              id: 'rating-select',
+            }}
+          >
+          <option></option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
       </Select>
       </div>
           </Cell>
