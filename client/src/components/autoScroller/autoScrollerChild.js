@@ -35,10 +35,11 @@ class AutoScrollerChild extends Component {
   }
 
   handleMouseEnter = (event) => {
-    let linkWidth = event.currentTarget.children[0].children[0].offsetWidth
-    let divWidth =  event.currentTarget.offsetWidth
+    const linkWidth = event.currentTarget.children[0].children[0].offsetWidth
+    const divWidth =  event.currentTarget.offsetWidth
+    const center = event.currentTarget.parentElement.offsetWidth/2
     if (this.state.divWidth !== divWidth) {
-      this.setState({divWidth: divWidth, center: (divWidth/2), offset: (linkWidth/2)})
+      this.setState({divWidth: divWidth, center: (center), offset: (linkWidth/2)})
     }
       this.props.handleMouseEnter(event, divWidth)
   }
@@ -68,23 +69,19 @@ class AutoScrollerChild extends Component {
     }
 
   handleMouseMove = (event) => {
-    let coord = event.clientX
-    console.log(this.state.offset)
-    let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
-    // debugger;
-    if (coord <= centerRange[0]){
-        this.setState({scroller: this.scrollerSpeed(coord, centerRange[0], this.props.speed, this.state.divWidth)},
-        this.handleStateCallBack(event))
-    } else if (coord >= centerRange[1]) {
-        this.setState({scroller: this.scrollerSpeed(coord, centerRange[1], this.props.speed, this.state.divWidth)},
-        this.handleStateCallBack(event))
-    } else {
+    const coord = event.clientX
+    const centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
+    if (coord < centerRange[1] && coord > centerRange[0]) {
       this.setState({scroller: 0}, this.props.updateScroller(0))
+    } else {
+      this.setState({
+        scroller: this.scrollerSpeed(coord, this.state.center, this.props.speedMod, this.state.divWidth)},
+      this.handleStateCallBack(event))
     }
   }
-
-    scrollerSpeed = (coord, endPoint, speedMod, width) => {
-      return (coord - endPoint) * (speedMod * 1000) / width
+    scrollerSpeed = (coord, center, speedMod, width) => {
+      const scroller = (coord - center) * (speedMod * 1000) / width
+      return scroller > 0 ? scroller : scroller * 1.05
     }
 
   handleScroll = (event) => {
@@ -114,7 +111,7 @@ class AutoScrollerChild extends Component {
 }
 
 AutoScrollerChild.defaultProps = {
-  speed: 0.1
+  speedMod: 0.1
 }
 
 export default AutoScrollerChild
