@@ -8,7 +8,7 @@ import BeerPage from './components/beers/beerPage/beerPage'
 import RegistrationForm from './components/login/registrationform'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UserProfile from './components/userProfile'
-
+import BeerSearch from './components/beers/beerSearch/beerSearch'
 class App extends Component {
   render() {
     return (
@@ -16,6 +16,7 @@ class App extends Component {
         <React.Fragment>
           <Navbar/>
           <Route path="/beer/:id" component={BeerPage} />
+          <Route path="/beers/search" component={BeerSearch} />
           <Route path="/breweries/:id" component={BreweryPage} />
           <Route exact path="/login" component={LoginForm} />
           <Route path="/user/:id" component={UserProfile} />

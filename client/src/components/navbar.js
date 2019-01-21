@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
         <Header title={<span><span style={{ color: '#ddd' }}>Beer</span><strong>Buddy</strong></span>}>
             <Navigation>
                 <Link to="/">Home</Link>
-                <a href="#">Beers</a>
+                <Link to="/beers/search">Beers</Link>
                 <a href="#">Breweries</a>
                 {this.changeNav()}
             </Navigation>
