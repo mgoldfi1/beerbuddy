@@ -5,6 +5,7 @@ import '../../css/autoScroller.css'
 class AutoScrollerChild extends Component {
 
     state = {
+      divWidth: 0,
       center: 0,
       offset: 0,
       scroller: 0,
@@ -34,10 +35,10 @@ class AutoScrollerChild extends Component {
   }
 
   handleMouseEnter = (event) => {
-    let linkWidth = event.currentTarget.children[0].offsetWidth
+    let linkWidth = event.currentTarget.children[0].children[0].offsetWidth
     let divWidth =  event.currentTarget.offsetWidth
     if (this.state.divWidth !== divWidth) {
-      this.setState({center: (divWidth/2), offset: (linkWidth/2)})
+      this.setState({divWidth: divWidth, center: (divWidth/2), offset: (linkWidth/2)})
     }
       this.props.handleMouseEnter(event, divWidth)
   }
@@ -68,15 +69,23 @@ class AutoScrollerChild extends Component {
 
   handleMouseMove = (event) => {
     let coord = event.clientX
+    console.log(this.state.offset)
     let centerRange = [this.state.center - this.state.offset, this.state.center + this.state.offset]
+    // debugger;
     if (coord <= centerRange[0]){
-        this.setState({scroller: (coord - centerRange[0]) * this.props.speed}, this.handleStateCallBack(event))
+        this.setState({scroller: this.scrollerSpeed(coord, centerRange[0], this.props.speed, this.state.divWidth)},
+        this.handleStateCallBack(event))
     } else if (coord >= centerRange[1]) {
-        this.setState({scroller: (coord - centerRange[1]) * this.props.speed}, this.handleStateCallBack(event))
+        this.setState({scroller: this.scrollerSpeed(coord, centerRange[1], this.props.speed, this.state.divWidth)},
+        this.handleStateCallBack(event))
     } else {
       this.setState({scroller: 0}, this.props.updateScroller(0))
     }
   }
+
+    scrollerSpeed = (coord, endPoint, speedMod, width) => {
+      return (coord - endPoint) * (speedMod * 1000) / width
+    }
 
   handleScroll = (event) => {
     if (this.state.scroll === false){
@@ -102,6 +111,10 @@ class AutoScrollerChild extends Component {
           </div>
         )
     }
+}
+
+AutoScrollerChild.defaultProps = {
+  speed: 0.1
 }
 
 export default AutoScrollerChild

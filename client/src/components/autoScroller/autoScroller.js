@@ -48,7 +48,6 @@ class AutoScroller extends Component {
     }
 
     render() {
-      console.log('entered', this.state.entered)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
@@ -69,10 +68,6 @@ class AutoScroller extends Component {
           </div>
         )
     }
-}
-
-AutoScroller.defaultProps = {
-  speed: 0.1
 }
 
 export default AutoScroller

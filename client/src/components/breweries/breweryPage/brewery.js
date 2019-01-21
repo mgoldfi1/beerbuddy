@@ -30,9 +30,7 @@ const Brewery = (props) => {
 
   return (
       !!brewery ? (
-          <Grid>
-        {console.log(brewery.beers)}
-            
+          <Grid>            
             <PageTitle title={brewery.name} colLength={12}/>
             <div>
             <Cell className='brewery-logo-container' col={6}> {renderLogo()}</Cell>
