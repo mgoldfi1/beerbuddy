@@ -12,8 +12,8 @@ const initialState =  {
 class AutoScroller extends Component {
 
     state = {...initialState,
-      cleared: false,
-      mobile: false
+      cleared: null,
+      mobile: null
     }
 
     componentDidMount(){
@@ -71,6 +71,7 @@ class AutoScroller extends Component {
             updateScroller={this.updateScroller}
             updateCleared={this.updateCleared}
             speed={this.props.speed}
+            mobile={this.state.mobile}
             >
               {this.props.children}
             </AutoScrollerChild>

@@ -33,6 +33,14 @@
   color: #3F51B5;
 }
 
+.scroller-arrows:hover {
+  cursor: pointer;
+}
+
+.scroller-arrows:active {
+  transform: scale(1.3);
+}
+
 #arrow-right {
   right: 0;
 }
