@@ -8,7 +8,7 @@ class AutoScrollerChild extends Component {
       divWidth: 0,
       center: 0,
       offset: 0,
-      scroller: 0,
+      scroller: -1,
     }
     scrollerRef = React.createRef(); //provides rendered divs dimensions on mount
 
@@ -91,10 +91,10 @@ class AutoScrollerChild extends Component {
     if (coord < centerRange[1] && coord > centerRange[0]) {
       //if the mouse is within that range, do not scroll, set scroller to 0
       this.setState({scroller: 0}, this.props.updateScroller(0))
-    } else if (coord >= centerRange[1] || coord <= centerRange[0]){
+    } else {
+      //if the scroller is outside that zone, use the scrollerSpeed helper method to determine the
+      //value
       this.setState({
-        //if the scroller is outside that zone, use the scrollerSpeed helper method to determine the
-        //value
         scroller: this.scrollerSpeed(coord, this.state.center, this.props.speedMod, this.state.divWidth)},
       this.handleStateCallBack(event))
     }
