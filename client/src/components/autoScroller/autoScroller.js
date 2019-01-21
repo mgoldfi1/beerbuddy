@@ -6,27 +6,39 @@ import '../../css/autoScroller.css'
 const initialState =  {
   scroller: null,
   scroll: false,
-  cleared: false,
   entered: false
-}
-
-const defaultEnterState = {
-  entered: true
 }
 
 class AutoScroller extends Component {
 
-    state = initialState
+    state = {...initialState,
+      cleared: false,
+      mobile: false
+    }
+
+    componentDidMount(){
+      this.checkDimensions()
+      window.addEventListener('resize', this.checkDimensions)
+    }
+
+    componentWillUnmount(){
+      window.removeEventListener('resize', this.checkDimensions)
+    }
+
+    checkDimensions = () => {
+      if( window.innerWidth < 1050  ) {
+        this.setState({mobile: true})
+      } else {
+        this.setState({mobile: false})
+      }
+    }
 
     handleMouseEnter = () => {
-      this.setState(defaultEnterState)
+      this.setState({entered: true})
     }
 
     handleMouseLeave = () => {
-      setTimeout(() => this.setState((prevState) => {
-        return {...initialState,
-        cleared: prevState.cleared}
-      }), 66)
+      setTimeout(() => this.setState({...initialState}), 66)
     }
 
     updateScroller = (scroller) => {
@@ -48,6 +60,8 @@ class AutoScroller extends Component {
     }
 
     render() {
+      // console.log('mobile', this.state.mobile, 'cleared', this.state.cleared)
+      console.log('scroll', this.state.scroll, 'scroller', this.state.scroller)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
