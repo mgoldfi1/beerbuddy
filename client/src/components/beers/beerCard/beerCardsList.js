@@ -25,7 +25,7 @@ class BeerCardsList extends Component {
 
   loadFunc = async (page) => {
      const res = await fetch(
-       `/api/beer/${this.state.filter}?page=${this.state.page}&order=${this.state.order}`
+       `/api/beer/filter/${this.state.filter}?page=${this.state.page}&order=${this.state.order}`
      )
      const body = await res.json()
      if (res.status === 200){
@@ -49,7 +49,6 @@ class BeerCardsList extends Component {
   }
 
   render() {
-    console.log(this.state.beers)
       return (
         <div>
           <BeerSorter

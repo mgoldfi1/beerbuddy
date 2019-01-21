@@ -5,7 +5,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { MdArrowDownward, MdArrowUpward } from "react-icons/md";
-
+import '../../../css/form-control.css'
 
 class BeerSorter extends Component {
 

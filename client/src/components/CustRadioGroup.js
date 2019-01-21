@@ -6,7 +6,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { FiPercent } from "react-icons/fi";
 import { MdStarBorder, MdTitle } from "react-icons/md";
-import '../css/radio-button.css'
+import '../css/form-control.css'
 
 class CustRadioGroup extends Component {
 

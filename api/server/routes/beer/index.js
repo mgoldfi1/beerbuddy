@@ -4,7 +4,7 @@ const models = require('../../../models/')
 const router = express.Router();
 
 module.exports = () => {
-    router.get('/:filter', async (req, res, next) => {
+    router.get('/filter/:filter', async (req, res, next) => {
         try {
           let beers = await models.Beer.findAll({
             limit: 10,
