@@ -10,13 +10,23 @@ export default class BeerSearch extends Component {
 
 
   state = {
-    styles: []
+    styles: [],
+    breweries: []
   }
 
   componentWillMount() {
     fetch('/api/styles/all')
     .then(res => res.json())
-    .then(styles => this.setState({styles: styles.styles}))
+    .then(res => this.setState({styles: res.styles, breweries: res.breweries}))
+
+  }
+
+  renderBreweries = () => {
+    if (this.state.breweries) {
+      return this.state.breweries.map(brewery => {
+        return <option value={brewery.id}>{brewery.name}</option>
+      })
+    }
   }
 
   render() {
@@ -32,8 +42,23 @@ export default class BeerSearch extends Component {
           margin="normal"
           variant="outlined"
         /><br/>
-          <InputLabel htmlFor="style-select">Beer Style</InputLabel>
-        <StyleSelect styles={this.state.styles}/> 
+        <div className="select-dropdown">
+        <InputLabel htmlFor="style-select">Beer Style</InputLabel>
+        <StyleSelect styles={this.state.styles}/>
+        </div>
+        <div className="select-dropdown"> 
+        <InputLabel htmlFor="brewery-select">Brewery Name</InputLabel>
+        <Select
+            native
+            inputProps={{
+              name: 'brewery',
+              id: 'brewery-select',
+            }}
+          >
+          <option></option>
+      {this.renderBreweries()}
+      </Select>
+      </div>
           </Cell>
       </Grid>
     )
