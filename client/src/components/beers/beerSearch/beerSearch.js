@@ -3,8 +3,30 @@ import { Grid, Cell } from 'react-mdl'
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+
+
+
 export default class BeerSearch extends Component {
+
+  state = {
+    styles: ''
+  }
+
+  componentWillMount() {
+    fetch('/api/styles/all')
+    .then(res => res.json())
+    .then(styles => this.setState({styles: styles}))
+  }
+
+  renderOptions = () => {
+    if (this.state.styles.styles) {
+    this.state.styles.styles.map( style => {
+      return <option value={1}>hello</option>
+    })
+    }
+  }
   render() {
+    {console.log(this.state.styles.styles)}
     return (
       <Grid>
           <Cell className="beersearch-header" col={12}>
@@ -26,9 +48,7 @@ export default class BeerSearch extends Component {
             }}
           >
             <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            {this.state.styles.styles[0].name}
           </Select>
           </Cell>
       </Grid>
