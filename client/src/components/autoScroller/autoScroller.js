@@ -23,10 +23,9 @@ class AutoScroller extends Component {
     }
 
     handleMouseLeave = () => {
-      setTimeout(() => this.setState({
-        scroller: initialState.scroller,
-        scroll: initialState.scroll,
-        entered: initialState.entered
+      setTimeout(() => this.setState((prevState) => {
+        return {...initialState,
+        cleared: prevState.cleared}
       }), 66)
     }
 
@@ -35,10 +34,10 @@ class AutoScroller extends Component {
     }
 
     updateScroll = (scroll) => {
-      if (scroll !== this.state.scroll) {
-        this.setState({scroll: scroll, cleared: true, entered: scroll})
-      } else if ( scroll && scroll !== this.state.cleared){
-        this.setState({cleared: true})
+      if (scroll) {
+        this.setState({scroll: scroll, entered: scroll})
+      } else if (scroll !== this.state.scroll) {
+        this.setState({scroll: scroll})
       }
     }
 
@@ -49,6 +48,7 @@ class AutoScroller extends Component {
     }
 
     render() {
+      console.log('entered', this.state.entered)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
