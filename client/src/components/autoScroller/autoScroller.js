@@ -60,7 +60,6 @@ class AutoScroller extends Component {
     }
 
     render() {
-      // console.log('mobile', this.state.mobile, 'cleared', this.state.cleared)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
@@ -75,7 +74,7 @@ class AutoScroller extends Component {
             >
               {this.props.children}
             </AutoScrollerChild>
-            {this.state.entered && this.state.cleared ?
+            {this.state.cleared && (this.state.entered || this.state.mobile)?
               <ScrollerArrows {...this.state}/> : null
           }
           </div>
