@@ -26,7 +26,9 @@ function scrapeBeers() {
                     }
                 })
             .spread((brewery,created) => {
-              debugger;
+                models.Style.findOrCreate({
+                    where: {name: beer.style.name}
+                })
                 models.Beer.create({
                     name: beer.name,
                     abv: parseFloat(beer.abv),
