@@ -75,7 +75,7 @@ class AutoScroller extends Component {
             >
               {this.props.children}
             </AutoScrollerChild>
-            {this.state.cleared && (this.state.entered || this.state.mobile)?
+            {this.state.cleared && this.state.entered ?
               <ScrollerArrows {...this.state}/> : null
           }
           </div>

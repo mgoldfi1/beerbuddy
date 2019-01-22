@@ -117,7 +117,7 @@ class AutoScrollerChild extends Component {
     render() {
         return (
         this.props.mobile ?
-          <div className='auto-scroller'
+          <div className='auto-scroller mobile'
           ref={this.scrollerRef}
           >
           {this.props.children}

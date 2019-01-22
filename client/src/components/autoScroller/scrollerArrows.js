@@ -36,9 +36,11 @@ class ScrollerArrows extends Component {
     return this.props.className + ` ` + this.state.direction + ` ` + this.state.visibility
   }
 
-  handleClick = (event) => {
-    console.log(event.currentTarget)
-  }
+  // handleClick = (event) => {
+  //   const value = event.currentTarget.id === 'arrow-right' ? 100 : -100
+  //   const scroller = event.currentTarget.parentElement.children[0]
+  //   scroller.scrollBy(value, 0)
+  // }
 
   render(){
       return (
@@ -46,12 +48,10 @@ class ScrollerArrows extends Component {
             <TiChevronLeft
             id='arrow-left'
             className={this.concatClassNames()}
-            onClick={this.props.mobile ? this.handleClick : null}
             />
             <TiChevronRight
             id='arrow-right'
             className={this.concatClassNames()}
-            onClick={this.props.mobile ? this.handleClick : null}
             />
           </>
       )
