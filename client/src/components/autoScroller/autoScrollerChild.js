@@ -114,21 +114,18 @@ class AutoScrollerChild extends Component {
     this.timeoutID = setTimeout(() => this.props.updateScroll(false), 66)
   }
 
+  handleTouch = (event) => {
+    console.log('entered')
+    clearTimeout(this.timeoutID)
+    console.log('cleared')
+    this.timeoutID = setTimeout(() => this.props.handleMouseLeave())
+    console.log('timed out?')
+  }
+
     render() {
         return (
-        this.props.mobile ?
-          <div className='auto-scroller mobile'
-          onTouchStart={() => this.props.handleMouseEnter()}
-          onTouchEnd={() => this.props.handleMouseLeave()}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseMove={this.handleMouseMove}
-          onScroll={this.handleScroll}
-          ref={this.scrollerRef}
-          >
-          {this.props.children}
-          </div> :
           <div className='auto-scroller'
+          onTouchEnd={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onMouseMove={this.handleMouseMove}
