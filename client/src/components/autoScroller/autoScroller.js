@@ -14,28 +14,15 @@ class AutoScroller extends Component {
     state = {...initialState,
       cleared: null,
       direction: 'left',
-      mobile: null
-    }
-
-    componentDidMount(){
-      this.checkDimensions()
-      window.addEventListener('resize', this.checkDimensions)
-    }
-
-    componentWillUnmount(){
-      window.removeEventListener('resize', this.checkDimensions)
-    }
-
-    checkDimensions = () => {
-      if( window.innerWidth < 1050  ) {
-        this.setState({mobile: true})
-      } else {
-        this.setState({mobile: false})
-      }
+      touched: false
     }
 
     handleMouseEnter = () => {
       this.setState({entered: true})
+    }
+
+    handleTouched = () => {
+      this.setState({entered: true, touched: true})
     }
 
     handleMouseLeave = () => {
@@ -47,12 +34,12 @@ class AutoScroller extends Component {
     }
 
     updateScroll = (scroll) => {
-      if (scroll) {
-        this.setState({scroll: scroll})
-      } else if (scroll !== this.state.scroll) {
-        this.setState({scroll: scroll})
-      }
-    }
+       if (scroll) {
+         this.setState((prevState) => { return {scroll: scroll, entered: !prevState.touched ? scroll : prevState.entered}})
+       } else if (scroll !== this.state.scroll) {
+         this.setState({scroll: scroll})
+       }
+     }
 
     updateDirection = (scrollRef, scrollLeft) => {
       if (scrollRef > scrollLeft) {
@@ -71,7 +58,7 @@ class AutoScroller extends Component {
     }
 
     render() {
-      console.log(this.state.direction, this.state.scroll)
+      console.log(this.state.entered)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
@@ -79,12 +66,11 @@ class AutoScroller extends Component {
             <AutoScrollerChild
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
+            handleTouched={this.handleTouched}
             updateScroll={this.updateScroll}
             updateDirection={this.updateDirection}
             updateScroller={this.updateScroller}
             updateCleared={this.updateCleared}
-            speed={this.props.speed}
-            mobile={this.state.mobile}
             >
               {this.props.children}
             </AutoScrollerChild>

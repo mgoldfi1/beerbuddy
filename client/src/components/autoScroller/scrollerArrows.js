@@ -25,7 +25,7 @@ class ScrollerArrows extends Component {
   }
 
   setVisibility = () => {
-    if(!this.props.scroll && this.props.direction && !this.props.mobile){
+    if(!this.props.scroll && (this.props.scroller > 0 || this.props.scroller < 0)){
       return `hide`
     } else {
       return ``
