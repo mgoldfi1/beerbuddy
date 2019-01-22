@@ -36,12 +36,17 @@ export default class BeerSearch extends Component {
           <h1>Search Beers</h1>
           </Cell>
           <Cell col={12}>
+          <div>
+          <InputLabel htmlFor="name">Beer Name:</InputLabel>
+          </div>
+          <div>
           <TextField
-          label="Name Of Beer"
+          name="name"
           id="outlined-bare"
           margin="normal"
           variant="outlined"
-        /><br/>
+        />
+        </div>
         <div className="select-dropdown">
         <InputLabel htmlFor="style-select">Beer Style:</InputLabel>
         <StyleSelect styles={this.state.styles}/>
