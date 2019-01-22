@@ -15,9 +15,9 @@ class ScrollerArrows extends Component {
   }
 
   setDirection = () => {
-    if(this.props.scroller > 0){
+    if (this.props.direction === 'right'){
       return `right`
-    } else if (this.props.scroller < 0) {
+    } else if (this.props.direction === 'left') {
       return `left`
     } else {
       return ``
@@ -25,7 +25,7 @@ class ScrollerArrows extends Component {
   }
 
   setVisibility = () => {
-    if(!this.props.scroll && (this.props.scroller > 0 || this.props.scroller < 0)){
+    if(!this.props.scroll && this.props.direction && !this.props.mobile){
       return `hide`
     } else {
       return ``

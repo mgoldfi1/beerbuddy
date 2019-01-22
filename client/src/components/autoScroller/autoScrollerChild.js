@@ -9,6 +9,7 @@ class AutoScrollerChild extends Component {
       center: 0,
       offset: 0,
       scroller: -1,
+      scrollLeft: 0
     }
     scrollerRef = React.createRef(); //provides rendered divs dimensions on mount
 
@@ -105,11 +106,14 @@ class AutoScrollerChild extends Component {
     }
 
   handleScroll = (event) => {
+    const scrollRef = event.currentTarget.scrollLeft
+    if(scrollRef !== this.state.scrollLeft){this.setState({scrollLeft: scrollRef})}
     //updates parents state
     this.props.updateScroll(true)
     //clears the timeOut set in this function if there is one set.
     //when the scroll ends the timeOut will be called soon after, sending the parent
     //componenet the most accurate result
+    this.props.updateDirection(scrollRef, this.state.scrollLeft)
     clearTimeout(this.timeoutID)
     this.timeoutID = setTimeout(() => this.props.updateScroll(false), 66)
   }

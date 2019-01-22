@@ -6,13 +6,14 @@ import '../../css/autoScroller.css'
 const initialState =  {
   scroller: null,
   scroll: false,
-  entered: false
+  entered: false,
 }
 
 class AutoScroller extends Component {
 
     state = {...initialState,
       cleared: null,
+      direction: 'left',
       mobile: null
     }
 
@@ -53,6 +54,16 @@ class AutoScroller extends Component {
       }
     }
 
+    updateDirection = (scrollRef, scrollLeft) => {
+      if (scrollRef > scrollLeft) {
+        this.setState({direction: 'right'})
+      } else if(scrollRef < scrollLeft) {
+        this.setState({direction: 'left'})
+      } else {
+        this.setState({direction: ''})
+      }
+    }
+
     updateCleared = (cleared) => {
       if(cleared !== this.state.cleared){
         this.setState({cleared: cleared})
@@ -60,6 +71,7 @@ class AutoScroller extends Component {
     }
 
     render() {
+      console.log(this.state.direction, this.state.scroll)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}
@@ -68,6 +80,7 @@ class AutoScroller extends Component {
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
             updateScroll={this.updateScroll}
+            updateDirection={this.updateDirection}
             updateScroller={this.updateScroller}
             updateCleared={this.updateCleared}
             speed={this.props.speed}
