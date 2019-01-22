@@ -118,6 +118,8 @@ class AutoScrollerChild extends Component {
         return (
         this.props.mobile ?
           <div className='auto-scroller mobile'
+          onTouchStart={() => this.props.handleMouseEnter()}
+          onTouchEnd={() => this.props.handleMouseLeave()}
           ref={this.scrollerRef}
           >
           {this.props.children}
