@@ -3,6 +3,8 @@ const router = express.Router();
 const breweriesRoute = require('./breweries');
 const beerRoute = require('./beer');
 const usersRoute = require('./users')
+const stylesRoute = require('./styles')
+
 
 
 module.exports = () => {
@@ -13,6 +15,7 @@ module.exports = () => {
     router.use('/breweries', breweriesRoute());
     router.use('/beer', beerRoute());
     router.use('/users', usersRoute());
+    router.use('/styles', stylesRoute());
 
     return router;
 };
