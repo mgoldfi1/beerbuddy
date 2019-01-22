@@ -47,7 +47,7 @@ class AutoScroller extends Component {
 
     updateScroll = (scroll) => {
       if (scroll) {
-        this.setState({scroll: scroll, entered: scroll})
+        this.setState({scroll: scroll})
       } else if (scroll !== this.state.scroll) {
         this.setState({scroll: scroll})
       }
