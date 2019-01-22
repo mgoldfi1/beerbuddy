@@ -6,7 +6,7 @@ import '../../css/autoScroller.css'
 const initialState =  {
   scroller: null,
   scroll: false,
-  entered: false,
+  entered: false
 }
 
 class AutoScroller extends Component {
@@ -58,7 +58,7 @@ class AutoScroller extends Component {
     }
 
     render() {
-      console.log(this.state.entered)
+      console.log('touched', this.state.touched, 'entered', this.state.entered)
         return (
           <div className='auto-scroller-container'
           onMouseLeave={this.handleMouseLeave}

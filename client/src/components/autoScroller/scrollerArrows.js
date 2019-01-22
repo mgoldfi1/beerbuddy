@@ -15,9 +15,9 @@ class ScrollerArrows extends Component {
   }
 
   setDirection = () => {
-    if (this.props.direction === 'right'){
+    if (this.props.scroller > 0 || (this.props.direction === 'right' && this.props.touched)){
       return `right`
-    } else if (this.props.direction === 'left') {
+    } else if (this.props.scroller < 0 || (this.props.direction === 'left' && this.props.touched)){
       return `left`
     } else {
       return ``
