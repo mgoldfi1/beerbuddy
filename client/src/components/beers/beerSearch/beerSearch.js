@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import StyleSelect from './styleSelect'
+import Button from '@material-ui/core/Button';
 
 
 export default class BeerSearch extends Component {
@@ -11,7 +12,11 @@ export default class BeerSearch extends Component {
 
   state = {
     styles: [],
-    breweries: []
+    breweries: [],
+    name: '',
+    style: '',
+    breweryId: '',
+    rating: ''
   }
 
   componentWillMount() {
@@ -80,6 +85,11 @@ export default class BeerSearch extends Component {
           <option value={4}>4</option>
           <option value={5}>5</option>
       </Select>
+      </div>
+      <div>
+      <Button variant="contained" color="primary">
+            Search
+       </Button>
       </div>
           </Cell>
       </Grid>
