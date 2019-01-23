@@ -39,3 +39,12 @@
 .select-dropdown {
   margin-top: 25px;
 }
+
+.beer-search-button {
+  text-decoration: none;
+}
+
+.undecorated-link {
+  text-decoration: none;
+  color: black;
+}

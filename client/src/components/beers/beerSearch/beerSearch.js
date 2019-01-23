@@ -113,7 +113,7 @@ export default class BeerSearch extends Component {
       </Select>
       </div>
       <div>
-      <Link to={"/beers/search/query?" + this.queryHacker()}><Button  variant="contained" color="primary">
+      <Link className="beer-search-button" to={"/beers/search/query?" + this.queryHacker()}><Button  variant="contained" color="primary">
             Search
        </Button>
        </Link>

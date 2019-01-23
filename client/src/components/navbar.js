@@ -2,12 +2,43 @@ import React, { Component } from 'react';
 import { Layout, Drawer, Navigation, Content, Header } from 'react-mdl'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
  class Navbar extends Component {
 
+    state = {
+        anchorEl: null,
+      };
+    
+      handleClick = event => {
+        this.setState({ anchorEl: event.currentTarget });
+      };
+    
+      handleClose = () => {
+        this.setState({ anchorEl: null });
+      };
+
     changeNav = () => {
         if (this.props.user) {
-            return  (<Link to={"/user/" + this.props.user.id}>{this.props.user.email}</Link>)
+            return  (<div> <Button
+                aria-owns={this.state.anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleClick}
+              >
+                {this.props.user.email}
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={this.state.anchorEl}
+                open={Boolean(this.state.anchorEl)}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose}><Link className="undecorated-link" to={"/user/" + this.props.user.id}>Profile</Link></MenuItem>
+                <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+              </Menu>
+              </div>)
         } else {
             return (<Link to="/login">LOG IN</Link>)
         }
