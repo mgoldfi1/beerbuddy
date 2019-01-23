@@ -5,7 +5,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import StyleSelect from './styleSelect'
 import Button from '@material-ui/core/Button';
-
+import { Link } from 'react-router-dom'
 
 export default class BeerSearch extends Component {
 
@@ -115,9 +115,10 @@ export default class BeerSearch extends Component {
       </Select>
       </div>
       <div>
-      <Button onClick={this.submitSearch} variant="contained" color="primary">
+      <Link to={"/beers/search/query?" + this.queryHacker()}><Button  variant="contained" color="primary">
             Search
        </Button>
+       </Link>
       </div>
           </Cell>
       </Grid>
