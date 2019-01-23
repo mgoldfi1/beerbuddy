@@ -10,10 +10,13 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
 import { Cell } from 'react-mdl'
 import '../../../css/beer.css'
+import noData from '../../HOC/noData'
 
 
 
- const BeerCard = ({beer}) => {
+ const BeerCard = (props) => {
+
+   const {beer, handleBlanks} = props
 
       return (
         <Cell col={2}>
@@ -34,7 +37,7 @@ import '../../../css/beer.css'
                         <strong>{beer.name}</strong>
                     </Typography>
                     <Typography component="p">
-                      { beer.abv ? beer.abv + "% ABV" : "N/A"}<br/>
+                      {handleBlanks(beer.abv, '%')}<br/>
                        {beer.style}<br/>
                         Brewed By: {beer.brewery.name}
                     </Typography>
@@ -58,4 +61,4 @@ import '../../../css/beer.css'
 
 }
 
-export default BeerCard
+export default noData(BeerCard)
