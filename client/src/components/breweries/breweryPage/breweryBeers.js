@@ -2,27 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import HorizontalScroll from 'react-scroll-horizontal'
 import MapBeers from './mapBeers'
-import AutoScroller from '../../autoScroller/autoScroller'
+import AutoScroller from 'react-auto-scroller';
 
 class BreweryBeers extends Component {
 
 render(){
     return (
-        <>
+        <React.Fragment>
         <strong style={{fontSize: '16px'}}>Beers made by this brewery:</strong><br/>
           <AutoScroller>
             <MapBeers beers={this.props.beers}/>
           </AutoScroller>
-        </>
+        </React.Fragment>
     )
   }
 };
-
-BreweryBeers.propTypes = {
-  beers: PropTypes.array.isRequired
-}
-
-    // <div style={{display: "inline"}}>
-    // <ScrollerArrows visibility={this.state.visibility} activate={this.state.activate}/>
 
 export default BreweryBeers
