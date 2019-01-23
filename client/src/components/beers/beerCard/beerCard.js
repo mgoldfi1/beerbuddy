@@ -10,14 +10,15 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
 import { Cell } from 'react-mdl'
 import '../../../css/beer.css'
+import noData from '../../HOC/noData'
 
 
 
- const BeerCard = ({beer}) => {
+ const BeerCard = (props) => {
 
       return (
         <Cell col={2}>
-          <Link className="beer-links" to={'/beer' + '/' + beer.id} >
+          <Link className="beer-links" to={'/beer' + '/' + props.id} >
             <Card className="beer-card">
                 <CardActionArea
                 className='beer-card-action'
@@ -26,24 +27,24 @@ import '../../../css/beer.css'
                     component="img"
                     alt="beerpic"
                     height="140"
-                    image={beer.label}
-                    title={beer.name}
+                    image={props.label}
+                    title={props.name}
                     />
                     <CardContent className='beer-content'>
                     <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
-                        <strong>{beer.name}</strong>
+                        <strong>{props.name}</strong>
                     </Typography>
                     <Typography component="p">
-                      { beer.abv ? beer.abv + "% ABV" : "N/A"}<br/>
-                       {beer.style}<br/>
-                        Brewed By: {beer.brewery.name}
+                      { props.abv ? props.abv + "% ABV" : "N/A"}<br/>
+                       {props.style}<br/>
+                        Brewed By: {props.brewery.name}
                     </Typography>
                     </CardContent>
                     </CardActionArea>
                     <div className='beer-spacer'>.</div>
                     <div className="star-div">
                     <StarRatings
-                        rating={beer.ratingAvg}
+                        rating={props.ratingAvg}
                         numberOfStars={5}
                         name='rating'
                         starDimension="25px"
@@ -58,4 +59,4 @@ import '../../../css/beer.css'
 
 }
 
-export default BeerCard
+export default noData(BeerCard, "beer")
