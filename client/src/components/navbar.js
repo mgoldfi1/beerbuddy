@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-
+import { logOut } from '../actions/logOut'
  class Navbar extends Component {
 
     state = {
@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
     
       handleClose = () => {
         this.setState({ anchorEl: null });
+        this.props.logOut()
       };
 
     changeNav = () => {
@@ -77,4 +78,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps, { logOut })(Navbar)
