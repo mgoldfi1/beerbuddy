@@ -3,11 +3,15 @@ const models = require('../../../models/')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const router = express.Router();
+const repl = require('repl');
 
 module.exports = () => {
     router.get('/filter/:filter', async (req, res, next) => {
         try {
           let beers = await models.Beer.findAll({
+            where: {
+              [req.params.filter]: {$ne: 'NaN'}
+            },
             limit: 10,
             offset: req.query.page*10,
             include: [{
@@ -86,19 +90,19 @@ module.exports = () => {
       router.get('/search/query', async (req, res) => {
         try {
         const query = req.query
-        const beers = await models.Beer.findAll({where: 
+        const beers = await models.Beer.findAll({where:
           queryHash(query)
         })
         res.status(200).send(beers)
       }
-      
+
         catch (err) {
-          console.log(err) 
+          console.log(err)
         }
         }
         )
-    
-      
+
+
 
     return router;
 };

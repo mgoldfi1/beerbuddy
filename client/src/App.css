@@ -49,6 +49,6 @@
   color: black;
 }
 
-.nav-button, span {
+.nav-button > span {
   color: white;
 }
