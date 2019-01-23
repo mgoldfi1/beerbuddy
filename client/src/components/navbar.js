@@ -6,6 +6,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { logOut } from '../actions/logOut'
+import '../css/navbar.css'
  class Navbar extends Component {
 
     state = {
@@ -16,6 +17,10 @@ import { logOut } from '../actions/logOut'
         this.setState({ anchorEl: event.currentTarget });
       };
     
+      handleMenuClose = () => {
+        this.setState({ anchorEl: null });
+      }
+
       handleClose = () => {
         this.setState({ anchorEl: null });
         this.props.logOut()
@@ -35,9 +40,9 @@ import { logOut } from '../actions/logOut'
                 id="simple-menu"
                 anchorEl={this.state.anchorEl}
                 open={Boolean(this.state.anchorEl)}
-                onClose={this.handleClose}
+                onClose={this.handleMenuClose}
               >
-                <MenuItem onClick={this.handleClose}><Link className="undecorated-link" to={"/user/" + this.props.user.id}>Profile</Link></MenuItem>
+                <MenuItem><Link onClick={this.handleMenuClose} className="undecorated-link" to={"/user/" + this.props.user.id}>Profile</Link></MenuItem>
                 <MenuItem onClick={this.handleClose}>Logout</MenuItem>
               </Menu>
               </div>)
