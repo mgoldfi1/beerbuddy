@@ -6,8 +6,8 @@ const router = express.Router();
 
 module.exports = () => {
     router.get('/all', async (req, res, next) => {
-      const styles = await models.Style.findAll({})
-      const breweries = await models.Brewery.findAll({})
+      const styles = await models.Style.findAll({order: ['name']})
+      const breweries = await models.Brewery.findAll({order: ['name']})
       res.status(200).send({styles,breweries})
     })
 
