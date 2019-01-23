@@ -72,7 +72,7 @@ module.exports = () => {
           hash["ratingAvg"] = {[Op.gte]: parseInt(query.rating)}
         }
         if (query.name) {
-          hash["name"] = query.name
+          hash["name"] = {[Op.iLike]: "%" + query.name + "%"}
         }
         if (query.breweryId) {
           hash["BreweryId"] = query.breweryId
