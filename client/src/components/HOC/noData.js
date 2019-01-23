@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 
-function noData(WrappedComponent, propKey) {
+function noData(WrappedComponent) {
   return class extends Component {
 
-    state = {...this.props[propKey]}
-
-    componentDidMount(){
-      const props = this.props[propKey]
-      for ( var key in props) {
-        if (props[key] === null || props[key] === undefined){
-          this.setState({[key]: "N/A"})
-        }
-      }
+    handleBlanks = (el, chars='') => {
+      return (el === null || el === undefined) ? "N/A" : el + chars
     }
 
     render() {
-      return <WrappedComponent {...this.state}/>
+      return <WrappedComponent {...this.props} handleBlanks={this.handleBlanks}/>
     }
   };
 }

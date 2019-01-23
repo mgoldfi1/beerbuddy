@@ -16,9 +16,11 @@ import noData from '../../HOC/noData'
 
  const BeerCard = (props) => {
 
+   const {beer, handleBlanks} = props
+
       return (
         <Cell col={2}>
-          <Link className="beer-links" to={'/beer' + '/' + props.id} >
+          <Link className="beer-links" to={'/beer' + '/' + beer.id} >
             <Card className="beer-card">
                 <CardActionArea
                 className='beer-card-action'
@@ -27,24 +29,24 @@ import noData from '../../HOC/noData'
                     component="img"
                     alt="beerpic"
                     height="140"
-                    image={props.label}
-                    title={props.name}
+                    image={beer.label}
+                    title={beer.name}
                     />
                     <CardContent className='beer-content'>
                     <Typography style={{fontSize: '100%'}} gutterBottom variant="h5" component="h2">
-                        <strong>{props.name}</strong>
+                        <strong>{beer.name}</strong>
                     </Typography>
                     <Typography component="p">
-                      { props.abv ? props.abv + "% ABV" : "N/A"}<br/>
-                       {props.style}<br/>
-                        Brewed By: {props.brewery.name}
+                      {handleBlanks(beer.abv, '%')}<br/>
+                       {beer.style}<br/>
+                        Brewed By: {beer.brewery.name}
                     </Typography>
                     </CardContent>
                     </CardActionArea>
                     <div className='beer-spacer'>.</div>
                     <div className="star-div">
                     <StarRatings
-                        rating={props.ratingAvg}
+                        rating={beer.ratingAvg}
                         numberOfStars={5}
                         name='rating'
                         starDimension="25px"
@@ -59,4 +61,4 @@ import noData from '../../HOC/noData'
 
 }
 
-export default noData(BeerCard, "beer")
+export default noData(BeerCard)
