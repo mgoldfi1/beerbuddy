@@ -1,6 +1,7 @@
 const express = require('express');
 const models = require('../../../models/')
-
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 const router = express.Router();
 
 module.exports = () => {
@@ -65,10 +66,30 @@ module.exports = () => {
       })
 
       //Search Query Handler
+      queryHash = (query) => {
+        let hash = {}
+        if (query.rating) {
+          hash["ratingAvg"] = {[Op.gte]: parseInt(query.rating)}
+        }
+        if (query.name) {
+          hash["name"] = query.name
+        }
+        if (query.breweryId) {
+          hash["BreweryId"] = query.breweryId
+        }
+        if (query.style) {
+          hash["style"] = query.style
+        }
+        return hash
+      }
+
       router.get('/search/query', async (req, res) => {
         try {
-        console.log(req.query)
-        }
+        const query = req.query
+        const beers = await models.Beer.findAll({where: 
+          queryHash(query)
+        })
+        console.log(beers.length)}
         catch (err) {
           console.log(err) 
         }
