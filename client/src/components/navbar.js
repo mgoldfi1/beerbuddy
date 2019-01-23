@@ -25,6 +25,7 @@ import Button from '@material-ui/core/Button';
             return  (<div> <Button
                 aria-owns={this.state.anchorEl ? 'simple-menu' : undefined}
                 aria-haspopup="true"
+                className="nav-button"
                 onClick={this.handleClick}
               >
                 {this.props.user.email}
