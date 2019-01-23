@@ -33,8 +33,30 @@ export default class BeerSearch extends Component {
       })
     }
   }
+
  queryHacker = () => {
-   
+     let query = ''
+     if (this.state.name) {
+       query = query + "&" + "name" + "=" + this.state.name
+     }
+
+     if (this.state.style) {
+      query = query + "&" + "style" + "=" + this.state.style
+    }
+
+    if (this.state.breweryId) {
+      query = query + "&" + "breweryId" + "=" + this.state.breweryId
+    }
+
+     if (this.state.rating) {
+       query = query + "&" + "rating" + "=" + this.state.rating
+     }
+
+     return query
+ }
+
+ submitSearch = () => {
+  fetch(`/api/beer/search/query?${this.queryHacker()}`)
  }
   render() {
     {console.log(this.state)}
@@ -93,7 +115,7 @@ export default class BeerSearch extends Component {
       </Select>
       </div>
       <div>
-      <Button variant="contained" color="primary">
+      <Button onClick={this.submitSearch} variant="contained" color="primary">
             Search
        </Button>
       </div>

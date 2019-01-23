@@ -64,5 +64,18 @@ module.exports = () => {
         }
       })
 
+      //Search Query Handler
+      router.get('/search/query', async (req, res) => {
+        try {
+        console.log(req.query)
+        }
+        catch (err) {
+          console.log(err) 
+        }
+        }
+        )
+    
+      
+
     return router;
 };
