@@ -26,7 +26,6 @@ class LoginForm extends Component {
   }
 
   logIn = () => {
-    console.log(this.state)
     fetch('/api/users/login',
     {method: 'post',
     headers: {

@@ -10,8 +10,10 @@ import {
     Redirect,
     withRouter
   } from "react-router-dom";
+  import { logIn } from '../../actions/logIn';
+import { connect } from 'react-redux';
 
-export default class RegistrationForm extends Component {
+class RegistrationForm extends Component {
 
 constructor(props) {
     super(props);
@@ -19,8 +21,7 @@ constructor(props) {
     this.state = {
         email: '',
         password: '',
-        passwordConfirmation: '',
-        userId: ''
+        passwordConfirmation: ''
     }
 }
 
@@ -36,16 +37,16 @@ registration = () => {
     }
     )
     .then(res => res.json())
-    .then(json => {
-        if (json.user) {
-            this.setState({userId: json.user.id})
+    .then(user => {
+        if (user.user) {
+        this.props.logIn(user.user)
         }
     })
 
 }
 
 redirectMe = () => {
-    if (this.state.userId) {
+    if (this.props.user) {
         return <Redirect to='/' />
     }
 
@@ -103,3 +104,10 @@ render()  {
 }
 
 }
+const mapStateToProps = (state) => {
+    return {
+      user: state.user.user
+    }
+  }
+   
+export default connect(mapStateToProps, { logIn })(RegistrationForm)
