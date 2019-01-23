@@ -89,7 +89,9 @@ module.exports = () => {
         const beers = await models.Beer.findAll({where: 
           queryHash(query)
         })
-        console.log(beers.length)}
+        res.status(200).send(beers)
+      }
+      
         catch (err) {
           console.log(err) 
         }

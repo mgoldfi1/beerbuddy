@@ -55,9 +55,7 @@ export default class BeerSearch extends Component {
      return query
  }
 
- submitSearch = () => {
-  fetch(`/api/beer/search/query?${this.queryHacker()}`)
- }
+
   render() {
     {console.log(this.state)}
     return (
