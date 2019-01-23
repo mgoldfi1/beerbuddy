@@ -4,9 +4,10 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 
+
 const BreweryPanel = (props) => {
 
-  const { details, summary} = props
+  const { details, summary, handleBlanks} = props
 
   const joinDetails = () => {
     if (Array.isArray(details)){

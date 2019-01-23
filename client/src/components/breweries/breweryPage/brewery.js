@@ -6,10 +6,14 @@ import { Link } from 'react-router-dom'
 import BreweryPanel from './breweryPanel'
 import PageTitle from '../../pageTitle'
 import BreweryBeers from './breweryBeers'
+import noData from '../../HOC/noData'
 import '../../../css/brewery.css'
 
 
+
 const Brewery = (props) => {
+
+const brewery = props.data;
 
  const renderLogo = () => {
     if (brewery.logo) {
@@ -19,7 +23,6 @@ const Brewery = (props) => {
     }
   }
 
-  const brewery = props.data;
   const bScore = () => {
     let total = 0
     for (const beer of brewery.beers) {
@@ -30,14 +33,14 @@ const Brewery = (props) => {
 
   return (
       !!brewery ? (
-          <Grid>            
+          <Grid>
             <PageTitle title={brewery.name} colLength={12}/>
             <div>
             <Cell className='brewery-logo-container' col={6}> {renderLogo()}</Cell>
             <Cell className='brewery-panels' col={6}>
               <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
-              <BreweryPanel details={brewery.description} summary='Description'/>
-              <BreweryPanel details={brewery.year} summary='Founded In'/>
+              <BreweryPanel details={props.handleBlanks(brewery.description)} summary='Description'/>
+              <BreweryPanel details={props.handleBlanks(brewery.year)} summary='Founded In'/>
               <BreweryPanel
                 details={<a href={brewery.website} target="_blank"> {brewery.website}</a>}
                 summary='Brewery Website'
@@ -66,4 +69,4 @@ Brewery.propTypes = {
 
   // <div style={{width: '100vw', height: '10vh'}}/>
 
-export default Brewery
+export default noData(Brewery)
