@@ -33,8 +33,11 @@ export default class BeerSearch extends Component {
       })
     }
   }
-
+ queryHacker = () => {
+   
+ }
   render() {
+    {console.log(this.state)}
     return (
       <Grid>
           <Cell className="beersearch-header" col={12}>
@@ -46,6 +49,7 @@ export default class BeerSearch extends Component {
           </div>
           <div>
           <TextField
+          onChange={(event) => this.setState({name: event.target.value})}
           name="name"
           id="outlined-bare"
           margin="normal"
@@ -54,7 +58,7 @@ export default class BeerSearch extends Component {
         </div>
         <div className="select-dropdown">
         <InputLabel htmlFor="style-select">Beer Style:</InputLabel>
-        <StyleSelect styles={this.state.styles}/>
+        <StyleSelect onChange={(event) => this.setState({style: event.target.value})} styles={this.state.styles}/>
         </div>
         <div className="select-dropdown"> 
         <InputLabel htmlFor="brewery-select">Brewery Name:</InputLabel>
@@ -64,6 +68,7 @@ export default class BeerSearch extends Component {
               name: 'brewery',
               id: 'brewery-select',
             }}
+            onChange={(event) => this.setState({breweryId: event.target.value})}
           >
           <option></option>
       {this.renderBreweries()}
@@ -77,6 +82,7 @@ export default class BeerSearch extends Component {
               name: 'rating',
               id: 'rating-select',
             }}
+            onChange={(event) => this.setState({rating: event.target.value})}
           >
           <option></option>
           <option value={1}>1</option>

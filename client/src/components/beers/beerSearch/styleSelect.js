@@ -22,6 +22,7 @@ export default class StyleSelect extends Component {
               name: 'style',
               id: 'style-select',
             }}
+            onChange={this.props.onChange}
           >
           <option></option>
       {this.renderOptions()}
