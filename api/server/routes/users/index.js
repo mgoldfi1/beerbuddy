@@ -5,16 +5,18 @@ const bcrypt = require('bcrypt')
 const User = require('../../../models/user')
 const passport = require('passport')
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 module.exports = () => {
 
     // JWT Generator
 
 
-    function generateToken(user) {
+    generateToken = (user) => {
         //1. Dont use password and other sensitive fields
         //2. Use fields that are useful in other parts of the     
         //app/collections/models
-        var u = {
+        const u = {
          email: user.email,
          id: user.id
         };
@@ -64,7 +66,9 @@ module.exports = () => {
     //Login Route
    
     router.post('/login', passport.authenticate("local"), (req, res) => {
-        res.send(req.user)
+        const token = generateToken(req.user)
+        console.log(token)
+        res.send({user: req.user, token: token})
     })
 
     router.post('/dashboard', isAuthenticated, passport.authenticate("local"), (req, res) => {
