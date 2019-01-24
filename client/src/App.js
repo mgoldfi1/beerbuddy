@@ -12,6 +12,14 @@ import BeerSearch from './components/beers/beerSearch/beerSearch'
 import ResultsPage from './components/beers/beerSearch/resultsPage'
 
 class App extends Component {
+
+  componentWillMount() {
+    const token = sessionStorage.getItem('jwtToken')
+    if (token) {
+      fetch('/api/users/authenticate/' + token)
+    }
+  }
+
   render() {
     return (
       <Router>
