@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UserProfile from './components/userProfile'
 import BeerSearch from './components/beers/beerSearch/beerSearch'
 import ResultsPage from './components/beers/beerSearch/resultsPage'
+import { logIn } from './actions/logIn';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -17,6 +19,8 @@ class App extends Component {
     const token = sessionStorage.getItem('jwtToken')
     if (token) {
       fetch('/api/users/authenticate/' + token)
+      .then(res => res.json())
+      .then(res => this.props.logIn(res.user))
     }
   }
 
@@ -39,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, { logIn })(App);

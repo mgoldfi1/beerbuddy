@@ -93,7 +93,7 @@ module.exports = () => {
         jwt.verify(req.params.token, process.env.JWT_SECRET, async (err, user) => {
             const findUser = await models.User.findOne({where: {id: user.id}})
             if (findUser) {
-                res.status(200).send({findUser})
+                res.status(200).send({user: findUser})
             }
         })
     })
