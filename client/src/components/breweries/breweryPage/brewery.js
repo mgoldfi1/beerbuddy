@@ -35,9 +35,9 @@ const brewery = props.data;
       !!brewery ? (
           <Grid>
             <PageTitle title={brewery.name} colLength={12}/>
-            <div>
-            <Cell className='brewery-logo-container' col={6}> {renderLogo()}</Cell>
-            <Cell className='brewery-panels' col={6}>
+            <div className="brewery-main-container">
+            <div className='brewery-logo-container'> {renderLogo()}</div>
+            <div className='brewery-panels'>
               <BreweryPanel details={[brewery.region, brewery.country]} summary='Location'/>
               <BreweryPanel details={props.handleBlanks(brewery.description)} summary='Description'/>
               <BreweryPanel details={props.handleBlanks(brewery.year)} summary='Founded In'/>
@@ -53,7 +53,7 @@ const brewery = props.data;
                 details={bScore() + "/5"}
                 summary='BreweryScore'
               />
-            </Cell>
+            </div>
             </div>
             <Cell className="brewery-beers-container"col={12}>
               <BreweryBeers beers={brewery.beers}/>
