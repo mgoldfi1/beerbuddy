@@ -4,8 +4,34 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const User = require('../../../models/user')
 const passport = require('passport')
-
+const jwt = require('jsonwebtoken');
 module.exports = () => {
+
+    // JWT Generator
+
+
+    function generateToken(user) {
+        //1. Dont use password and other sensitive fields
+        //2. Use fields that are useful in other parts of the     
+        //app/collections/models
+        var u = {
+         email: user.email,
+         id: user.id
+        };
+        return token = jwt.sign(u, process.env.JWT_SECRET, {
+           expiresIn: 60 * 60 * 24 // expires in 24 hours
+        });
+      }
+
+
+
+
+
+
+
+
+
+
     router.post('/registration', async (req, res, next) => { 
         
         try {
@@ -26,7 +52,6 @@ module.exports = () => {
         }
     } 
     )
-
 
     // Authentication
 
