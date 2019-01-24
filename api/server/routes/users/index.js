@@ -67,7 +67,6 @@ module.exports = () => {
    
     router.post('/login', passport.authenticate("local"), (req, res) => {
         const token = generateToken(req.user)
-        console.log(token)
         res.send({user: req.user, token: token})
     })
 
@@ -85,6 +84,18 @@ module.exports = () => {
             const updatedUser = await models.User.findOne({where: {email: req.body.email}})
             res.send({user: updatedUser})
         }})
+    })
+
+
+    //Refresh Authentication
+
+    router.get('/authenticate/:token', (req, res) => {
+        jwt.verify(req.params.token, process.env.JWT_SECRET, async (err, user) => {
+            const findUser = await models.User.findOne({where: {id: user.id}})
+            if (findUser) {
+                res.status(200).send({findUser})
+            }
+        })
     })
 
     return router;
