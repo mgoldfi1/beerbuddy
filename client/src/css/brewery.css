@@ -2,7 +2,42 @@
   text-align: center;
 }
 
-.brewery-beers {
-  height: 200px;
-  width: 200x;
+.brewery-beers-container{
+  position: relative;
+}
+
+.brewery-logo {
+  height: 250px;
+  width: 250px;
+}
+
+.brewery-panels {
+  float: left;
+  height: 100%;
+}
+
+
+.brewery-logo-container {
+  float: right;
+  text-align: center;
+}
+
+.brewery-main-container > div {
+  width: 50%;
+  display: inline-block;
+}
+
+.brewery-main-container {
+  width: 100%;
+}
+
+@media only screen and (max-width: 750px) {
+  .brewery-main-container > div {
+    width: 100%;
+    float: none;
+  }
+
+  .title {
+    text-align: center;
+  }
 }

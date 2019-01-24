@@ -10,16 +10,21 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
 import { Cell } from 'react-mdl'
 import '../../../css/beer.css'
+import noData from '../../HOC/noData'
 
 
 
- const BeerCard = ({beer}) => {
+ const BeerCard = (props) => {
+
+   const {beer, handleBlanks} = props
 
       return (
         <Cell col={2}>
           <Link className="beer-links" to={'/beer' + '/' + beer.id} >
-            <Card className="cards">
-                <CardActionArea>
+            <Card className="beer-card">
+                <CardActionArea
+                className='beer-card-action'
+                >
                     <CardMedia
                     component="img"
                     alt="beerpic"
@@ -32,14 +37,16 @@ import '../../../css/beer.css'
                         <strong>{beer.name}</strong>
                     </Typography>
                     <Typography component="p">
-                       {beer.abv}% ABV<br/>
+                      {handleBlanks(beer.abv, '%')}<br/>
                        {beer.style}<br/>
                         Brewed By: {beer.brewery.name}
                     </Typography>
                     </CardContent>
-                    <div>
+                    </CardActionArea>
+                    <div className='beer-spacer'>.</div>
+                    <div className="star-div">
                     <StarRatings
-                        rating={0}
+                        rating={beer.ratingAvg}
                         numberOfStars={5}
                         name='rating'
                         starDimension="25px"
@@ -47,7 +54,6 @@ import '../../../css/beer.css'
                         starRatedColor="rgb(255, 204, 0)"
                         />
                         </div>
-                    </CardActionArea>
                   </Card>
                 </Link>
               </Cell>
@@ -55,4 +61,4 @@ import '../../../css/beer.css'
 
 }
 
-export default BeerCard
+export default noData(BeerCard)

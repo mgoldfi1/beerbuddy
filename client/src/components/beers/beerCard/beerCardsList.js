@@ -5,20 +5,28 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom'
 import BeerSorter from '../beerSorter/beerSorter'
 import { FiLoader } from "react-icons/fi";
+import '../../../css/beer.css'
+
+const resetValues = {
+    beers: [],
+    page: 0,
+    more: true
+}
 
 class BeerCardsList extends Component {
 
   state = {
-          beers: [],
-          value: "abv",
-          page: 0,
-          more: true,
+        ...resetValues,
+          filter: "abv",
+          order: 'ASC',
           error: null
       }
 
 
   loadFunc = async (page) => {
-     const res = await fetch(`/api/beer/${this.state.value}/${this.state.page}`)
+     const res = await fetch(
+       `/api/beer/filter/${this.state.filter}?page=${this.state.page}&order=${this.state.order}`
+     )
      const body = await res.json()
      if (res.status === 200){
          this.setState(currentState => ({beers: [...currentState.beers, ...body.beers], page: currentState.page + 1}) )
@@ -28,8 +36,12 @@ class BeerCardsList extends Component {
 }
 
   handleChange = (event) => {
-      this.setState({beers: [], value: event.target.value, page: 0, more:true });
+      this.setState({...resetValues, filter: event.target.value});
     };
+
+  handleOrderChange = (event) => {
+    this.setState({...resetValues, order: event.target.value})
+  }
 
   mapBeers = () => {
     let beers = this.state.beers
@@ -39,12 +51,17 @@ class BeerCardsList extends Component {
   render() {
       return (
         <div>
-          <BeerSorter value={this.state.value} handleChange={this.handleChange}/>
+          <BeerSorter
+          filter={this.state.filter}
+          onChange={this.handleChange}
+          order={this.state.order}
+          onOrderChange={this.handleOrderChange}
+          />
           <InfiniteScroll
               pageStart={0}
               loadMore={this.loadFunc}
               hasMore={this.state.more}
-              loader={<FiLoader className="loader"/>}
+              loader={<FiLoader key={1} className="loader"/>}
               >
               <Grid>
                 {this.mapBeers()}

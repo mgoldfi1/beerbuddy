@@ -1,0 +1,44 @@
+.horizontal-radio-group{
+  display: inline-grid !important;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+
+.horizontal-radio-group > label > span{
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.sort-styles {
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.sort-container{
+  text-align-last: center;
+}
+
+/* .beer-card-switch > span {
+  transform: rotate(45deg);
+} */
+
+/* .sort-by-icons *{
+  height: 3.5vh;
+  width: auto;
+  margin-top: 5px;
+}
+
+.sort-by-icons{
+  margin: auto;
+}
+
+.sort-switch {
+  display: inline-block !important;
+}
+
+.sort-switch:first-child {
+  background: black;
+} */
+
+/* .beer-card-switch:first-child {
+  transform: rotate(270deg);
+} */

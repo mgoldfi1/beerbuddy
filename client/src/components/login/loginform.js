@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../App.css';
 import Icon from '@material-ui/core/Icon';
+import Facebook from './facebook';
 import {
   BrowserRouter as Router,
   Route,
@@ -25,7 +26,6 @@ class LoginForm extends Component {
   }
 
   logIn = () => {
-    console.log(this.state)
     fetch('/api/users/login',
     {method: 'post',
     headers: {
@@ -46,7 +46,6 @@ class LoginForm extends Component {
 
   redirectMe = () => {
     if (this.props.user) {
-      console.log(this.props.user)
         return <Redirect to='/' />
     }
 
@@ -87,9 +86,7 @@ render()  {
          <div className="login-box">
          <div className="box">You can also sign in with:</div>
          <span className="button">
-           <Button variant="contained" color="default">
-            Facebook
-       </Button>
+            <Facebook/>
        </span>
        <span> -or- </span>
         <span className="button">

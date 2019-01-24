@@ -3,13 +3,16 @@ import {Tabs, Tab} from 'react-mdl'
 import BeerCardsList from './beers/beerCard/beerCardsList'
 import FetchApiData from './HOC/fetchApiData'
 import MapContainer from './map/mapContainer'
+import '../App.css'
+import { connect } from 'react-redux';
+import { tabClicked } from '../actions/tabClicked'
 
-export default class Home extends Component {
-    state = { activeTab: 0, beer: ''}
+ class Home extends Component {
+    state = { beer: ''}
 
     tabSwitch = () => {
       const MapContainerWithFetchBreweries = FetchApiData(MapContainer, 'breweries')
-       switch (this.state.activeTab) {
+       switch (this.props.tab) {
            case 2:
            return (<div>Top</div>)
            case 0:
@@ -19,13 +22,11 @@ export default class Home extends Component {
        }
     }
 
-
     render() {
-      console.log(<Tabs/>)
         return (
             <div className="demo-tabs">
             <div>{this.state.beer.name}</div>
-            <Tabs activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
+            <Tabs activeTab={this.props.tab} onChange={(tabId) => this.props.tabClicked(tabId) } ripple>
                 <Tab>Beers</Tab>
                 <Tab>Breweries</Tab>
                 <Tab>Top Rated</Tab>
@@ -37,3 +38,11 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        tab: state.user.tab
+    }
+}
+
+export default connect(mapStateToProps, { tabClicked })(Home)
