@@ -38,7 +38,7 @@ class LoginForm extends Component {
     .then(res => {
       if (res.user) {
         console.log(res)
-        this.props.logIn(res.user)
+        this.props.logIn(res.user, res.token)
       } else {
         this.setState({err: "Invalid Username or Password"})
       }
